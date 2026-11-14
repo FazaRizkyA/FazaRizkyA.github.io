@@ -66,7 +66,8 @@
         b.innerHTML =
           '<span class="shot__img"><img src="' + F + file + '-thumb.jpg" alt="' + title + '" loading="lazy"></span>' +
           '<figcaption class="tiny"><b>' + String(i + 1).padStart(2, '0') + '</b>' + title + '</figcaption>';
-        b.addEventListener('click', () => openViewer(si, i));
+        b.addEventListener('click', () => openViewer(
+          set.items.map(([f, t]) => ({ src: F + f + '.png', title: t })), i, set.kind === 'mobile' ? 'mobile' : ''));
         gallery.appendChild(b);
       });
       requestAnimationFrame(() => gallery.classList.remove('is-swap'));
@@ -85,23 +86,24 @@
   const vBody = document.getElementById('vw-body');
   const vPrev = document.getElementById('vw-prev');
   const vNext = document.getElementById('vw-next');
-  let vs = 0, vi = 0, lastFocus = null;
+  // list: [{ src, title }], kind: '' | 'mobile' | 'cert'
+  let list = [], vKind = '', vi = 0, lastFocus = null;
 
   function show() {
-    const set = SETS[vs];
-    const [file, title] = set.items[vi];
-    vImg.src = F + file + '.png';
-    vImg.alt = title;
-    vTitle.textContent = title;
-    vCount.textContent = String(vi + 1).padStart(2, '0') + ' / ' + String(set.items.length).padStart(2, '0');
-    vOpen.href = F + file + '.png';
-    viewer.classList.toggle('is-mobile', set.kind === 'mobile');
-    const many = set.items.length > 1;
-    vPrev.hidden = vNext.hidden = !many;
+    const it = list[vi];
+    vImg.src = it.src;
+    vImg.alt = it.title;
+    vTitle.textContent = it.title;
+    vCount.textContent = String(vi + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
+    vOpen.href = it.src;
+    vOpen.textContent = (/\.png$/i.test(it.src) ? 'Buka PNG' : 'Buka gambar') + ' ↗';
+    viewer.classList.toggle('is-mobile', vKind === 'mobile');
+    viewer.classList.toggle('is-cert', vKind === 'cert');
+    vPrev.hidden = vNext.hidden = list.length < 2;
     vBody.scrollTop = 0;
   }
-  function openViewer(si, i) {
-    vs = si; vi = i; lastFocus = document.activeElement;
+  function openViewer(items, i, kind) {
+    list = items; vi = i; vKind = kind || ''; lastFocus = document.activeElement;
     show();
     viewer.hidden = false;
     document.body.classList.add('is-locked');
@@ -113,10 +115,20 @@
     if (lastFocus) lastFocus.focus();
   }
   function step(d) {
-    const n = SETS[vs].items.length;
-    vi = (vi + d + n) % n;
+    vi = (vi + d + list.length) % list.length;
     show();
   }
+  window.openViewer = openViewer;
+
+  // ---------- bagian Sertifikat ----------
+  const CERTS = [
+    { src: 'assets/sertifikat/gema.jpg', title: 'GEMA Foundation — Lomba Game Development Roblox' },
+    { src: 'assets/sertifikat/gamelab.jpg', title: 'GAMELAB Indonesia — Game Edukasi Construct' },
+    { src: 'assets/sertifikat/smk.jpg', title: 'SMK Krian 1 Sidoarjo — Proyek Sumatif Tengah Semester' }
+  ];
+  document.querySelectorAll('[data-cert]').forEach((el) => {
+    el.addEventListener('click', () => openViewer(CERTS, +el.dataset.cert, 'cert'));
+  });
   document.getElementById('vw-close').addEventListener('click', closeViewer);
   vPrev.addEventListener('click', () => step(-1));
   vNext.addEventListener('click', () => step(1));

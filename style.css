@@ -336,6 +336,8 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
 .viewer__body { overflow: auto; padding: 28px var(--pad) 80px; overscroll-behavior: contain; }
 .viewer__body img { margin: 0 auto; width: min(1200px, 100%); height: auto; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
 .viewer.is-mobile .viewer__body img { width: min(430px, 100%); }
+.viewer.is-cert .viewer__body { display: grid; place-items: center; }
+.viewer.is-cert .viewer__body img { width: auto; max-width: min(1200px, 100%); max-height: calc(100svh - 150px); }
 .viewer__nav {
   position: fixed; top: 50%; transform: translateY(-50%);
   font-size: 13px; padding: 10px 4px; background: rgba(6,6,6,.7);
@@ -446,6 +448,26 @@ body.is-locked { overflow: hidden; }
 .trow.is-static { cursor: default; }
 .awards .trow { min-height: 40px; }
 
+/* ================= SERTIFIKAT ================= */
+.certs { padding: clamp(80px, 10vw, 150px) var(--pad) 0; }
+.certs__head {
+  display: flex; justify-content: space-between; align-items: end; gap: 32px;
+  padding-bottom: 22px; margin-bottom: clamp(28px, 4vw, 48px);
+  border-bottom: 1px solid var(--line);
+}
+.certs__para { max-width: 340px; color: #cfcfca; }
+.certs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 36px); }
+.cert { display: grid; gap: 18px; align-content: start; }
+.cert__img { display: block; width: 100%; aspect-ratio: 1.41; background: #111; cursor: zoom-in; }
+.cert__img img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.05) brightness(.9); transition: filter .6s var(--ease), transform 1s var(--ease); }
+.cert__img:hover img, .cert__img:focus-visible img { filter: none; }
+.cert__body { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+.cert__no { color: var(--muted); }
+.cert__title { font-size: clamp(17px, 1.4vw, 21px); font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; text-transform: uppercase; }
+.cert__meta { color: #b9b9b4; line-height: 1.5; }
+.cert__links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; }
+.cert__links .bracket { font-size: 10px; }
+
 /* ================= KONTAK ================= */
 .contact {
   display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
@@ -498,6 +520,8 @@ body.is-locked { overflow: hidden; }
   @keyframes photoIn { from { opacity: 0; } }
   .intro, .work, .awards, .contact, .design { grid-template-columns: 1fr; }
   .gallery.is-mobile { grid-template-columns: repeat(3, 1fr); }
+  .certs__grid { grid-template-columns: repeat(2, 1fr); }
+  .certs__head { flex-direction: column; align-items: start; }
   .intro__left { order: 2; }
   .intro__left > .mk { display: none; }
   .cards { grid-template-columns: repeat(2, 1fr); }
@@ -526,6 +550,7 @@ body.is-locked { overflow: hidden; }
   .process__photo { height: 70%; }
   .gallery { grid-template-columns: 1fr; }
   .gallery.is-mobile { grid-template-columns: repeat(2, 1fr); }
+  .certs__grid { grid-template-columns: 1fr; }
   .viewer__bar { grid-template-columns: 1fr auto; }
   .viewer__count { display: none; }
   .viewer__nav { top: auto; bottom: 14px; transform: none; }
