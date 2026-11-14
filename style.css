@@ -286,6 +286,64 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
 .srow--link { color: var(--ink); transition: background .25s; }
 .srow--link:hover { background: rgba(242,242,238,.07); }
 
+/* ================= DESAIN FIGMA ================= */
+.design {
+  display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px;
+  padding: clamp(40px, 6vw, 90px) var(--pad) clamp(60px, 8vw, 120px);
+}
+.design__left { display: grid; align-content: start; gap: 32px; }
+.design__para { max-width: 360px; color: #cfcfca; }
+.design__sets .table__head, .design__sets .trow { grid-template-columns: 1.5fr 1fr 48px; }
+.design__info { display: grid; gap: 10px; max-width: 470px; }
+.design__desc { font-size: 15px; line-height: 1.5; color: #d6d6d1; }
+.design__meta { color: var(--muted); }
+
+.gallery { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); align-content: start; }
+.gallery.is-mobile { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.gallery.is-single { grid-template-columns: 1fr; }
+.gallery.is-swap { opacity: 0; transform: translateY(8px); }
+.gallery { transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.shot { display: grid; gap: 10px; text-align: left; cursor: zoom-in; }
+.shot .crop { overflow: visible; }
+.shot__img { position: relative; background: #e9e9e6; overflow: hidden; }
+.shot__img img { width: 100%; height: auto; display: block; filter: grayscale(1); transition: transform .9s var(--ease), filter .4s; }
+.shot:hover .shot__img img, .shot:focus-visible .shot__img img { transform: scale(1.03); }
+.shot__img::after {
+  content: "Lihat ↗"; position: absolute; right: 8px; bottom: 8px;
+  font-size: 10px; text-transform: uppercase; background: #0a0a0a; color: var(--ink);
+  padding: 5px 8px; opacity: 0; transition: opacity .25s;
+}
+.shot:hover .shot__img::after, .shot:focus-visible .shot__img::after { opacity: 1; }
+.shot figcaption { display: flex; gap: 10px; color: #cfcfca; }
+.shot figcaption b { font-weight: 400; color: var(--muted); }
+.gallery.is-mobile .shot figcaption { font-size: 9px; }
+
+/* penampil layar penuh */
+.viewer {
+  position: fixed; inset: 0; z-index: 120;
+  background: rgba(6, 6, 6, 0.96);
+  display: grid; grid-template-rows: auto 1fr;
+}
+.viewer[hidden] { display: none; }
+.viewer__bar {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  padding: 14px var(--pad); border-bottom: 1px solid var(--line);
+}
+.viewer__bar .mk { width: 6px; height: 6px; box-shadow: 10px 0 0 currentColor; margin-right: 22px; }
+.viewer__count { color: var(--muted); }
+.viewer__actions { justify-self: end; display: flex; gap: 22px; }
+.viewer__actions button { font-size: 10px; }
+.viewer__body { overflow: auto; padding: 28px var(--pad) 80px; overscroll-behavior: contain; }
+.viewer__body img { margin: 0 auto; width: min(1200px, 100%); height: auto; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.viewer.is-mobile .viewer__body img { width: min(430px, 100%); }
+.viewer__nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  font-size: 13px; padding: 10px 4px; background: rgba(6,6,6,.7);
+}
+.viewer__nav--prev { left: 8px; }
+.viewer__nav--next { right: 8px; }
+body.is-locked { overflow: hidden; }
+
 /* ================= PITA ================= */
 .tapes {
   position: relative;
@@ -438,7 +496,8 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
   .hero__note--a { display: none; }
   .hero__photo { height: 80%; transform: translateX(-50%); }
   @keyframes photoIn { from { opacity: 0; } }
-  .intro, .work, .awards, .contact { grid-template-columns: 1fr; }
+  .intro, .work, .awards, .contact, .design { grid-template-columns: 1fr; }
+  .gallery.is-mobile { grid-template-columns: repeat(3, 1fr); }
   .intro__left { order: 2; }
   .intro__left > .mk { display: none; }
   .cards { grid-template-columns: repeat(2, 1fr); }
@@ -465,6 +524,11 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
   .linkcols ul:last-child { justify-items: start; }
   .tiny-list { display: none !important; }
   .process__photo { height: 70%; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery.is-mobile { grid-template-columns: repeat(2, 1fr); }
+  .viewer__bar { grid-template-columns: 1fr auto; }
+  .viewer__count { display: none; }
+  .viewer__nav { top: auto; bottom: 14px; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

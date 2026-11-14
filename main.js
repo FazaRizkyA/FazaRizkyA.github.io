@@ -137,7 +137,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWordmar
 
 // ---------- muncul saat scroll ----------
 (function reveal() {
-  const sel = '.statement, .intro__imgs, .intro__bottom, .work__left, .table, .cards, .process__head, .awards__left, .contact__left, .contact__right';
+  const sel = '.statement, .intro__imgs, .intro__bottom, .work__left, .table, .cards, .design__left, .process__head, .awards__left, .contact__left, .contact__right';
   const items = document.querySelectorAll(sel);
   if (!('IntersectionObserver' in window)) return;
   items.forEach((el) => el.classList.add('rv'));

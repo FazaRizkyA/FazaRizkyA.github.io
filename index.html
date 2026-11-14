@@ -31,6 +31,7 @@
       <nav class="topnav" aria-label="Navigasi utama">
         <a href="#tentang">Tentang</a><i class="sq" aria-hidden="true"></i>
         <a href="#karya">Karya</a><i class="sq" aria-hidden="true"></i>
+        <a href="#desain">Desain</a><i class="sq" aria-hidden="true"></i>
         <a href="#prestasi">Prestasi</a><i class="sq" aria-hidden="true"></i>
         <a href="#kontak">Kontak</a>
       </nav>
@@ -123,6 +124,47 @@
       </div>
     </section>
 
+    <!-- ================= DESAIN FIGMA ================= -->
+    <section class="design" id="desain">
+      <div class="design__left">
+        <h2 class="h2"><span class="mk" aria-hidden="true"></span>Desain<br>Figma</h2>
+        <p class="tiny design__para">Wireframe dan sketsa yang saya buat di Figma sebelum masuk ke kode. Klik gambar untuk melihat ukuran penuh, atau buka file PNG-nya.</p>
+
+        <div class="table design__sets" role="tablist" aria-label="Set desain">
+          <div class="table__head tiny" aria-hidden="true"><span>Set desain</span><span>Isi</span><span>Tahun</span></div>
+          <button class="trow is-active" role="tab" aria-selected="true" data-set="0"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Toko Kriya — Desktop</span><span>5 layar</span><span>2026</span></button>
+          <button class="trow" role="tab" aria-selected="false" data-set="1"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Toko Kriya — Mobile</span><span>5 layar</span><span>2026</span></button>
+          <button class="trow" role="tab" aria-selected="false" data-set="2"><span class="trow__name"><span class="mk" aria-hidden="true"></span>KARYAFRAME — Halaman penuh</span><span>Sketsa kasar</span><span>2026</span></button>
+        </div>
+
+        <div class="design__info">
+          <p class="design__desc" id="ds-desc"></p>
+          <p class="tiny design__meta" id="ds-meta"></p>
+        </div>
+      </div>
+
+      <div class="design__right">
+        <div class="gallery" id="ds-gallery" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <!-- penampil gambar layar penuh -->
+    <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Penampil desain" hidden>
+      <div class="viewer__bar">
+        <p class="tiny"><span class="mk" aria-hidden="true"></span><span id="vw-title"></span></p>
+        <p class="tiny viewer__count" id="vw-count"></p>
+        <div class="viewer__actions">
+          <a class="bracket" id="vw-open" href="#" target="_blank" rel="noopener">Buka PNG ↗</a>
+          <button class="bracket" id="vw-close" type="button">Tutup ✕</button>
+        </div>
+      </div>
+      <div class="viewer__body" id="vw-body">
+        <img id="vw-img" alt="">
+      </div>
+      <button class="viewer__nav viewer__nav--prev bracket" id="vw-prev" type="button" aria-label="Sebelumnya">←</button>
+      <button class="viewer__nav viewer__nav--next bracket" id="vw-next" type="button" aria-label="Berikutnya">→</button>
+    </div>
+
     <!-- ================= PITA ================= -->
     <div class="tapes" aria-hidden="true">
       <div class="tape tape--1"><div class="tape__track" data-text="Dari ide jadi produk nyata|Web · Desktop · Game"></div></div>
@@ -213,6 +255,7 @@
             <li><a class="bracket" href="#top">Beranda</a></li>
             <li><a class="bracket" href="#tentang">Tentang</a></li>
             <li><a class="bracket" href="#karya">Karya</a></li>
+            <li><a class="bracket" href="#desain">Desain</a></li>
             <li><a class="bracket" href="#prestasi">Prestasi</a></li>
             <li><a class="bracket" href="#kontak">Kontak</a></li>
           </ul>
@@ -240,6 +283,7 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="design.js"></script>
   <script src="assets/faza-ascii.js"></script>
   <script src="ascii.js"></script>
 </body>
