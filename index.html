@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@500&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261114b">
+  <link rel="stylesheet" href="style.css?v=20261114c">
 </head>
 <body>
   <a class="skip" href="#karya">Lewati ke karya</a>
@@ -264,6 +264,29 @@
           <button class="trow" type="button" data-i="1"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Game Edukasi Construct</span><span>GAMELAB Indonesia</span><span>2026</span></button>
           <button class="trow" type="button" data-i="2"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Proyek Sumatif — Predikat A</span><span>SMK Krian 1 Sidoarjo</span><span>2026</span></button>
         </div>
+
+        <!-- lagu favorit: cincin sampul album yang berputar -->
+        <div class="music" aria-label="Lagu favorit">
+          <div class="music__head tiny">
+            <span><span class="mk" aria-hidden="true"></span>Lagu favorit</span>
+            <span class="music__hint">Sedang diputar di kepala saat ngoding</span>
+          </div>
+          <div class="music__stage" id="mu-stage">
+            <div class="music__ring" id="mu-ring">
+              <a class="music__item" data-track="Merry Christmas, Please Don't Call" data-artist="Bleachers" href="https://music.apple.com/id/album/merry-christmas-please-dont-call/1775877095" target="_blank" rel="noopener"><span class="music__disc" aria-hidden="true"></span><img src="assets/musik/merry.jpg" alt="Sampul Merry Christmas, Please Don't Call — Bleachers" width="600" height="600"></a>
+              <a class="music__item" data-track="Magnolia" data-artist="Magnolia Celebration" href="https://music.apple.com/id/album/magnolia/1654115024" target="_blank" rel="noopener"><span class="music__disc" aria-hidden="true"></span><img src="assets/musik/magnolia.jpg" alt="Sampul Fantasia — Magnolia Celebration" width="600" height="600"></a>
+              <a class="music__item" data-track="Drag Path" data-artist="twenty one pilots" href="https://music.apple.com/id/album/drag-path/1876977594" target="_blank" rel="noopener"><span class="music__disc" aria-hidden="true"></span><img src="assets/musik/dragpath.jpg" alt="Sampul Drag Path — twenty one pilots" width="600" height="600"></a>
+              <a class="music__item" data-track="Timeless" data-artist="The Weeknd & Playboi Carti" href="https://music.apple.com/id/album/timeless/1770393193" target="_blank" rel="noopener"><span class="music__disc" aria-hidden="true"></span><img src="assets/musik/timeless.jpg" alt="Sampul Timeless — The Weeknd & Playboi Carti" width="600" height="600"></a>
+              <a class="music__item" data-track="Isimo" data-artist="Bleachers" href="https://music.apple.com/id/album/isimo/1712730224" target="_blank" rel="noopener"><span class="music__disc" aria-hidden="true"></span><img src="assets/musik/isimo.jpg" alt="Sampul Bleachers — Bleachers (lagu Isimo)" width="600" height="600"></a>
+            </div>
+            <div class="music__floor" aria-hidden="true"></div>
+          </div>
+          <div class="music__now">
+            <span class="music__no tiny" id="mu-no">01 / 05</span>
+            <span class="music__track" id="mu-track">Merry Christmas, Please Don't Call</span>
+            <span class="music__artist tiny" id="mu-artist">Bleachers</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -314,6 +337,7 @@
 
   <script src="main.js?v=20261114b"></script>
   <script src="design.js?v=20261114b"></script>
+  <script src="music.js?v=20261114c"></script>
   <script src="assets/faza-ascii.js"></script>
   <script src="ascii.js?v=20261114b"></script>
 </body>

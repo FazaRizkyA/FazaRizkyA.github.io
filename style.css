@@ -426,6 +426,75 @@ body.is-locked { overflow: hidden; }
 .trow.is-static { cursor: default; }
 .awards .trow { min-height: 40px; }
 
+/* ================= LAGU FAVORIT (cincin album) ================= */
+.music { margin-top: clamp(48px, 6vw, 80px); }
+.music__head {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 0 8px 10px; border-bottom: 1px solid var(--line);
+}
+.music__head .mk { width: 6px; height: 6px; box-shadow: 10px 0 0 currentColor; margin-right: 22px; }
+.music__hint { color: var(--muted); }
+.music__stage {
+  --card: clamp(120px, 13vw, 176px);
+  --radius: calc(var(--card) * 1.45);
+  position: relative;
+  height: calc(var(--card) * 2.15);
+  perspective: 1100px;
+  perspective-origin: 50% 30%;
+  display: grid; place-items: center;
+  overflow: hidden;
+  cursor: grab;
+}
+.music__ring {
+  position: relative;
+  width: var(--card); height: var(--card);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.music__item {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  --f: 0;   /* 1 = paling depan, 0 = paling belakang (diatur JS) */
+}
+.music__item img {
+  position: relative;
+  width: 100%; height: 100%; object-fit: cover;
+  box-shadow: 0 18px 40px rgba(0,0,0,.6);
+  filter: grayscale(calc(1 - var(--f))) brightness(calc(.45 + var(--f) * .55));
+  transition: filter .25s linear;
+}
+.music__disc {
+  position: absolute; top: 6%; left: 34%;
+  width: 88%; height: 88%; border-radius: 50%;
+  transform: translateZ(-2px);
+  background:
+    radial-gradient(circle, #d8d8d2 0 6%, #0b0b0b 6.5% 15%, transparent 15.5%),
+    repeating-radial-gradient(circle, #121212 0 2px, #1c1c1c 2px 3px),
+    #111;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 10px 30px rgba(0,0,0,.5);
+  animation: spin 3.2s linear infinite;
+  opacity: calc(.25 + var(--f) * .75);
+}
+.music__disc::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 20%, rgba(255,255,255,.10) 25%, transparent 32% 70%, rgba(255,255,255,.07) 75%, transparent 82%);
+}
+@keyframes spin { to { transform: translateZ(-2px) rotate(360deg); } }
+.music__floor {
+  position: absolute; left: 50%; bottom: 6%;
+  width: calc(var(--radius) * 2.6); height: 40px;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(242,242,238,.10), transparent 70%);
+  pointer-events: none;
+}
+.music__now {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 16px;
+  padding: 12px 8px 0; border-top: 1px solid var(--line);
+}
+.music__no { color: var(--muted); }
+.music__track { font-size: clamp(16px, 1.4vw, 20px); text-transform: uppercase; letter-spacing: -0.01em; }
+.music__artist { color: var(--muted); text-align: right; }
+
 /* ================= SERTIFIKAT ================= */
 .cert__note { color: var(--ink); display: flex; align-items: center; }
 .cert__note[hidden] { display: none; }
