@@ -5,6 +5,7 @@ const PROJECTS = [
     desc: 'Aplikasi desktop Windows untuk belajar AI engineering: baca lesson, tulis kode di sebelahnya, jalankan, lalu lihat hasilnya sebagai grafik. 56 lesson, berjalan offline tanpa perlu memasang apa pun. Materi dari repositori open source (MIT).',
     stack: 'C# · WPF · .NET 9 · Python · Node.js · Rust · Julia',
     links: [
+      ['Coba versi web', 'https://fazarizkya.github.io/ruang-latih/'],
       ['Unduh untuk Windows', 'https://github.com/FazaRizkyA/ruang-latih/releases/latest'],
       ['Kode di GitHub', 'https://github.com/FazaRizkyA/ruang-latih']
     ]
