@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!-- Tag <!DOCTYPE html> berfungsi mendeklarasikan tipe dokumen sebagai standar HTML5 ke browser -->
+<html lang="id">
+<!-- Tag <head> berfungsi memuat informasi metadata dan pemanggilan file stylesheet CSS -->
+<head>
+  <meta charset="UTF-8">
+  <!-- Tag <meta name="viewport"> berfungsi membuat tampilan halaman responsif di layar ponsel, tablet, dan PC -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang Belanja — Toko Kriya Sidoarjo</title>
+  <meta name="description" content="Keranjang belanja produk kerajinan tangan Sidoarjo dengan rincian harga dan kuantitas.">
+  <!-- Menghubungkan file stylesheet CSS utama -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Tag <body> membungkus seluruh isi halaman yang tampil di browser -->
+<body>
+
+  <!-- ========================================================================
+       BAGIAN 1: HEADER & NAVIGASI GLOBAL (<header>, <nav>)
+       Fungsi: Menampilkan logo toko dan menu navigasi antar 5 halaman
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <!-- Tag <a> logo toko: Tautan kembali ke beranda (index.html) -->
+      <a href="index.html" class="brand-logo">
+        <!-- Ikon vektor SVG yang tajam dan fleksibel tanpa pixelated -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>Toko Kriya Sidoarjo</span>
+      </a>
+
+      <!-- PURE CSS MOBILE TOGGLE:
+           Elemen input checkbox tersembunyi sebagai saklar pembuka menu navigasi mobile -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Daftar Tautan Menu Halaman -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="katalog.html" class="nav-link">Katalog</a></li>
+        <!-- Class 'active' menandai bahwa menu 'Keranjang' sedang aktif dikunjungi -->
+        <li><a href="keranjang.html" class="nav-link active">Keranjang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       BAGIAN 2: KONTEN UTAMA KERANJANG BELANJA (<main>)
+       Struktur 2 Kolom Sesuai Wireframe Page 4:
+       - Kolom Kiri: Tabel Barang Belanjaan (Header: Produk, Harga, Jumlah, Subtotal, Aksi)
+       - Kolom Kanan: Panel Ringkasan Belanja (Subtotal, Total, Tombol Lanjut)
+       ======================================================================== -->
+  <main class="cart-page-section">
+    <div class="container">
+      <!-- <h1> Judul utama halaman Keranjang Belanja -->
+      <h1 class="section-title">Keranjang Belanja</h1>
+
+      <!-- .cart-layout-grid berfungsi membagi halaman menjadi 2 kolom (Tabel di kiri, Ringkasan di kanan) -->
+      <div class="cart-layout-grid">
+        
+        <!-- ====================================================================
+             KOLOM KIRI: TABEL DAFTAR BARANG (<table>)
+             Fungsi: Menampilkan daftar produk yang dimasukkan ke keranjang dengan format
+             tabel semantik (<thead> untuk judul kolom, <tbody> untuk baris data barang)
+             ==================================================================== -->
+        <div class="cart-table-card">
+          <table class="cart-table" aria-label="Daftar Keranjang Belanja">
+            <!-- <thead> berfungsi mendefinisikan baris judul kepala kolom tabel -->
+            <thead>
+              <tr>
+                <!-- <th> (Table Header) berfungsi sebagai sel judul kolom dengan format tebal -->
+                <th scope="col" style="width: 40%;">Produk</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col" style="text-align: center;">Aksi</th>
+              </tr>
+            </thead>
+            
+            <!-- <tbody> berfungsi membungkus kumpulan baris isi data produk -->
+            <tbody>
+              
+              <!-- ================= BARIS PRODUK 1 ================= -->
+              <!-- <tr> (Table Row) berfungsi sebagai satu baris data barang -->
+              <tr>
+                <!-- <td> (Table Data) sel untuk gambar thumbnail dan nama barang -->
+                <td>
+                  <div class="cart-product-cell">
+                    <img src="assets/images/tas-kulit.jpg" alt="Tas Kulit Nabati Tanggulangin" class="cart-item-img">
+                    <span class="cart-item-name">Tas Kulit Nabati Tanggulangin</span>
+                  </div>
+                </td>
+                
+                <!-- Sel harga satuan produk -->
+                <td style="font-weight: 600;">Rp 685.000</td>
+                
+                <!-- Sel pengatur kuantitas pembelian [ - 1 + ] -->
+                <td>
+                  <div class="qty-input-wrap" style="height: 34px; width: 100px;">
+                    <!-- Tombol kurang (-) kuantitas barang -->
+                    <button type="button" class="qty-btn" aria-label="Kurangi">&minus;</button>
+                    <!-- Teks angka jumlah kuantitas saat ini -->
+                    <span class="qty-number" style="width: 32px; font-size: 0.88rem;">1</span>
+                    <!-- Tombol tambah (+) kuantitas barang -->
+                    <button type="button" class="qty-btn" aria-label="Tambah">&plus;</button>
+                  </div>
+                </td>
+                
+                <!-- Sel kalkulasi subtotal harga (Harga Satuan × Jumlah) -->
+                <td style="font-weight: 800; color: var(--c-primary);">Rp 685.000</td>
+                
+                <!-- Sel tombol aksi untuk menghapus barang dari keranjang -->
+                <td style="text-align: center;">
+                  <button type="button" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.8rem;">Hapus</button>
+                </td>
+              </tr>
+
+              <!-- ================= BARIS PRODUK 2 ================= -->
+              <tr>
+                <td>
+                  <div class="cart-product-cell">
+                    <img src="assets/images/lampu-bambu.jpg" alt="Lampu Meja Anyaman Bambu" class="cart-item-img">
+                    <span class="cart-item-name">Lampu Meja Anyaman Bambu</span>
+                  </div>
+                </td>
+                
+                <td style="font-weight: 600;">Rp 310.000</td>
+                
+                <td>
+                  <div class="qty-input-wrap" style="height: 34px; width: 100px;">
+                    <button type="button" class="qty-btn" aria-label="Kurangi">&minus;</button>
+                    <span class="qty-number" style="width: 32px; font-size: 0.88rem;">1</span>
+                    <button type="button" class="qty-btn" aria-label="Tambah">&plus;</button>
+                  </div>
+                </td>
+                
+                <td style="font-weight: 800; color: var(--c-primary);">Rp 310.000</td>
+                
+                <td style="text-align: center;">
+                  <button type="button" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.8rem;">Hapus</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ====================================================================
+             KOLOM KANAN: PANEL RINGKASAN BELANJA (<aside>)
+             Fungsi: Menampilkan ringkasan total biaya pesanan serta tombol
+             navigasi untuk melanjutkan ke halaman pembayaran (checkout.html)
+             ==================================================================== -->
+        <aside class="summary-card">
+          <h2 class="summary-title">Ringkasan Belanja</h2>
+          
+          <!-- Baris jumlah total produk yang ada di keranjang -->
+          <div class="summary-row-item">
+            <span>Total Produk</span>
+            <span style="font-weight: 700; color: var(--c-dark);">2 Barang</span>
+          </div>
+
+          <!-- Baris subtotal belanja -->
+          <div class="summary-row-item">
+            <span>Subtotal</span>
+            <span style="font-weight: 700; color: var(--c-dark);">Rp 995.000</span>
+          </div>
+
+          <!-- Baris total pembayaran akhir -->
+          <div class="summary-row-item total">
+            <span>Total</span>
+            <span class="price-tag">Rp 995.000</span>
+          </div>
+
+          <!-- Tombol CTA untuk menuju ke formulir checkout -->
+          <div style="margin-top: 24px;">
+            <a href="checkout.html" class="btn btn-dark btn-block" style="padding: 12px 16px;">
+              Lanjutkan Pembayaran
+            </a>
+          </div>
+
+          <!-- Tautan kembali ke katalog jika ingin menambah produk lain -->
+          <div style="margin-top: 14px; text-align: center;">
+            <a href="katalog.html" style="font-size: 0.85rem; color: var(--c-text-muted); text-decoration: underline;">
+              &larr; Lanjutkan Memilih Kriya
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       BAGIAN 3: FOOTER 3 KOLOM SESUAI WIREFRAME (<footer>)
+       ======================================================================== -->
+  <footer class="site-footer-wireframe">
+    <div class="container">
+      <div class="footer-3col-grid">
+        <!-- Kolom 1: Profil Toko & Alamat -->
+        <div class="footer-column">
+          <h4>Toko Kriya Sidoarjo</h4>
+          <p>
+            Pusat kurasi produk kerajinan tangan otentik asli Kota Sidoarjo, Jawa Timur. Melestarikan warisan tradisi lokal dengan kualitas terbaik.
+          </p>
+          <p style="margin-top: 8px;">Jl. Raya Krian No. 45, Sidoarjo, Jawa Timur</p>
+        </div>
+
+        <!-- Kolom 2: Kontak -->
+        <div class="footer-column">
+          <h4>Kontak</h4>
+          <ul class="footer-links-list">
+            <li>WhatsApp: +62 895-3970-81621</li>
+            <li>Telepon: 0895-3970-81621</li>
+            <li>Email: Fazaawan61@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Jam Operasional -->
+        <div class="footer-column">
+          <h4>Jam Operasional</h4>
+          <ul class="footer-links-list">
+            <li>Senin - Jumat: 08.00 - 20.00 WIB</li>
+            <li>Sabtu - Minggu: 09.00 - 21.00 WIB</li>
+            <li>Pengiriman Setiap Hari Kerja</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris Hak Cipta -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Toko Kriya Sidoarjo. Seluruh Hak Cipta Dilindungi.</span>
+        <span>Materi Uji STS Pemrograman Web — SMK Krian 1 Sidoarjo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT STORE & SINKRONISASI PRODUK DARI ADMIN -->
+  <script src="js/products.js"></script>
+
+  <!-- Script Pengelolaan Interaksi Keranjang Belanja -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tbody = document.querySelector('.cart-table tbody');
+      if (!tbody) return;
+
+      function updateTotals() {
+        let totalQty = 0;
+        let subtotal = 0;
+        const rows = tbody.querySelectorAll('tr');
+
+        rows.forEach(function(row) {
+          const qtyEl = row.querySelector('.qty-number');
+          const priceCell = row.querySelectorAll('td')[1];
+          const subtotalCell = row.querySelectorAll('td')[3];
+          if (!qtyEl || !priceCell || !subtotalCell) return;
+
+          const qty = parseInt(qtyEl.textContent, 10) || 0;
+          const priceText = priceCell.textContent.replace(/[^0-9]/g, '');
+          const price = parseInt(priceText, 10) || 0;
+          const itemSubtotal = price * qty;
+
+          subtotalCell.textContent = 'Rp ' + itemSubtotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          totalQty += qty;
+          subtotal += itemSubtotal;
+        });
+
+        const totalProdukEl = document.querySelector('.summary-row-item:nth-child(2) span:last-child');
+        const subtotalEl = document.querySelector('.summary-row-item:nth-child(3) span:last-child');
+        const totalEl = document.querySelector('.summary-row-item.total .price-tag');
+
+        if (totalProdukEl) totalProdukEl.textContent = totalQty + ' Barang';
+        if (subtotalEl) subtotalEl.textContent = 'Rp ' + subtotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        if (totalEl) totalEl.textContent = 'Rp ' + subtotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+
+      // Deteksi penambahan produk via parameter URL (?add=prod-id&qty=N)
+      const urlParams = new URLSearchParams(window.location.search);
+      const addId = urlParams.get('add');
+      const addQty = parseInt(urlParams.get('qty'), 10) || 1;
+
+      if (addId && typeof ProductStore !== 'undefined') {
+        const prod = ProductStore.getById(addId);
+        if (prod) {
+          let existingRow = null;
+          const rows = tbody.querySelectorAll('tr');
+          rows.forEach(function(r) {
+            const nameEl = r.querySelector('.cart-item-name');
+            if (nameEl && nameEl.textContent.trim().toLowerCase() === prod.name.trim().toLowerCase()) {
+              existingRow = r;
+            }
+          });
+
+          if (existingRow) {
+            const qtyEl = existingRow.querySelector('.qty-number');
+            if (qtyEl) {
+              const current = parseInt(qtyEl.textContent, 10) || 1;
+              qtyEl.textContent = current + addQty;
+            }
+          } else {
+            const newTr = document.createElement('tr');
+            const formattedPrice = ProductStore.formatRupiah(prod.price);
+            newTr.innerHTML = `
+              <td>
+                <div class="cart-product-cell">
+                  <img src="${prod.image}" alt="${prod.name}" class="cart-item-img" onerror="this.src='assets/images/tas-kulit.jpg'">
+                  <span class="cart-item-name">${prod.name}</span>
+                </div>
+              </td>
+              <td style="font-weight: 600;">${formattedPrice}</td>
+              <td>
+                <div class="qty-input-wrap" style="height: 34px; width: 100px;">
+                  <button type="button" class="qty-btn" aria-label="Kurangi">&minus;</button>
+                  <span class="qty-number" style="width: 32px; font-size: 0.88rem;">${addQty}</span>
+                  <button type="button" class="qty-btn" aria-label="Tambah">&plus;</button>
+                </div>
+              </td>
+              <td style="font-weight: 800; color: var(--c-primary);">${ProductStore.formatRupiah(prod.price * addQty)}</td>
+              <td style="text-align: center;">
+                <button type="button" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.8rem;">Hapus</button>
+              </td>
+            `;
+            tbody.appendChild(newTr);
+          }
+          updateTotals();
+        }
+      }
+
+      tbody.addEventListener('click', function(e) {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const row = btn.closest('tr');
+        if (!row) return;
+
+        const qtyEl = row.querySelector('.qty-number');
+        if (btn.getAttribute('aria-label') === 'Tambah' && qtyEl) {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          qtyEl.textContent = q + 1;
+          updateTotals();
+        } else if (btn.getAttribute('aria-label') === 'Kurangi' && qtyEl) {
+          let q = parseInt(qtyEl.textContent, 10) || 1;
+          if (q > 1) {
+            qtyEl.textContent = q - 1;
+            updateTotals();
+          }
+        } else if (btn.textContent.trim() === 'Hapus') {
+          row.remove();
+          updateTotals();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

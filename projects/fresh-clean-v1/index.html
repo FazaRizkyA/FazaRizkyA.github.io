@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh &amp; Clean Laundry &mdash; Laundry Rumahan Desa Wonokalang</title>
+  <meta name="description" content="Fresh & Clean Laundry: jasa cuci kering dan cuci setrika rumahan. Gratis antar-jemput untuk warga Desa Wonokalang. Pesan mudah via WhatsApp." />
+  <meta name="theme-color" content="#1d6fe0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#beranda" class="brand" aria-label="Fresh & Clean Laundry">
+        <span class="brand__logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M7 6h.01M10 6h.01"/><path d="M9.5 13.5c1 .8 2 .8 3 0s2-.8 3 0"/></svg>
+        </span>
+        <span class="brand__text">Fresh<span>&amp;</span>Clean</span>
+      </a>
+
+      <nav class="nav__menu" id="menu" aria-label="Navigasi utama">
+        <a href="#beranda">Beranda</a>
+        <a href="#layanan">Layanan &amp; Harga</a>
+        <a href="#kalkulator">Hitung Biaya</a>
+        <a href="#antar-jemput">Antar-Jemput</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#" class="btn btn--primary btn--sm nav__cta" data-wa="Halo Fresh & Clean Laundry, saya ingin bertanya tentang layanan laundry.">Pesan Sekarang</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO / BANNER PROMOSI ============ -->
+    <section class="hero" id="beranda">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg>
+            Gratis antar-jemput se-Desa Wonokalang
+          </span>
+          <h1>Pakaian bersih, wangi, &amp; rapi <span class="hl">tanpa repot</span>.</h1>
+          <p class="lead">Laundry rumahan terpercaya dengan harga bersahabat. Cukup kirim pesan WhatsApp, kami jemput cucian Anda dan antar kembali dalam keadaan segar.</p>
+
+          <div class="hero__actions">
+            <a href="#" class="btn btn--primary btn--lg" data-wa="Halo Fresh & Clean Laundry, saya ingin memesan layanan laundry.">
+              <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2 .52 3.96 1.52 5.69L.55 23.6l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.33-8.05z"/></svg>
+              Pesan via WhatsApp
+            </a>
+            <a href="#layanan" class="btn btn--ghost btn--lg">Lihat Daftar Harga</a>
+          </div>
+
+          <ul class="hero__stats">
+            <li><strong>Rp5.000</strong><span>mulai per kg</span></li>
+            <li><strong>Gratis</strong><span>antar-jemput*</span></li>
+            <li><strong>Wangi</strong><span>&amp; rapi tiap cucian</span></li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card">
+            <div class="machine">
+              <div class="machine__top"><i></i><i></i><b></b></div>
+              <div class="machine__door"><div class="machine__water"></div><div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div></div>
+            </div>
+            <div class="float float--a">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <div><strong>Antar-jemput</strong><span>Desa Wonokalang</span></div>
+            </div>
+            <div class="float float--b">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 1-5 5 1.2 7L12 18l-6.2 3.5L7 14.5l-5-5 7-1z"/></svg>
+              <div><strong>Bersih &amp; wangi</strong><span>Detergen berkualitas</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KEUNGGULAN ============ -->
+    <section class="features">
+      <div class="container features__grid">
+        <div class="feature">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><h3>Proses Cepat</h3><p>Cucian dikerjakan tepat waktu sesuai jadwal.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><h3>Aman &amp; Terpisah</h3><p>Pakaian tiap pelanggan dicuci terpisah.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div><h3>Harga Terjangkau</h3><p>Tarif per kilo yang ramah di kantong.</p></div>
+        </div>
+        <div class="feature">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><h3>Pesan Mudah</h3><p>Cukup satu pesan WhatsApp, beres.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LAYANAN & HARGA ============ -->
+    <section class="section" id="layanan">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Layanan &amp; Harga</span>
+          <h2>Pilih paket sesuai kebutuhan Anda</h2>
+          <p>Harga transparan dihitung per kilogram. Tanpa biaya tersembunyi.</p>
+        </div>
+
+        <div class="pricing">
+          <article class="price-card">
+            <div class="price-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7C9 6.5 6 9.8 6 13.5a6 6 0 0 0 12 0c0-3.7-3-7-6-10.8z"/></svg></div>
+            <h3>Cuci Kering</h3>
+            <p class="price-card__desc">Dicuci bersih, dikeringkan, dan dilipat rapi. Cocok untuk pakaian sehari-hari.</p>
+            <div class="price"><span class="price__cur">Rp</span><span class="price__val">5.000</span><span class="price__unit">/kg</span></div>
+            <ul class="checklist">
+              <li>Cuci dengan detergen berkualitas</li>
+              <li>Dikeringkan hingga tuntas</li>
+              <li>Dilipat rapi &amp; dikemas</li>
+            </ul>
+            <a href="#kalkulator" class="btn btn--outline btn--block" data-pick="kering">Hitung Biaya</a>
+          </article>
+
+          <article class="price-card price-card--featured">
+            <span class="ribbon">Paling Laris</span>
+            <div class="price-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18l-2-7H9a6 6 0 0 0-6 6v1z"/><path d="M13 10V7a2 2 0 0 1 2-2h3"/></svg></div>
+            <h3>Cuci Setrika</h3>
+            <p class="price-card__desc">Paket lengkap: dicuci, dikeringkan, lalu disetrika licin dan wangi. Siap pakai.</p>
+            <div class="price"><span class="price__cur">Rp</span><span class="price__val">7.000</span><span class="price__unit">/kg</span></div>
+            <ul class="checklist">
+              <li>Semua keuntungan Cuci Kering</li>
+              <li>Disetrika licin &amp; rapi</li>
+              <li>Pewangi tahan lama</li>
+            </ul>
+            <a href="#kalkulator" class="btn btn--primary btn--block" data-pick="setrika">Hitung Biaya</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KALKULATOR ============ -->
+    <section class="section section--tint" id="kalkulator">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Kalkulator Biaya</span>
+          <h2>Hitung perkiraan biaya laundry</h2>
+          <p>Masukkan berat cucian, lalu kirim pesanan langsung ke WhatsApp kami.</p>
+        </div>
+
+        <div class="calc">
+          <form class="calc__form" id="calcForm" novalidate>
+            <fieldset class="field">
+              <legend>Jenis layanan</legend>
+              <div class="seg" role="radiogroup">
+                <label class="seg__opt">
+                  <input type="radio" name="layanan" value="kering" checked />
+                  <span><strong>Cuci Kering</strong><small>Rp5.000/kg</small></span>
+                </label>
+                <label class="seg__opt">
+                  <input type="radio" name="layanan" value="setrika" />
+                  <span><strong>Cuci Setrika</strong><small>Rp7.000/kg</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="berat">Perkiraan berat (kg)</label>
+              <div class="stepper">
+                <button type="button" class="stepper__btn" data-step="-0.5" aria-label="Kurangi berat">&minus;</button>
+                <input type="number" id="berat" name="berat" min="1" max="100" step="0.5" value="3" inputmode="decimal" />
+                <button type="button" class="stepper__btn" data-step="0.5" aria-label="Tambah berat">+</button>
+              </div>
+              <small class="hint">Belum tahu beratnya? Perkiraan: 1 kg &asymp; 4&ndash;5 kaos.</small>
+            </div>
+
+            <fieldset class="field">
+              <legend>Lokasi Anda</legend>
+              <div class="seg" role="radiogroup">
+                <label class="seg__opt">
+                  <input type="radio" name="wilayah" value="dalam" checked />
+                  <span><strong>Desa Wonokalang</strong><small>Gratis antar-jemput</small></span>
+                </label>
+                <label class="seg__opt">
+                  <input type="radio" name="wilayah" value="luar" />
+                  <span><strong>Luar Desa</strong><small>Antar &amp; ambil sendiri</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" placeholder="Nama Anda" autocomplete="name" />
+              </div>
+              <div class="field" id="alamatWrap">
+                <label for="alamat">Alamat penjemputan</label>
+                <input type="text" id="alamat" name="alamat" placeholder="RT/RW, nama jalan / patokan" autocomplete="street-address" />
+              </div>
+            </div>
+          </form>
+
+          <aside class="calc__summary" aria-live="polite">
+            <h3>Ringkasan Pesanan</h3>
+            <dl>
+              <div><dt>Layanan</dt><dd id="sumLayanan">Cuci Kering</dd></div>
+              <div><dt>Berat</dt><dd id="sumBerat">3 kg</dd></div>
+              <div><dt>Tarif</dt><dd id="sumTarif">Rp5.000/kg</dd></div>
+              <div><dt>Pengiriman</dt><dd id="sumKirim">Antar-jemput gratis</dd></div>
+            </dl>
+            <div class="total">
+              <span>Perkiraan total</span>
+              <strong id="sumTotal">Rp15.000</strong>
+            </div>
+            <p class="note">*Total akhir mengikuti hasil timbangan saat cucian diterima.</p>
+            <button type="button" class="btn btn--wa btn--block btn--lg" id="sendOrder">
+              <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2 .52 3.96 1.52 5.69L.55 23.6l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.33-8.05z"/></svg>
+              Kirim Pesanan via WhatsApp
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANTAR-JEMPUT ============ -->
+    <section class="section" id="antar-jemput">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow">Ketentuan Antar-Jemput</span>
+          <h2>Bagaimana cucian sampai ke kami?</h2>
+          <p>Layanan antar-jemput tersedia khusus untuk warga Desa Wonokalang.</p>
+        </div>
+
+        <div class="delivery">
+          <article class="delivery__card delivery__card--in">
+            <div class="delivery__head">
+              <div class="delivery__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+              <div><span class="tag tag--green">Gratis</span><h3>Warga Desa Wonokalang</h3></div>
+            </div>
+            <ul class="checklist">
+              <li>Cucian dijemput langsung ke rumah Anda</li>
+              <li>Diantar kembali setelah selesai</li>
+              <li>Tanpa biaya tambahan pengiriman</li>
+              <li>Atur jadwal jemput lewat WhatsApp</li>
+            </ul>
+          </article>
+
+          <article class="delivery__card">
+            <div class="delivery__head">
+              <div class="delivery__ic delivery__ic--muted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+              <div><span class="tag tag--gray">Self Drop-off</span><h3>Luar Desa Wonokalang</h3></div>
+            </div>
+            <ul class="checklist checklist--muted">
+              <li>Pelanggan mengantar cucian ke lokasi kami</li>
+              <li>Pelanggan mengambil sendiri setelah selesai</li>
+              <li>Kami kabari via WhatsApp saat cucian siap</li>
+              <li>Harga layanan tetap sama</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Cara pesan -->
+        <div class="steps">
+          <div class="step"><span class="step__num">1</span><h4>Hubungi via WhatsApp</h4><p>Kirim pesan berisi layanan &amp; alamat Anda.</p></div>
+          <div class="step"><span class="step__num">2</span><h4>Cucian dijemput</h4><p>Kami datang ke rumah sesuai jadwal.</p></div>
+          <div class="step"><span class="step__num">3</span><h4>Dicuci &amp; ditimbang</h4><p>Total biaya dikonfirmasi lewat chat.</p></div>
+          <div class="step"><span class="step__num">4</span><h4>Diantar kembali</h4><p>Pakaian bersih, wangi, dan rapi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+      <div class="container cta__inner">
+        <div>
+          <h2>Siap bebas dari tumpukan cucian?</h2>
+          <p>Pesan sekarang, cucian Anda kami jemput hari ini.</p>
+        </div>
+        <a href="#" class="btn btn--white btn--lg" data-wa="Halo Fresh & Clean Laundry, saya ingin memesan jemput cucian hari ini.">Pesan via WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ KONTAK / FOOTER ============ -->
+  <footer class="footer" id="kontak">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#beranda" class="brand brand--light">
+          <span class="brand__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><path d="M7 6h.01M10 6h.01"/><path d="M9.5 13.5c1 .8 2 .8 3 0s2-.8 3 0"/></svg>
+          </span>
+          <span class="brand__text">Fresh<span>&amp;</span>Clean</span>
+        </a>
+        <p>Laundry rumahan skala UMKM yang melayani warga Desa Wonokalang dan sekitarnya dengan sepenuh hati.</p>
+      </div>
+
+      <div>
+        <h4>Kontak</h4>
+        <ul class="contact">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            <a href="#" data-wa="Halo Fresh & Clean Laundry." id="waDisplay">+62 895-3970-81621</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="addrDisplay">Desa Wonokalang, Kec. Wonoayu, Kab. Sidoarjo, Jawa Timur</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Setiap hari, 07.00 &ndash; 20.00 WIB</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Navigasi</h4>
+        <ul class="links">
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#layanan">Layanan &amp; Harga</a></li>
+          <li><a href="#kalkulator">Hitung Biaya</a></li>
+          <li><a href="#antar-jemput">Antar-Jemput</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year">2026</span> Fresh &amp; Clean Laundry. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="#" class="wa-float" data-wa="Halo Fresh & Clean Laundry, saya ingin bertanya tentang layanan laundry." aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2 .52 3.96 1.52 5.69L.55 23.6l6.04-1.58a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.33-8.05z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

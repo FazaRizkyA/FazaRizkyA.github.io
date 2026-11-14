@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<!-- Tag <!DOCTYPE html> berfungsi mendeklarasikan tipe dokumen sebagai standar HTML5 -->
+<html lang="id">
+<!-- Tag <head> berfungsi menyimpan informasi metadata dan pemanggilan file styling CSS -->
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport"> berfungsi membuat layout menyesuaikan secara responsif di semua perangkat -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Produk â€” Toko Kriya Sidoarjo</title>
+  <meta name="description" content="Katalog produk kerajinan tangan lokal Sidoarjo lengkap dengan filter kategori dan harga.">
+  <!-- Menghubungkan file stylesheet CSS utama -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Tag <body> membungkus seluruh konten visual yang tampil di browser -->
+<body>
+
+  <!-- ========================================================================
+       BAGIAN 1: HEADER & NAVIGASI GLOBAL (<header>, <nav>)
+       Navigasi global konsisten antar 5 halaman, menu 'Katalog' berstatus aktif
+       ======================================================================== -->
+  <header class="site-header">
+    <!-- .container membatasi lebar maksimal agar konten berada rapi di tengah -->
+    <div class="container nav-bar">
+      
+      <!-- Tag <a> logo toko: Tautan kembali ke beranda (index.html) -->
+      <a href="index.html" class="brand-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>Toko Kriya Sidoarjo</span>
+      </a>
+
+      <!-- PURE CSS MOBILE TOGGLE: Saklar checkbox untuk menu hamburger HP -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Daftar Tautan Menu Halaman -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <!-- Class 'active' menandai menu yang sedang aktif dikunjungi -->
+        <li><a href="katalog.html" class="nav-link active">Katalog</a></li>
+        <li><a href="keranjang.html" class="nav-link">Keranjang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       BAGIAN 2: KONTEN UTAMA KATALOG PRODUK (<main>)
+       Struktur 2 Kolom Sesuai Wireframe Page 2:
+       - Kolom Kiri: Sidebar Filter (<aside>) berisi Kotak Kategori & Kotak Harga
+       - Kolom Kanan: Grid 6 Produk (2 baris Ã— 3 kolom) + Pagination
+       ======================================================================== -->
+  <main class="catalog-section">
+    <div class="container">
+      <!-- <h1> Judul utama halaman Katalog Produk -->
+      <h1 class="section-title">Katalog Produk</h1>
+
+      <!-- .catalog-layout membagi area menjadi sidebar (260px) di kiri dan grid produk di kanan -->
+      <div class="catalog-layout">
+        
+        <!-- ====================================================================
+             SIDEBAR FILTER KIRI (Tag Semantik <aside>)
+             Fungsi: Memuat 2 kotak kartu filter interaktif
+             ==================================================================== -->
+        <aside class="catalog-sidebar">
+          
+          <!-- KOTAK 1: FILTER KATEGORI -->
+          <div class="filter-box">
+            <h3 class="filter-box-title">Filter Kategori</h3>
+            <ul class="filter-options-list">
+              <!-- Pilihan 1: Semua Kriya -->
+              <li>
+                <label class="filter-option-label" for="kat-all">
+                  <!-- Input radio dengan atribut name="kategori" yang sama agar hanya 1 opsi terpilih -->
+                  <input type="radio" id="kat-all" name="kategori" value="all" checked>
+                  <span>Semua Kriya</span>
+                </label>
+              </li>
+              <!-- Pilihan 2: Produk Kulit Khas Tanggulangin -->
+              <li>
+                <label class="filter-option-label" for="kat-kulit">
+                  <input type="radio" id="kat-kulit" name="kategori" value="kulit">
+                  <span>Produk Kulit Khas Tanggulangin</span>
+                </label>
+              </li>
+              <!-- Pilihan 3: Batik Tulis Jetis -->
+              <li>
+                <label class="filter-option-label" for="kat-batik">
+                  <input type="radio" id="kat-batik" name="kategori" value="batik">
+                  <span>Batik Tulis Jetis</span>
+                </label>
+              </li>
+              <!-- Pilihan 4: Anyaman Bambu -->
+              <li>
+                <label class="filter-option-label" for="kat-bambu">
+                  <input type="radio" id="kat-bambu" name="kategori" value="bambu">
+                  <span>Anyaman Bambu</span>
+                </label>
+              </li>
+              <!-- Pilihan 5: Gerabah & Keramik -->
+              <li>
+                <label class="filter-option-label" for="kat-keramik">
+                  <input type="radio" id="kat-keramik" name="kategori" value="keramik">
+                  <span>Gerabah & Keramik</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- KOTAK 2: FILTER HARGA -->
+          <div class="filter-box">
+            <h3 class="filter-box-title">Filter Harga</h3>
+            <ul class="filter-options-list">
+              <li>
+                <label class="filter-option-label" for="harga-all">
+                  <input type="radio" id="harga-all" name="harga" value="all" checked>
+                  <span>Semua Harga</span>
+                </label>
+              </li>
+              <li>
+                <label class="filter-option-label" for="harga-under-250">
+                  <input type="radio" id="harga-under-250" name="harga" value="under-250">
+                  <span>&lt; Rp 250.000</span>
+                </label>
+              </li>
+              <li>
+                <label class="filter-option-label" for="harga-250-500">
+                  <input type="radio" id="harga-250-500" name="harga" value="250-500">
+                  <span>Rp 250.000 - Rp 500.000</span>
+                </label>
+              </li>
+              <li>
+                <label class="filter-option-label" for="harga-above-500">
+                  <input type="radio" id="harga-above-500" name="harga" value="above-500">
+                  <span>&gt; Rp 500.000</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+        </aside>
+
+        <!-- ====================================================================
+             KOLOM KANAN: GRID PRODUK & PAGINATION 1 HALAMAN
+             ==================================================================== -->
+        <div class="catalog-content">
+          <!-- Bar Status Ringkasan Filter & Jumlah Produk -->
+          <div class="catalog-header-bar">
+            <div class="catalog-counter" id="catalog-counter">
+              Menampilkan <strong>6</strong> dari <strong>6</strong> produk
+            </div>
+            <button type="button" id="btn-reset-filter" class="btn-reset-filter" style="display: none;" title="Reset semua filter">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              Reset Filter
+            </button>
+          </div>
+
+          <!-- .grid-3-col menyusun produk dalam format responsif -->
+          <div class="grid-3-col" id="products-grid">
+            
+            <!-- KARTU PRODUK 1: Tas Kulit -->
+            <article class="product-card scene-3d" data-id="prod-1" data-category="kulit" data-price="685000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-1" aria-label="Lihat detail Tas Kulit Nabati Tanggulangin">
+                  <img src="assets/images/tas-kulit.jpg" alt="Tas Kulit Nabati Tanggulangin">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-1" class="product-title-link">Tas Kulit Nabati Tanggulangin</a>
+                </h2>
+                <div class="product-card-price">Rp 685.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-1">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- KARTU PRODUK 2: Batik Jetis -->
+            <article class="product-card scene-3d" data-id="prod-2" data-category="batik" data-price="520000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-2" aria-label="Lihat detail Batik Tulis Motif Beras Wutah">
+                  <img src="assets/images/batik-jetis.jpg" alt="Batik Tulis Motif Beras Wutah">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-2" class="product-title-link">Batik Tulis Motif Beras Wutah</a>
+                </h2>
+                <div class="product-card-price">Rp 520.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-2">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- KARTU PRODUK 3: Lampu Bambu -->
+            <article class="product-card scene-3d" data-id="prod-3" data-category="bambu" data-price="310000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-3" aria-label="Lihat detail Lampu Meja Anyaman Bambu">
+                  <img src="assets/images/lampu-bambu.jpg" alt="Lampu Meja Anyaman Bambu">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-3" class="product-title-link">Lampu Meja Anyaman Bambu</a>
+                </h2>
+                <div class="product-card-price">Rp 310.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-3">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- KARTU PRODUK 4: Guci Terracotta -->
+            <article class="product-card scene-3d" data-id="prod-4" data-category="keramik" data-price="275000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-4" aria-label="Lihat detail Guci Terracotta Ukir Tribal">
+                  <img src="assets/images/guci-keramik.jpg" alt="Guci Terracotta Ukir Tribal">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-4" class="product-title-link">Guci Terracotta Ukir Tribal</a>
+                </h2>
+                <div class="product-card-price">Rp 275.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-4">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- KARTU PRODUK 5: Sandal Kulit -->
+            <article class="product-card scene-3d" data-id="prod-5" data-category="kulit" data-price="245000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-5" aria-label="Lihat detail Sandal Selop Kulit Ukir Tradisi">
+                  <img src="assets/images/sandal-kulit.jpg" alt="Sandal Selop Kulit Tanggulangin">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-5" class="product-title-link">Sandal Selop Kulit Ukir Tradisi</a>
+                </h2>
+                <div class="product-card-price">Rp 245.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-5">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- KARTU PRODUK 6: Nampan Rotan -->
+            <article class="product-card scene-3d" data-id="prod-6" data-category="bambu" data-price="185000">
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=prod-6" aria-label="Lihat detail Nampan Saji Rotan List Kayu">
+                  <img src="assets/images/nampan-rotan.jpg" alt="Nampan Anyaman Rotan Alami">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h2 class="product-card-title">
+                  <a href="detail-produk.html?id=prod-6" class="product-title-link">Nampan Saji Rotan List Kayu</a>
+                </h2>
+                <div class="product-card-price">Rp 185.000</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-6">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Empty State jika tidak ada produk yang cocok dengan filter -->
+            <div class="empty-state" id="empty-state" style="display: none;">
+              <div class="empty-state-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+              <h3 class="empty-state-title">Produk Tidak Ditemukan</h3>
+              <p class="empty-state-text">Tidak ada produk yang cocok dengan kombinasi filter yang dipilih. Silakan coba pilih filter lain atau reset filter.</p>
+              <button type="button" class="btn btn-dark btn-sm" id="btn-empty-reset">Tampilkan Semua Produk</button>
+            </div>
+
+          </div>
+
+          <!-- BARIS PAGINATION: Navigasi halaman 1 halaman [<] [1] [>] -->
+          <nav class="pagination-wrap" id="pagination-nav" aria-label="Navigasi Halaman">
+            <span class="page-btn disabled" aria-label="Halaman Sebelumnya" aria-disabled="true">&lt;</span>
+            <span class="page-btn active" aria-current="page">1</span>
+            <span class="page-btn disabled" aria-label="Halaman Berikutnya" aria-disabled="true">&gt;</span>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       BAGIAN 3: FOOTER (3 KOLOM SESUAI WIREFRAME) (<footer>)
+       ======================================================================== -->
+  <footer class="site-footer-wireframe">
+    <div class="container">
+      <div class="footer-3col-grid">
+        <!-- Kolom 1: Profil Toko & Alamat -->
+        <div class="footer-column">
+          <h4>Toko Kriya Sidoarjo</h4>
+          <p>
+            Pusat kurasi produk kerajinan tangan otentik asli Kota Sidoarjo, Jawa Timur. Melestarikan warisan tradisi lokal dengan kualitas terbaik.
+          </p>
+          <p style="margin-top: 8px;">Jl. Raya Krian No. 45, Sidoarjo, Jawa Timur</p>
+        </div>
+
+        <!-- Kolom 2: Kontak -->
+        <div class="footer-column">
+          <h4>Kontak</h4>
+          <ul class="footer-links-list">
+            <li>WhatsApp: +62 895-3970-81621</li>
+            <li>Telepon: 0895-3970-81621</li>
+            <li>Email: Fazaawan1@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Jam Operasional -->
+        <div class="footer-column">
+          <h4>Jam Operasional</h4>
+          <ul class="footer-links-list">
+            <li>Senin - Jumat: 08.00 - 20.00 WIB</li>
+            <li>Sabtu - Minggu: 09.00 - 21.00 WIB</li>
+            <li>Pengiriman Setiap Hari Kerja</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris Hak Cipta -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Toko Kriya Sidoarjo. Seluruh Hak Cipta Dilindungi.</span>
+        <span>Materi Uji STS Pemrograman Web â€” SMK Krian 1 Sidoarjo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       BAGIAN 4: SCRIPT LOGIKA FILTER KATALOG (JavaScript DOM)
+       Fungsi: Membaca pilihan radio button Kategori dan Rentang Harga,
+       memfilter kartu produk secara dinamis, mengupdate status bar produk,
+       serta menampilkan pesan jika produk tidak ditemukan (empty state).
+       ======================================================================== -->
+  <!-- SCRIPT STORE & SINKRONISASI PRODUK DARI ADMIN -->
+  <script src="js/products.js"></script>
+
+  <!-- ========================================================================
+       BAGIAN 4: SCRIPT LOGIKA FILTER & SINKRONISASI REAL-TIME KATALOG
+       ======================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const categoryRadios = document.querySelectorAll('input[name="kategori"]');
+      const priceRadios = document.querySelectorAll('input[name="harga"]');
+      const counterEl = document.getElementById('catalog-counter');
+      const resetBtn = document.getElementById('btn-reset-filter');
+      const emptyResetBtn = document.getElementById('btn-empty-reset');
+      const emptyStateEl = document.getElementById('empty-state');
+      const grid = document.getElementById('products-grid');
+
+      // Fungsi membaca nilai filter yang sedang aktif
+      function getActiveFilters() {
+        const activeCategory = document.querySelector('input[name="kategori"]:checked')?.value || 'all';
+        const activePrice = document.querySelector('input[name="harga"]:checked')?.value || 'all';
+        return { category: activeCategory, price: activePrice };
+      }
+
+      // Fungsi memeriksa kesesuaian harga produk dengan filter harga
+      function matchesPriceRange(price, range) {
+        if (range === 'all') return true;
+        if (range === 'under-250') return price < 250000;
+        if (range === '250-500') return price >= 250000 && price <= 500000;
+        if (range === 'above-500') return price > 500000;
+        return true;
+      }
+
+      // Render kartu produk dari data ProductStore secara dinamis
+      function renderProductsGrid() {
+        if (!grid) return;
+        const products = (typeof ProductStore !== 'undefined') ? ProductStore.getAll() : [];
+
+        // Hapus kartu produk lama (pertahankan elemen #empty-state)
+        const oldCards = grid.querySelectorAll('.product-card');
+        oldCards.forEach(card => card.remove());
+
+        // Buat elemen kartu baru untuk setiap produk aktif
+        products.forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'product-card scene-3d';
+          card.setAttribute('data-id', p.id);
+          card.setAttribute('data-category', p.category || 'kulit');
+          card.setAttribute('data-price', p.price || 0);
+
+          const formattedPrice = (typeof ProductStore !== 'undefined') 
+            ? ProductStore.formatRupiah(p.price) 
+            : 'Rp ' + Number(p.price || 0).toLocaleString('id-ID');
+
+          card.innerHTML = `
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=${p.id}" aria-label="Lihat detail ${p.name}">
+                <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='assets/images/tas-kulit.jpg'">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h2 class="product-card-title">
+                <a href="detail-produk.html?id=${p.id}" class="product-title-link">${p.name}</a>
+              </h2>
+              <div class="product-card-price">${formattedPrice}</div>
+              <div class="product-card-action">
+                <a href="keranjang.html?add=${p.id}&qty=1" class="btn btn-dark btn-block btn-add-cart" data-id="${p.id}">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          `;
+
+          // Sisipkan sebelum empty-state jika ada, atau append
+          if (emptyStateEl && emptyStateEl.parentNode === grid) {
+            grid.insertBefore(card, emptyStateEl);
+          } else {
+            grid.appendChild(card);
+          }
+        });
+
+        // Jalankan filter pada kartu baru
+        filterProducts();
+      }
+
+      // Fungsi utama: memfilter produk sesuai kategori dan harga yang dipilih
+      function filterProducts() {
+        const filters = getActiveFilters();
+        const currentCards = grid ? grid.querySelectorAll('.product-card') : [];
+        const totalCount = currentCards.length;
+        let visibleCount = 0;
+
+        currentCards.forEach(function(card) {
+          const cardCategory = card.getAttribute('data-category');
+          const cardPrice = parseInt(card.getAttribute('data-price'), 10);
+
+          const isCategoryMatch = (filters.category === 'all' || cardCategory === filters.category);
+          const isPriceMatch = matchesPriceRange(cardPrice, filters.price);
+
+          if (isCategoryMatch && isPriceMatch) {
+            card.style.display = 'flex';
+            card.classList.remove('filtering');
+            void card.offsetWidth;
+            card.classList.add('filtering');
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+            card.classList.remove('filtering');
+          }
+        });
+
+        // Memperbarui teks jumlah produk yang ditampilkan
+        if (counterEl) {
+          counterEl.innerHTML = `Menampilkan <strong>${visibleCount}</strong> dari <strong>${totalCount}</strong> produk`;
+        }
+
+        // Menampilkan atau menyembunyikan empty state jika 0 produk cocok
+        if (emptyStateEl) {
+          emptyStateEl.style.display = visibleCount === 0 ? 'flex' : 'none';
+        }
+
+        // Menampilkan tombol 'Reset Filter' jika ada filter non-default yang aktif
+        const hasCustomFilter = (filters.category !== 'all' || filters.price !== 'all');
+        if (resetBtn) {
+          resetBtn.style.display = hasCustomFilter ? 'inline-flex' : 'none';
+        }
+      }
+
+      // Fungsi mereset seluruh filter kembali ke default
+      function resetAllFilters() {
+        const allCatRadio = document.getElementById('kat-all');
+        const allPriceRadio = document.getElementById('harga-all');
+        if (allCatRadio) allCatRadio.checked = true;
+        if (allPriceRadio) allPriceRadio.checked = true;
+        filterProducts();
+      }
+
+      // Event listener tombol radio kategori & harga
+      categoryRadios.forEach(function(radio) {
+        radio.addEventListener('change', filterProducts);
+      });
+
+      priceRadios.forEach(function(radio) {
+        radio.addEventListener('change', filterProducts);
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', resetAllFilters);
+      }
+      if (emptyResetBtn) {
+        emptyResetBtn.addEventListener('click', resetAllFilters);
+      }
+
+      // Cek parameter URL (contoh: katalog.html?kategori=kulit)
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('kategori');
+      if (categoryParam) {
+        const targetRadio = document.querySelector(`input[name="kategori"][value="${categoryParam}"]`);
+        if (targetRadio) {
+          targetRadio.checked = true;
+        }
+      }
+
+      // Sinkronisasi otomatis secara Real-Time saat produk dihapus/ditambah di Admin
+      if (typeof ProductStore !== 'undefined') {
+        ProductStore.listen(function() {
+          renderProductsGrid();
+        });
+      }
+
+      // Render pertama saat halaman dimuat
+      renderProductsGrid();
+    });
+  </script>
+</body>
+</html>
+

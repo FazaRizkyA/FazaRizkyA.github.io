@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KARYAFRAME Studio — Jasa Edit Video, Digital Product &amp; Layanan Digital</title>
+  <meta
+    name="description"
+    content="Studio pascaproduksi video (Reels, TikTok, YouTube, Iklan), toko produk digital kreator (LUTs, MOGRT, SFX, Notion OS), dan jasa pembuatan web serta sistem digital."
+  />
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Three-Layer Design System Tokens & Antigravity Stylesheet -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Zero-Gravity Interactive Particle & Orbital Field -->
+  <canvas id="antigravityCanvas" aria-hidden="true"></canvas>
+
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- ====================================================================
+       FLOATING ANTIGRAVITY GLASS DOCK HEADER
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="header-dock">
+      <a href="#" class="brand-logo" aria-label="KARYAFRAME Studio Beranda">
+        <span class="brand-logo__mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+            <line x1="2" y1="9" x2="22" y2="9"></line>
+            <line x1="8" y1="14" x2="18" y2="14"></line>
+            <circle cx="6" cy="6.5" r="1" fill="currentColor"></circle>
+          </svg>
+        </span>
+        <span>
+          KARYAFRAME
+          <span class="brand-logo__sub">ANTIGRAVITY // STUDIO</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigasi Utama">
+        <a href="#jasa-video" class="nav-link">Jasa Edit Video</a>
+        <a href="#portofolio" class="nav-link">Portofolio</a>
+        <a href="#produk-digital" class="nav-link">Digital Product</a>
+        <a href="#jasa-digital" class="nav-link">Jasa Digital</a>
+        <a href="#kalkulator" class="nav-link">Kalkulator SLA</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Command Palette Trigger (Ctrl + K) -->
+        <button
+          type="button"
+          id="openCmdPaletteBtn"
+          class="cmd-trigger-btn"
+          aria-label="Buka Command Palette Pencarian Cepat"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Command</span>
+          <kbd class="kbd-shortcut">Ctrl K</kbd>
+        </button>
+
+        <!-- Theme Switcher -->
+        <button
+          type="button"
+          id="themeToggleBtn"
+          class="icon-btn"
+          aria-label="Ganti ke mode terang editorial"
+          aria-pressed="false"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </button>
+
+        <!-- Shopping Cart Trigger -->
+        <button
+          type="button"
+          id="openCartBtn"
+          class="icon-btn"
+          aria-label="Buka keranjang produk digital"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cartCountBadge" class="cart-badge" aria-live="polite">0</span>
+        </button>
+
+        <a href="#brief-section" class="btn btn--primary header-cta-desktop">
+          <span>Mulai Proyek</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          id="mobileMenuBtn"
+          class="icon-btn mobile-menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobileNavDrawer"
+          aria-label="Buka menu navigasi"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobileNavDrawer" class="mobile-nav" aria-label="Navigasi Seluler">
+      <ul class="mobile-nav__list">
+        <li><a href="#jasa-video" class="mobile-nav__link">Jasa Edit Video</a></li>
+        <li><a href="#portofolio" class="mobile-nav__link">Portofolio Produksi</a></li>
+        <li><a href="#produk-digital" class="mobile-nav__link">Katalog Digital Product</a></li>
+        <li><a href="#jasa-digital" class="mobile-nav__link">Jasa Berbasis Digital</a></li>
+        <li><a href="#kalkulator" class="mobile-nav__link">Kalkulator Estimasi Biaya</a></li>
+        <li><a href="#faq" class="mobile-nav__link">Pertanyaan Umum (FAQ)</a></li>
+        <li style="padding-top:var(--space-2);">
+          <a href="#brief-section" class="btn btn--primary btn--full">Kirim Brief Proyek</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- ==================================================================
+         HERO SECTION + 3D PERSPECTIVE NLE WORKSTATION
+         ================================================================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="eyebrow__pulse" aria-hidden="true"></span>
+            <span>VIDEO ENGINE • DIGITAL PRODUCT • WEB ARCHITECTURE</span>
+          </div>
+
+          <h1 class="hero-title">
+            Potongan Video <span class="text-gradient-vermilion">Presisi</span>, Aset Siap Pakai &amp; Eksekusi <span class="text-gradient-cyan">Digital</span>.
+          </h1>
+
+          <p class="hero-lead">
+            Kirim rekaman mentah Anda lewat Google Drive dan terima draf pertama dalam <strong>48 jam kerja</strong>. Atau unduh langsung paket LUTs, preset MOGRT, synthesizer SFX, hingga pesan pembuatan landing page konversi tinggi dalam satu ekosistem studio.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#kalkulator" class="btn btn--primary btn--lg">
+              <span>Hitung Biaya &amp; SLA</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                <line x1="8" y1="6" x2="16" y2="6"></line>
+                <line x1="8" y1="10" x2="16" y2="10"></line>
+                <line x1="8" y1="14" x2="12" y2="14"></line>
+              </svg>
+            </a>
+            <a href="#produk-digital" class="btn btn--secondary btn--lg">
+              <span>Toko Digital Product</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics" role="region" aria-label="Ringkasan Kapasitas Studio">
+            <div>
+              <div class="metric-item__value">24–48 Jam</div>
+              <div class="metric-item__label">SLA Draf Pertama Video Pendek</div>
+            </div>
+            <div>
+              <div class="metric-item__value">4K 10-Bit</div>
+              <div class="metric-item__label">Pipeline Color Grading Log</div>
+            </div>
+            <div>
+              <div class="metric-item__value">99+ Skor</div>
+              <div class="metric-item__label">Performa Web &amp; Aset Komersial</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Perspective NLE Studio Workstation -->
+        <div class="nle-stage">
+          <div class="floating-telemetry floating-telemetry--top" aria-hidden="true">
+            <span class="eyebrow__pulse" style="color:var(--color-success);"></span>
+            <span>RENDER ENGINE: 4K 60FPS // ZERO-DROP</span>
+          </div>
+          <div class="floating-telemetry floating-telemetry--bottom" aria-hidden="true">
+            <span class="eyebrow__pulse" style="color:var(--color-accent-cyan);"></span>
+            <span>AUDIO MASTER: -14.0 LUFS // 48KHZ WAV</span>
+          </div>
+
+          <div
+            id="nleWorkstationCard"
+            class="nle-workstation"
+            role="region"
+            aria-label="Simulasi Interaktif Perbandingan Edit Video dan Color LUT"
+          >
+            <div class="nle-topbar">
+              <div class="nle-window-dots" aria-hidden="true">
+                <span class="nle-dot nle-dot--rec"></span>
+                <span class="nle-dot"></span>
+                <span class="nle-dot"></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <button type="button" class="lut-pill" data-video-scene="assets/video/scene-cinema.mp4" aria-pressed="true">
+                  Clip 01: Cinema 4K
+                </button>
+                <button type="button" class="lut-pill" data-video-scene="assets/video/scene-studio.mp4" aria-pressed="false">
+                  Clip 02: 3D Animation
+                </button>
+                <label class="lut-pill" style="cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+                  <span>+ Upload MP4</span>
+                  <input type="file" id="nleCustomVideoInput" accept="video/*" style="display:none;" />
+                </label>
+              </div>
+              <span id="nleTimecode" class="nle-timecode">00:00:00:00</span>
+            </div>
+
+            <!-- SVG Color Matrix LUT Definitions (Hardware-Accelerated Cinema Grading) -->
+            <svg width="0" height="0" style="position:absolute; pointer-events:none;" aria-hidden="true">
+              <defs>
+                <!-- Nusantara Warm Rec.709 LUT -->
+                <filter id="lut-nusantara" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="1.18  0.04 -0.04  0  0.01
+                            0.02  1.06  0.02  0  0.00
+                           -0.06  0.05  1.14  0  0.02
+                            0     0     0     1  0"
+                  />
+                </filter>
+                <!-- Cyber Teal & Indigo LUT -->
+                <filter id="lut-cyber" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="0.92 -0.05  0.12  0 -0.02
+                            0.04  1.14  0.10  0  0.01
+                            0.08  0.18  1.28  0  0.04
+                            0     0     0     1  0"
+                  />
+                </filter>
+                <!-- Golden Kodak 2383 LUT -->
+                <filter id="lut-cinema" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="1.24  0.08 -0.02  0  0.02
+                            0.04  1.08 -0.04  0  0.01
+                           -0.08 -0.04  0.90  0 -0.02
+                            0     0     0     1  0"
+                  />
+                </filter>
+                <!-- Silver Bleach Bypass LUT -->
+                <filter id="lut-bleach" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="0.72  0.24  0.08  0 -0.03
+                            0.22  0.76  0.08  0 -0.03
+                            0.18  0.24  0.66  0 -0.02
+                            0     0     0     1  0"
+                  />
+                </filter>
+              </defs>
+            </svg>
+
+            <div
+              id="nleViewport"
+              class="nle-viewport"
+              aria-label="Monitor Video Asli Before S-Log3 dan After Color Graded Rec.709"
+            >
+              <!-- Layer 1 (Left / Base): Real Video with Raw Flat S-Log3 Profile -->
+              <video
+                id="nleVideoRaw"
+                class="nle-video nle-video--raw"
+                src="assets/video/scene-cinema.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+
+              <!-- Layer 2 (Right / Clipped): Real Synchronized Video with Active Cinema LUT -->
+              <video
+                id="nleVideoGraded"
+                class="nle-video nle-video--graded"
+                data-lut="nusantara"
+                src="assets/video/scene-cinema.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                preload="auto"
+              ></video>
+
+              <!-- Graded Side Specular Vignette -->
+              <div class="nle-graded-overlay" aria-hidden="true"></div>
+
+              <!-- Top Badges -->
+              <div class="nle-viewport-badges" aria-hidden="true">
+                <span class="nle-tag">KIRI: RAW S-LOG3 MENTAH</span>
+                <span class="nle-tag nle-tag--graded">KANAN: GRADED + HUD</span>
+              </div>
+
+              <!-- V3 Layer: Banner-Design Safe-Zone HUD, Telemetry & Dynamic Subtitle -->
+              <div id="nleHudOverlay" class="nle-hud-layer" aria-hidden="true">
+                <div class="nle-af-box">
+                  <span id="nleAfLabel" class="nle-af-box__label">AF-C // NUSANTARA REC709</span>
+                </div>
+
+                <div class="nle-telemetry-card">
+                  <span style="font-size:0.68rem; font-weight:700; color:var(--color-accent-cyan);">
+                    RETENSI HOOK: +68.4%
+                  </span>
+                  <span id="nleHudLutName" style="font-size:0.68rem; color:#FFFFFF;">
+                    LUT: Nusantara Rec709
+                  </span>
+                  <span style="font-size:0.62rem; color:var(--color-success);">
+                    LUFS: -14.0 dB // 4K60
+                  </span>
+                </div>
+
+                <div class="nle-subtitle-banner">
+                  Visual tajam &amp; <span>potongan presisi 48 jam</span>
+                </div>
+              </div>
+
+              <!-- A1 Layer: Live Audio Equalizer Spectrum -->
+              <div id="nleAudioSpectrum" class="nle-audio-spectrum" aria-hidden="true">
+                <span class="nle-eq-bar" style="animation-delay:0.0s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.15s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.3s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.08s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.22s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.38s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.12s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.28s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.05s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.19s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.33s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.10s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.25s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.40s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.14s"></span>
+                <span class="nle-eq-bar" style="animation-delay:0.30s"></span>
+              </div>
+
+              <!-- Interactive Split-Wipe Line & Handle -->
+              <div class="nle-wipe-line" aria-hidden="true">
+                <div class="nle-wipe-handle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:-6px;">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="nle-controls">
+              <!-- Real-Time LUT Shader Switcher -->
+              <div class="nle-lut-switcher">
+                <span class="font-mono" style="font-size:0.7rem; color:var(--color-text-muted);">
+                  PILIH PRESET COLOR LUT (.CUBE):
+                </span>
+                <div class="lut-pills" role="group" aria-label="Pilih Preset Color Grading LUT">
+                  <button type="button" class="lut-pill" data-lut-preset="nusantara" aria-pressed="true">
+                    Nusantara Rec709
+                  </button>
+                  <button type="button" class="lut-pill" data-lut-preset="cyber" aria-pressed="false">
+                    Cyber Teal
+                  </button>
+                  <button type="button" class="lut-pill" data-lut-preset="cinema" aria-pressed="false">
+                    Golden Kodak
+                  </button>
+                  <button type="button" class="lut-pill" data-lut-preset="bleach" aria-pressed="false">
+                    Bleach Bypass
+                  </button>
+                </div>
+              </div>
+
+              <div class="nle-slider-row">
+                <div class="nle-slider-labels">
+                  <label for="nleSplitRange">Geser Split Wipe (Before / After)</label>
+                  <span id="nleSplitValue">64% Master Graded</span>
+                </div>
+                <input
+                  type="range"
+                  id="nleSplitRange"
+                  class="nle-range"
+                  min="10"
+                  max="90"
+                  value="64"
+                />
+              </div>
+
+              <div class="nle-transport">
+                <div class="nle-layer-toggles" role="group" aria-label="Kontrol Lapisan Timeline">
+                  <button
+                    type="button"
+                    class="layer-chip"
+                    data-nle-layer="v3Hud"
+                    aria-pressed="true"
+                  >
+                    <span class="layer-chip__dot" aria-hidden="true"></span>
+                    <span>V3: Takarir &amp; HUD</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="layer-chip"
+                    data-nle-layer="v2Color"
+                    aria-pressed="true"
+                  >
+                    <span class="layer-chip__dot" aria-hidden="true"></span>
+                    <span>V2: LUT Grade</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="layer-chip"
+                    data-nle-layer="a1Audio"
+                    aria-pressed="true"
+                  >
+                    <span class="layer-chip__dot" aria-hidden="true"></span>
+                    <span>A1: Sound FX</span>
+                  </button>
+                </div>
+
+                <div style="display:flex; gap:6px; align-items:center;">
+                  <button
+                    type="button"
+                    id="nleMuteBtn"
+                    class="btn btn--secondary btn--sm"
+                    aria-pressed="true"
+                    aria-label="Aktifkan suara video"
+                  >
+                    <span id="nleMuteLabel">Suara: Mati</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="nlePlayBtn"
+                    class="btn btn--secondary btn--sm"
+                    aria-pressed="true"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <span id="nlePlayLabel">Jeda Video</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Multi-track NLE Timeline Bars -->
+              <div class="nle-tracks" aria-hidden="true">
+                <div class="nle-track">
+                  <span>V3 HUD</span>
+                  <div class="nle-track__bar">
+                    <div class="nle-clip nle-clip--v3" data-track-clip="v3Hud"></div>
+                  </div>
+                </div>
+                <div class="nle-track">
+                  <span>V2 LUT</span>
+                  <div class="nle-track__bar">
+                    <div class="nle-clip nle-clip--v2" data-track-clip="v2Color"></div>
+                  </div>
+                </div>
+                <div class="nle-track">
+                  <span>A1 SFX</span>
+                  <div class="nle-track__bar">
+                    <div class="nle-clip nle-clip--a1" data-track-clip="a1Audio"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         3 PILAR EKOSISTEM KARYAFRAME (SPOTLIGHT BENTO GRID)
+         ================================================================== -->
+    <section class="section section-alt reveal" aria-labelledby="pillars-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">ARSITEKTUR TIGA PILAR</span>
+          <h2 id="pillars-heading" class="section-title">Satu Ekosistem untuk Kreator, UMKM &amp; Tim Brand</h2>
+          <p class="section-desc">
+            Pilih layanan produksi penuh oleh editor kami, beli aset digital untuk mempercepat kerja tim Anda sendiri, atau bangun infrastruktur web bisnis Anda.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <article class="pillar-card spotlight-card">
+            <div>
+              <div class="pillar-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                  <line x1="7" y1="2" x2="7" y2="22"></line>
+                  <line x1="17" y1="2" x2="17" y2="22"></line>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <line x1="2" y1="7" x2="7" y2="7"></line>
+                  <line x1="2" y1="17" x2="7" y2="17"></line>
+                  <line x1="17" y1="17" x2="22" y2="17"></line>
+                  <line x1="17" y1="7" x2="22" y2="7"></line>
+                </svg>
+              </div>
+              <h3 class="pillar-card__title" style="margin-top:var(--space-5);">01. Jasa Edit Video</h3>
+              <p style="font-size:var(--prim-text-sm);">
+                Pascaproduksi video vertikal maupun horizontal dengan fokus utama menjaga durasi tonton (retention rate) sejak 3 detik pertama.
+              </p>
+              <ul class="pillar-card__list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Reels, TikTok &amp; YouTube Shorts Retensi Tinggi</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>YouTube Long-Form, Dokumenter &amp; Podcast Multi-Cam</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Video Iklan Produk, Company Profile &amp; Motion UI</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#jasa-video" class="btn btn--outline btn--full">Lihat Paket Edit Video</a>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="pillar-card spotlight-card">
+            <div>
+              <div class="pillar-card__icon pillar-card__icon--cyan" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <h3 class="pillar-card__title" style="margin-top:var(--space-5);">02. Digital Product</h3>
+              <p style="font-size:var(--prim-text-sm);">
+                Aset pascaproduksi dan sistem kerja yang kami gunakan setiap hari di studio, dikemas agar siap Anda unduh dan pakai seketika.
+              </p>
+              <ul class="pillar-card__list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Nusantara Cinema LUTs (.CUBE Log ke Rec.709)</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Template Teks &amp; HUD Animasi (.MOGRT) + SFX WAV</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Notion Creator OS &amp; Figma Social Carousel Kit</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#produk-digital" class="btn btn--outline btn--full">Buka Katalog Produk</a>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="pillar-card spotlight-card">
+            <div>
+              <div class="pillar-card__icon pillar-card__icon--amber" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <h3 class="pillar-card__title" style="margin-top:var(--space-5);">03. Jasa Berbasis Digital</h3>
+              <p style="font-size:var(--prim-text-sm);">
+                Eksekusi teknis untuk membangun kehadiran digital brand Anda: dari pembuatan landing page cepat hingga manajemen konten bulanan.
+              </p>
+              <ul class="pillar-card__list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Pembuatan Landing Page &amp; Web Portofolio/Toko</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Manajemen Produksi Konten Video Bulanan</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Desain UI/UX Figma &amp; Sistem Otomasi Studio</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#jasa-digital" class="btn btn--outline btn--full">Lihat Layanan Digital</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 1: JASA EDIT VIDEO & PORTOFOLIO
+         ================================================================== -->
+    <section id="jasa-video" class="section reveal" aria-labelledby="video-service-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">PILAR 01 // JASA EDIT VIDEO</span>
+          <h2 id="video-service-heading" class="section-title">Paket Pascaproduksi Video dengan SLA Pasti</h2>
+          <p class="section-desc">
+            Setiap paket sudah mencakup pemotongan ritmis, penataan suara (mixing &amp; SFX), koreksi warna, dan 2 putaran revisi terarah.
+          </p>
+        </div>
+
+        <div class="video-packages-grid">
+          <!-- Tier 1 -->
+          <article class="package-card spotlight-card">
+            <div>
+              <span class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                SHORT-FORM RETENTION
+              </span>
+              <h3 style="font-size:var(--prim-text-2xl); margin-top:4px;">Reels, TikTok &amp; Shorts</h3>
+              <div class="package-card__price">
+                Rp175.000 <span class="package-card__unit">/ video</span>
+              </div>
+              <p style="font-size:var(--prim-text-sm);">
+                Cocok untuk kreator, edukator, dan brand yang rutin mengunggah konten vertikal berdurasi hingga 60 detik.
+              </p>
+              <ul class="package-card__specs" style="margin-top:var(--space-4);">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Hook visual 3 detik pertama &amp; potongan tanpa jeda mati</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Takarir (subtitle) dinamis + sisipan B-Roll relevan</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Sound design (whoosh, riser, pop) &amp; perataan vokal</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Draf pertama selesai dalam 24–48 jam kerja</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#kalkulator" class="btn btn--secondary btn--full">Hitung Paket Bundel</a>
+          </article>
+
+          <!-- Tier 2 (Featured) -->
+          <article class="package-card package-card--featured spotlight-card">
+            <span class="package-card__badge">Paling Diminati</span>
+            <div>
+              <span class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-primary);">
+                LONG-FORM STORYTELLING
+              </span>
+              <h3 style="font-size:var(--prim-text-2xl); margin-top:4px;">YouTube &amp; Podcast Multi-Cam</h3>
+              <div class="package-card__price">
+                Rp550.000 <span class="package-card__unit">/ episode</span>
+              </div>
+              <p style="font-size:var(--prim-text-sm);">
+                Untuk kanal YouTube reguler, vlog bisnis, wawancara, atau podcast multi-kamera berdurasi 10–20 menit.
+              </p>
+              <ul class="package-card__specs" style="margin-top:var(--space-4);">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Sinkronisasi hingga 3 kamera + audio eksternal</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Lower-thirds, bab (chapters), &amp; grafik penjelas poin</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Color grading S-Log/C-Log ke Rec.709 &amp; mastering -14 LUFS</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Gratis 2 klip vertikal highlight untuk promosi Reels/Shorts</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#brief-section" class="btn btn--primary btn--full">Pesan Paket YouTube</a>
+          </article>
+
+          <!-- Tier 3 -->
+          <article class="package-card spotlight-card">
+            <div>
+              <span class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                COMMERCIAL &amp; MOTION
+              </span>
+              <h3 style="font-size:var(--prim-text-2xl); margin-top:4px;">Iklan Brand &amp; Explainer UI</h3>
+              <div class="package-card__price">
+                Rp950.000 <span class="package-card__unit">/ proyek</span>
+              </div>
+              <p style="font-size:var(--prim-text-sm);">
+                Produksi iklan berbayar (Meta/TikTok Ads), peluncuran produk SaaS/aplikasi, dan video profil perusahaan.
+              </p>
+              <ul class="package-card__specs" style="margin-top:var(--space-4);">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Motion graphic kustom &amp; animasi antarmuka (UI mockup)</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>2 variasi hook awal untuk pengujian A/B Testing iklan</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Ekspor multi-rasio (16:9, 9:16, dan 1:1) siap pasang</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Lisensi musik komersial &amp; tata suara penuh</span>
+                </li>
+              </ul>
+            </div>
+            <a href="#brief-section" class="btn btn--secondary btn--full">Konsultasi Video Iklan</a>
+          </article>
+        </div>
+
+        <!-- Filterable Video Portfolio Subsection -->
+        <div id="portofolio" style="padding-top:var(--space-8);">
+          <div class="section-header--split">
+            <div>
+              <span class="eyebrow">STUDI KASUS &amp; HASIL PRODUKSI</span>
+              <h3 class="section-title" style="font-size:var(--prim-text-3xl); margin-top:var(--space-2);">
+                Portofolio Video &amp; Dampak Metrik
+              </h3>
+            </div>
+
+            <div class="filter-bar" role="group" aria-label="Filter Kategori Portofolio Video">
+              <button type="button" class="filter-btn is-active" data-portfolio-filter="all" aria-pressed="true">
+                Semua Karya
+              </button>
+              <button type="button" class="filter-btn" data-portfolio-filter="shortform" aria-pressed="false">
+                Reels / TikTok
+              </button>
+              <button type="button" class="filter-btn" data-portfolio-filter="longform" aria-pressed="false">
+                YouTube &amp; Podcast
+              </button>
+              <button type="button" class="filter-btn" data-portfolio-filter="commercial" aria-pressed="false">
+                Iklan &amp; Brand
+              </button>
+              <button type="button" class="filter-btn" data-portfolio-filter="motion" aria-pressed="false">
+                Motion Graphic
+              </button>
+            </div>
+          </div>
+
+          <div id="portfolioGrid" class="portfolio-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 2: DIGITAL PRODUCTS STORE (WITH WEB AUDIO SFX SYNTH)
+         ================================================================== -->
+    <section id="produk-digital" class="section section-alt reveal" aria-labelledby="products-heading">
+      <div class="container">
+        <div class="section-header--split">
+          <div>
+            <span class="eyebrow eyebrow--cyan">PILAR 02 // TOKO DIGITAL PRODUCT</span>
+            <h2 id="products-heading" class="section-title" style="margin-top:var(--space-2);">
+              Aset Pascaproduksi &amp; Template Siap Pakai
+            </h2>
+            <p class="section-desc" style="margin-top:var(--space-2);">
+              Unduh langsung setelah pembayaran. Gunakan kode <strong class="font-mono" style="color:var(--color-accent-cyan);">KREATOR15</strong> di keranjang untuk potongan 15%.
+            </p>
+          </div>
+
+          <div class="filter-bar" role="group" aria-label="Filter Kategori Produk Digital">
+            <button type="button" class="filter-btn is-active" data-product-filter="all" aria-pressed="true">
+              Semua Produk
+            </button>
+            <button type="button" class="filter-btn" data-product-filter="video-assets" aria-pressed="false">
+              Aset Edit Video
+            </button>
+            <button type="button" class="filter-btn" data-product-filter="audio-sfx" aria-pressed="false">
+              Audio &amp; SFX
+            </button>
+            <button type="button" class="filter-btn" data-product-filter="templates" aria-pressed="false">
+              Notion &amp; Figma
+            </button>
+            <button type="button" class="filter-btn" data-product-filter="bundle" aria-pressed="false">
+              Paket Bundel
+            </button>
+          </div>
+        </div>
+
+        <div id="productsGrid" class="products-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 3: JASA BERBASIS DIGITAL (AGENCY & TECHNICAL EXECUTION)
+         ================================================================== -->
+    <section id="jasa-digital" class="section reveal" aria-labelledby="digital-services-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow eyebrow--amber">PILAR 03 // JASA BERBASIS DIGITAL</span>
+          <h2 id="digital-services-heading" class="section-title">
+            Bangun Infrastruktur Web, Identitas Visual &amp; Sistem Konten
+          </h2>
+          <p class="section-desc">
+            Layanan eksekusi teknis dengan ruang lingkup kerja tertulis, jadwal serah terima terukur, dan dokumentasi penggunaan lengkap.
+          </p>
+        </div>
+
+        <div id="digitalServicesGrid" class="digital-services-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 4: INTERACTIVE COST & SLA CALCULATOR
+         ================================================================== -->
+    <section id="kalkulator" class="section section-alt reveal" aria-labelledby="calc-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">TRANSPARANSI HARGA &amp; WAKTU KERJA</span>
+          <h2 id="calc-heading" class="section-title">Kalkulator Estimasi Biaya &amp; SLA Proyek</h2>
+          <p class="section-desc">
+            Sesuaikan jenis layanan, jumlah keluaran, dan fitur tambahan untuk melihat estimasi anggaran serta target hari pengerjaan secara langsung.
+          </p>
+        </div>
+
+        <div class="calculator-shell spotlight-card">
+          <div class="calc-controls">
+            <div class="calc-group">
+              <span class="calc-label">1. Pilih Kategori Layanan Utama</span>
+              <div class="calc-options-grid" role="radiogroup" aria-label="Pilih Kategori Layanan">
+                <button
+                  type="button"
+                  class="calc-radio-btn"
+                  role="radio"
+                  aria-checked="true"
+                  data-calc-service="shortform"
+                >
+                  <strong style="font-size:var(--prim-text-sm);">Edit Video Pendek</strong>
+                  <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                    Reels / TikTok / Shorts • Rp175rb/vid
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  class="calc-radio-btn"
+                  role="radio"
+                  aria-checked="false"
+                  data-calc-service="longform"
+                >
+                  <strong style="font-size:var(--prim-text-sm);">YouTube &amp; Podcast</strong>
+                  <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                    Durasi 10–20 Menit • Rp550rb/eps
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  class="calc-radio-btn"
+                  role="radio"
+                  aria-checked="false"
+                  data-calc-service="commercial"
+                >
+                  <strong style="font-size:var(--prim-text-sm);">Iklan Brand &amp; Motion UI</strong>
+                  <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                    Ads &amp; Explainer • Rp950rb/proyek
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  class="calc-radio-btn"
+                  role="radio"
+                  aria-checked="false"
+                  data-calc-service="webdev"
+                >
+                  <strong style="font-size:var(--prim-text-sm);">Pembuatan Web / Landing Page</strong>
+                  <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                    Desain + Kode • Rp650rb/halaman
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="calc-group">
+              <div class="calc-label">
+                <label for="calcQtyRange">2. <span id="calcUnitLabel">Jumlah Video</span> (Diskon 10% untuk ≥8 unit)</label>
+                <span id="calcQtyValue" class="font-mono" style="color:var(--color-primary);">4 Unit</span>
+              </div>
+              <input
+                type="range"
+                id="calcQtyRange"
+                class="nle-range"
+                min="1"
+                max="24"
+                value="4"
+              />
+            </div>
+
+            <div class="calc-group">
+              <span class="calc-label">3. Spesifikasi Tambahan (Opsional)</span>
+              <div class="calc-addons">
+                <label class="addon-check">
+                  <input type="checkbox" data-calc-addon="colorLog" checked />
+                  <span>Color Grading 10-bit Log (+Rp150rb)</span>
+                </label>
+                <label class="addon-check">
+                  <input type="checkbox" data-calc-addon="motionGfx" />
+                  <span>Custom Motion Graphic (+Rp250rb)</span>
+                </label>
+                <label class="addon-check">
+                  <input type="checkbox" data-calc-addon="express" />
+                  <span>Prioritas Express -40% Waktu (+Rp300rb)</span>
+                </label>
+                <label class="addon-check">
+                  <input type="checkbox" data-calc-addon="projectFile" />
+                  <span>Sertakan File Mentah .prproj/.fig (+Rp200rb)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-summary" aria-live="polite">
+            <div>
+              <span class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted); text-transform:uppercase;">
+                RINGKASAN ESTIMASI INVESTASI
+              </span>
+              <div id="calcTotalDisplay" class="calc-total-price" style="margin-top:var(--space-2);">
+                Rp850.000
+              </div>
+              <div
+                id="calcSlaDisplay"
+                class="font-mono"
+                style="font-size:var(--prim-text-xs); color:var(--color-accent-cyan); margin-top:4px;"
+              >
+                Estimasi Selesai: 4–5 Hari Kerja
+              </div>
+
+              <div id="calcBreakdownList" class="calc-breakdown" style="margin-top:var(--space-5);"></div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:var(--space-3);">
+              <p style="font-size:var(--prim-text-xs); color:var(--color-text-muted);">
+                *Sudah termasuk 2 putaran revisi terarah, penataan audio bebas royalti, dan pencadangan file proyek selama 30 hari.
+              </p>
+              <button type="button" id="applyCalcToBriefBtn" class="btn btn--primary btn--lg btn--full">
+                <span>Gunakan Estimasi Ini di Brief</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 5: WORKFLOW & FAQ
+         ================================================================== -->
+    <section class="section reveal" aria-labelledby="workflow-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">ALUR KERJA PASCAPRODUKSI</span>
+          <h2 id="workflow-heading" class="section-title">Empat Tahap dari Rekaman Mentah hingga Siap Tayang</h2>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="workflow-step spotlight-card">
+            <span class="workflow-step__num">TAHAP 01 // BRIEF &amp; ASET</span>
+            <h3 style="font-size:var(--prim-text-lg);">Kirim Tautan Rekaman</h3>
+            <p style="font-size:var(--prim-text-sm);">
+              Unggah rekaman mentah ke Google Drive atau Frame.io beserta referensi gaya visual dan target platform tayang.
+            </p>
+          </article>
+          <article class="workflow-step spotlight-card">
+            <span class="workflow-step__num">TAHAP 02 // ROUGH CUT &amp; AUDIO</span>
+            <h3 style="font-size:var(--prim-text-lg);">Penyusunan Struktur Cerita</h3>
+            <p style="font-size:var(--prim-text-sm);">
+              Editor menyusun alur kalimat terbaik, memangkas jeda kosong, membersihkan derau vokal, dan memasang hook pembuka.
+            </p>
+          </article>
+          <article class="workflow-step spotlight-card">
+            <span class="workflow-step__num">TAHAP 03 // COLOR &amp; MOTION</span>
+            <h3 style="font-size:var(--prim-text-lg);">Grading, HUD &amp; Sound FX</h3>
+            <p style="font-size:var(--prim-text-sm);">
+              Penyelarasan warna kulit (Rec.709), penambahan animasi teks/grafik data, serta penataan efek suara transisi.
+            </p>
+          </article>
+          <article class="workflow-step spotlight-card">
+            <span class="workflow-step__num">TAHAP 04 // REVIEW &amp; MASTER</span>
+            <h3 style="font-size:var(--prim-text-lg);">Revisi Timecode &amp; Serah Terima</h3>
+            <p style="font-size:var(--prim-text-sm);">
+              Tinjau draf pertama, berikan catatan berdasar detik (timecode), dan terima file master siap unggah dalam resolusi penuh.
+            </p>
+          </article>
+        </div>
+
+        <!-- FAQ Subsection -->
+        <div id="faq" style="margin-top:var(--space-20);">
+          <div class="section-header">
+            <span class="eyebrow">PERTANYAAN TEKNIS (FAQ)</span>
+            <h2 class="section-title" style="font-size:var(--prim-text-3xl);">Hal yang Sering Ditanyakan Klien</h2>
+          </div>
+          <div id="faqAccordion" class="faq-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 6: PROJECT BRIEF & ORDER FORM
+         ================================================================== -->
+    <section id="brief-section" class="section section-alt reveal" aria-labelledby="brief-heading">
+      <div class="container brief-grid">
+        <div style="display:flex; flex-direction:column; gap:var(--space-6);">
+          <span class="eyebrow">MULAI KOLABORASI</span>
+          <h2 id="brief-heading" class="section-title">Kirim Brief Proyek atau Checkout Produk Digital</h2>
+          <p class="section-desc">
+            Isi rincian kebutuhan Anda di samping. Produser kami akan membalas dalam waktu kurang dari 2 jam pada jam operasional (Senin–Sabtu, 09.00–21.00 WIB).
+          </p>
+
+          <div class="pillar-card spotlight-card" style="padding:var(--space-6); gap:var(--space-4);">
+            <h3 style="font-size:var(--prim-text-lg);">Jaminan Standar Studio KARYAFRAME</h3>
+            <ul class="package-card__specs" style="padding-top:0; border-top:none;">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Kerahasiaan rekaman mentah klien (NDA tersedia sesuai permintaan)</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Aset musik dan efek suara aman dari klaim hak cipta platform</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Penyimpanan cadangan proyek di server studio selama 30 hari</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>WhatsApp Admin Langsung: <a href="https://wa.me/62895397081621" target="_blank" rel="noopener noreferrer" class="font-mono" style="color:var(--color-accent-cyan); font-weight:700;">0895-3970-81621</a></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="brief-form-card spotlight-card">
+          <div
+            id="formErrorSummary"
+            class="form-error-summary"
+            role="alert"
+            tabindex="-1"
+            hidden
+          >
+            <strong style="display:block; margin-bottom:var(--space-2);">
+              Mohon periksa kembali isian formulir berikut:
+            </strong>
+            <ul id="formErrorList" style="padding-left:var(--space-4); list-style:disc;"></ul>
+          </div>
+
+          <form id="projectBriefForm" novalidate>
+            <div class="form-row form-row--2col">
+              <div class="form-field">
+                <label for="briefName">Nama Lengkap / Brand *</label>
+                <input
+                  type="text"
+                  id="briefName"
+                  class="form-input"
+                  placeholder="Contoh: Raka — Kopi Senja"
+                  autocomplete="name"
+                  required
+                  aria-describedby="err-briefName"
+                />
+                <span id="err-briefName" class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="briefContact">Nomor WhatsApp atau Email *</label>
+                <input
+                  type="text"
+                  id="briefContact"
+                  class="form-input"
+                  placeholder="0812xxxx atau nama@brand.id"
+                  autocomplete="tel"
+                  required
+                  aria-describedby="err-briefContact"
+                />
+                <span id="err-briefContact" class="field-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-row form-row--2col">
+              <div class="form-field">
+                <label for="briefCategory">Kategori Layanan / Produk *</label>
+                <select
+                  id="briefCategory"
+                  class="form-select"
+                  required
+                  aria-describedby="err-briefCategory"
+                >
+                  <option value="">-- Pilih Kategori --</option>
+                  <option value="Jasa Edit Video">Jasa Edit Video (Reels / YouTube / Iklan)</option>
+                  <option value="Pembelian Digital Product">Pembelian Digital Product (LUTs / MOGRT / SFX)</option>
+                  <option value="Jasa Berbasis Digital">Jasa Berbasis Digital (Web / UI-UX / Retainer)</option>
+                  <option value="Paket Bundel Kustom">Paket Bundel Video + Web</option>
+                </select>
+                <span id="err-briefCategory" class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="briefDriveLink">Tautan Google Drive / Referensi (Opsional)</label>
+                <input
+                  type="url"
+                  id="briefDriveLink"
+                  class="form-input"
+                  placeholder="https://drive.google.com/..."
+                />
+                <span class="field-error" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="briefDetails">Rincian Kebutuhan Proyek / Daftar Pesanan *</label>
+                <textarea
+                  id="briefDetails"
+                  class="form-textarea"
+                  placeholder="Ceritakan jumlah video, durasi target, gaya referensi, atau daftar produk digital yang ingin dipesan..."
+                  required
+                  aria-describedby="err-briefDetails"
+                ></textarea>
+                <span id="err-briefDetails" class="field-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg btn--full">
+              <span>Kirim Brief &amp; Lanjutkan ke WhatsApp Produser</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 2L11 13"></path>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       SITE FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--space-8); align-items:flex-start;">
+        <div style="max-width:380px;">
+          <a href="#" class="brand-logo">
+            <span class="brand-logo__mark" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+                <line x1="2" y1="9" x2="22" y2="9"></line>
+                <line x1="8" y1="14" x2="18" y2="14"></line>
+              </svg>
+            </span>
+            <span>KARYAFRAME STUDIO</span>
+          </a>
+          <p style="font-size:var(--prim-text-sm); margin-top:var(--space-3);">
+            Studio pascaproduksi video, pencipta aset digital kreator, dan mitra eksekusi web berbasis di Indonesia.
+          </p>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-10);">
+          <div>
+            <h4 class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted); margin-bottom:var(--space-3);">
+              LAYANAN STUDIO
+            </h4>
+            <ul style="display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--prim-text-sm);">
+              <li><a href="#jasa-video">Edit Video Reels &amp; TikTok</a></li>
+              <li><a href="#jasa-video">Pascaproduksi YouTube &amp; Podcast</a></li>
+              <li><a href="#jasa-digital">Pembuatan Landing Page</a></li>
+              <li><a href="#jasa-digital">Desain Sistem UI/UX Figma</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted); margin-bottom:var(--space-3);">
+              PRODUK DIGITAL
+            </h4>
+            <ul style="display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--prim-text-sm);">
+              <li><a href="#produk-digital">Nusantara Cinema LUTs (.CUBE)</a></li>
+              <li><a href="#produk-digital">Retensi+ Motion Pack (.MOGRT)</a></li>
+              <li><a href="#produk-digital">Tactile Sound FX (320 WAV)</a></li>
+              <li><a href="#produk-digital">Creator Produksi OS (Notion)</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-mono" style="font-size:var(--prim-text-xs); color:var(--color-text-muted); margin-bottom:var(--space-3);">
+              KONTAK ADMIN
+            </h4>
+            <ul style="display:flex; flex-direction:column; gap:var(--space-2); font-size:var(--prim-text-sm);">
+              <li>
+                <a href="https://wa.me/62895397081621" target="_blank" rel="noopener noreferrer" class="font-mono" style="color:var(--color-accent-cyan);">
+                  WA: 0895-3970-81621
+                </a>
+              </li>
+              <li><a href="#brief-section">Kirim Brief Proyek</a></li>
+              <li><a href="#kalkulator">Kalkulator Estimasi SLA</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 KARYAFRAME Studio — Antigravity Edition.</span>
+        <span class="font-mono">TEKAN CTRL+K UNTUK COMMAND PALETTE // WCAG AA VERIFIED</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       SLIDE-OVER SHOPPING CART DRAWER
+       ==================================================================== -->
+  <div id="cartScrim" class="scrim" aria-hidden="true"></div>
+  <aside
+    id="cartDrawer"
+    class="cart-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cartDrawerTitle"
+    aria-hidden="true"
+  >
+    <div class="cart-drawer__header">
+      <div>
+        <h2 id="cartDrawerTitle" style="font-size:var(--prim-text-xl);">Keranjang Digital Product</h2>
+        <span class="font-mono" style="font-size:0.7rem; color:var(--color-text-muted);">
+          PENGIRIMAN INSTAN + LISENSI KOMERSIAL
+        </span>
+      </div>
+      <button type="button" id="closeCartBtn" class="icon-btn" aria-label="Tutup keranjang belanja">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div id="cartItemsContainer" class="cart-drawer__body"></div>
+
+    <div class="cart-drawer__footer">
+      <div style="display:flex; gap:var(--space-2);">
+        <label for="promoCodeInput" class="skip-link">Kode Promo</label>
+        <input
+          type="text"
+          id="promoCodeInput"
+          class="form-input"
+          style="flex:1; min-height:42px; font-family:var(--font-mono); font-size:var(--prim-text-xs);"
+          placeholder="Kode promo (ketik: KREATOR15)"
+        />
+        <button type="button" id="applyPromoBtn" class="btn btn--secondary btn--sm">
+          Terapkan
+        </button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; font-size:var(--prim-text-sm); color:var(--color-text-secondary);">
+        <span>Subtotal</span>
+        <span id="cartSubtotalValue" class="font-mono">Rp0</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size:var(--prim-text-lg); font-weight:700;">
+        <span>Total Pembayaran</span>
+        <span id="cartTotalValue" class="font-mono" style="color:var(--color-accent-cyan);">Rp0</span>
+      </div>
+
+      <button type="button" id="cartCheckoutBtn" class="btn btn--primary btn--lg btn--full">
+        <span>Lanjut Checkout &amp; Unduh</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       VIDEO TECHNICAL BREAKDOWN MODAL
+       ==================================================================== -->
+  <div id="videoModalScrim" class="scrim" role="dialog" aria-modal="true" aria-labelledby="modalVideoTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="font-mono" style="font-size:0.7rem; color:var(--color-primary);">
+            RINCIAN TEKNIS PASCAPRODUKSI
+          </span>
+          <h3 id="modalVideoTitle" style="font-size:var(--prim-text-xl); margin-top:2px;">Judul Proyek</h3>
+        </div>
+        <button type="button" id="closeVideoModalBtn" class="icon-btn" aria-label="Tutup rincian video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:var(--space-4);">
+        <div
+          id="modalVideoBanner"
+          style="position:relative; aspect-ratio:16/9; border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; color:#FFFFFF; background:#05060A;"
+        >
+          <video
+            id="modalVideoPlayer"
+            src="assets/video/scene-cinema.mp4"
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"
+          ></video>
+          <div style="position:relative; z-index:2; padding:var(--space-3); background:linear-gradient(180deg, rgba(5,6,10,0.82), transparent); pointer-events:none; display:flex; justify-content:space-between; align-items:center;">
+            <span id="modalVideoClient" class="font-mono" style="font-size:var(--prim-text-xs);"></span>
+            <span id="modalVideoMetric" class="nle-tag nle-tag--graded"></span>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted); display:block;">
+            Perangkat Lunak &amp; Pipeline:
+          </span>
+          <strong id="modalVideoSoftware" class="font-mono" style="font-size:var(--prim-text-sm);"></strong>
+        </div>
+
+        <div>
+          <span style="font-size:var(--prim-text-xs); color:var(--color-text-muted); display:block; margin-bottom:var(--space-2);">
+            Komponen Keluaran (Deliverables):
+          </span>
+          <div id="modalVideoDeliverables" class="service-bento__deliverables"></div>
+        </div>
+
+        <div style="padding-top:var(--space-3); border-top:1px solid var(--color-border-subtle); display:flex; justify-content:flex-end;">
+          <button type="button" id="modalOrderSimilarBtn" class="btn btn--primary">
+            Pesan Video dengan Gaya Serupa
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       CTRL + K COMMAND PALETTE MODAL (ANTIGRAVITY LAUNCHER)
+       ==================================================================== -->
+  <div id="cmdPaletteScrim" class="scrim" role="dialog" aria-modal="true" aria-label="Command Palette">
+    <div class="cmd-dialog">
+      <div class="cmd-search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          type="text"
+          id="cmdSearchInput"
+          class="cmd-search-input"
+          placeholder="Ketik perintah, layanan, atau produk digital... (Esc untuk tutup)"
+          aria-label="Cari perintah cepat"
+        />
+        <kbd class="kbd-shortcut">ESC</kbd>
+      </div>
+      <div id="cmdResultsList" class="cmd-results"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="appToast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,2146 @@
+/* ==========================================================================
+   TOKO KRIYA SIDOARJO - STYLESHEET RESMI
+   Mata Pelajaran : Pemrograman Web (PWEB) - SMK Krian 1 Sidoarjo
+   Teknologi      : Murni CSS3 (Tanpa JavaScript & Tanpa Framework Eksternal)
+   Konsep         : Semantic UI, Wireframe Aligned Layout, Pure CSS 3D Engine
+   ========================================================================== */
+
+/* Mengimpor Google Font 'Plus Jakarta Sans' untuk tipografi modern dan mudah dibaca */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   1. DESIGN TOKENS & VARIABEL CSS (:root)
+   Fungsi: Menyimpan nilai-nilai dasar (warna, font, bayangan, border) secara
+   terpusat agar konsisten di seluruh halaman dan mudah diubah sewaktu-waktu.
+   ========================================================================== */
+:root {
+  /* Palet Warna Kriya Sidoarjo */
+  --c-primary: #8B4513;             /* Warna utama: Cokelat Sadle / Terakota (khas kulit & gerabah) */
+  --c-primary-dark: #6E330C;        /* Versi gelap dari warna utama untuk hover tombol */
+  --c-primary-light: #F8F1EB;       /* Versi pastel/lembut untuk latar belakang aktif/seleksi */
+  --c-primary-glow: rgba(139, 69, 19, 0.18); /* Efek glow lembut pada fokus input */
+  
+  --c-dark: #2B2520;                /* Warna teks gelap utama dan header (Charcoal Espresso) */
+  --c-dark-soft: #3D352F;           /* Warna gelap sekunder */
+  --c-dark-btn: #332C26;            /* Warna solid tombol aksi sesuai gambar wireframe */
+  --c-dark-btn-hover: #1A1613;      /* Warna tombol saat kursor diarahkan (hover state) */
+  
+  --c-bg: #FAF8F5;                  /* Warna latar belakang halaman (Warm Canvas bersih) */
+  --c-surface: #FFFFFF;             /* Warna putih bersih untuk kartu produk dan panel */
+  --c-surface-alt: #F3ECE4;         /* Warna abu-abu hangat untuk kotak placeholder & header tabel */
+  --c-border: #DCD4CA;              /* Garis pembatas struktur (border) yang rapi */
+  --c-border-light: #EBE5DC;        /* Garis pembatas tipis untuk pemisah baris */
+  
+  --c-text: #26201B;                /* Warna teks isi paragraf */
+  --c-text-muted: #73675E;          /* Warna teks sekunder/keterangan yang tidak terlalu mencolok */
+  --c-text-light: #9E9187;          /* Warna teks pelengkap (misal: teks footer/watermark) */
+  
+  /* Font Keluarga */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Sudut Kelengkungan (Border Radius) */
+  --radius-sm: 4px;                 /* Kelengkungan kecil untuk tombol & kartu sesuai wireframe */
+  --radius-md: 8px;                 /* Kelengkungan sedang */
+  --radius-lg: 12px;                /* Kelengkungan besar untuk modal/popup */
+  
+  /* Sistem Bayangan (Elevation & Depth) */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-card: 0 4px 12px rgba(43, 37, 32, 0.05);
+  --shadow-card-hover: 0 12px 24px -4px rgba(43, 37, 32, 0.12); /* Bayangan saat kartu di-hover */
+  --shadow-3d: 0 18px 36px -6px rgba(139, 69, 19, 0.18);        /* Bayangan 3D berdimensi */
+  
+  /* Durasi Transisi Animasi */
+  --transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --max-width: 1200px;              /* Lebar maksimal kontainer halaman */
+}
+
+/* ==========================================================================
+   2. CSS RESET & PENGATURAN DASAR (Box Model & Typography)
+   Fungsi: Menghilangkan margin/padding bawaan browser dan memastikan
+   perhitungan lebar elemen (box-sizing) akurat tanpa merusak tata letak.
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;           /* Memastikan padding & border tidak menambah lebar total elemen */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;                  /* Ukuran dasar font root */
+  scroll-behavior: smooth;          /* Mengaktifkan transisi scroll halus saat berpindah section */
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;           /* Membuat struktur footer selalu berada di dasar halaman */
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;                   /* Mencegah spasi kosong bawaan inline di bawah gambar */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;            /* Menghilangkan garis bawah default pada link */
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Kontainer Pembungkus: Menjaga lebar konten tetap terpusat dan rapi */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* ==========================================================================
+   3. NAVBAR & HEADER (Navigasi Semantik Responsif)
+   Fungsi: Menyediakan identitas toko dan menu navigasi antar 5 halaman.
+   Menggunakan Pure CSS Checkbox Hack untuk menu hamburger di layar HP.
+   ========================================================================== */
+.site-header {
+  background: var(--c-surface);
+  border-bottom: 1.5px solid var(--c-border);
+  position: sticky;                  /* Header tetap terlihat di atas saat halaman digulir */
+  top: 0;
+  z-index: 500;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;    /* Memisahkan logo di kiri dan menu navigasi di kanan */
+  height: 72px;
+}
+
+/* Logo Toko */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+.brand-logo svg {
+  color: var(--c-primary);
+}
+
+/* Menu Navigasi Desktop */
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-text-muted);
+  padding: 6px 0;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--c-dark);              /* Warna link aktif */
+}
+
+/* Indikator Garis Bawah pada Menu yang Sedang Aktif */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--c-dark);
+  border-radius: 2px;
+}
+
+/* Checkbox Tersembunyi untuk Hamburger Menu (Pure CSS) */
+.nav-toggle-checkbox {
+  display: none;
+}
+
+/* Tombol Ikon Tiga Garis (Hamburger) */
+.nav-toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.nav-toggle-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--c-dark);
+  transition: var(--transition);
+}
+
+/* ==========================================================================
+   4. KOMPONEN TOMBOL (BUTTONS)
+   Fungsi: Gaya tombol yang seragam sesuai gambar wireframe (solid dark button).
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  text-align: center;
+}
+
+.btn-block {
+  width: 100%;                       /* Membuat tombol mengisi 100% lebar kartu produk */
+}
+
+/* Tombol Gelap Utama (Sesuai Tombol Solid di Wireframe) */
+.btn-dark {
+  background-color: var(--c-dark-btn);
+  color: white;
+  border-color: var(--c-dark-btn);
+}
+
+.btn-dark:hover {
+  background-color: var(--c-dark-btn-hover);
+  transform: translateY(-1px);       /* Efek sedikit terangkat saat hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Tombol Outline Transparan */
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--c-border);
+  color: var(--c-dark);
+}
+
+.btn-outline:hover {
+  border-color: var(--c-dark);
+  background-color: var(--c-surface-alt);
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   5. KARTU PRODUK DENGAN EFEK 3D (3D Web Experience Skill)
+   Fungsi: Menggunakan CSS 3D Transforms (perspective, rotateX, rotateY) untuk
+   memberikan sensasi visual kedalaman saat kartu disorot oleh kursor.
+   ========================================================================== */
+.scene-3d {
+  perspective: 1200px;               /* Sudut pandang perspektif 3D */
+}
+
+.product-card {
+  position: relative;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transform-style: preserve-3d;     /* Mempertahankan ruang 3 dimensi untuk elemen anak */
+  cursor: pointer;                   /* Menandakan seluruh kartu dapat diklik ke detail produk */
+}
+
+/* Efek Miring 3D dan Mengambang saat Di-Hover */
+.product-card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--c-primary);
+}
+
+/* Area Foto Produk Bujur Sangkar */
+.product-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;               /* Memastikan rasio gambar selalu presisi 1:1 */
+  background-color: var(--c-surface-alt);
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--c-border);
+}
+
+.product-card-thumb a {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-thumb img {
+  transform: scale(1.05);           /* Efek zoom halus saat kartu disorot */
+}
+
+/* Informasi Produk dalam Kartu */
+.product-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.product-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+/* Pure CSS Stretched Link: membuat seluruh kartu dapat diklik ke halaman detail produk */
+.product-title-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.product-title-link:hover {
+  color: var(--c-primary);
+  text-decoration: underline;
+}
+
+.product-card-price {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-primary);
+  margin-bottom: 14px;
+}
+
+/* Tombol Aksi di atas lapisan link kartu (z-index: 2) agar membuka keranjang secara terpisah */
+.product-card-action {
+  margin-top: auto;                  /* Menempatkan tombol tepat di dasar kartu */
+  position: relative;
+  z-index: 2;
+}
+
+.product-card-action .btn {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   6. HALAMAN 1: BERANDA (HOME WIREFRAME STYLES)
+   Fungsi: Mengatur tata letak Banner Promosi, 4 Kategori, & 4 Produk Unggulan.
+   ========================================================================== */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* Banner Promosi Lebar */
+.hero-banner-section {
+  padding: 28px 0 36px 0;
+}
+
+.hero-banner {
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-sm);
+  background-color: var(--c-surface-alt);
+  border: 1.5px solid var(--c-border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: transform 0.8s ease;
+}
+
+.hero-banner:hover .hero-banner-img {
+  transform: scale(1.03);
+}
+
+/* Kotak Overlay Teks Promosi di Tengah Banner */
+.hero-banner-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 32px 48px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--c-border);
+  text-align: center;
+  max-width: 580px;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-banner-overlay h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.hero-banner-overlay p {
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* 4 Kotak Kategori Produk (Horizontal Row di Wireframe) */
+.home-categories-section {
+  padding: 16px 0 40px 0;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolom sama rata */
+  gap: 20px;
+}
+
+.category-tile {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: var(--c-dark);
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.category-tile:hover {
+  border-color: var(--c-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Wadah Foto Kategori Produk Kriya */
+.category-tile-thumb {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  overflow: hidden;
+  background-color: var(--c-surface-alt);
+  border-bottom: 1.5px solid var(--c-border-light);
+}
+
+.category-tile-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-tile:hover .category-tile-thumb img {
+  transform: scale(1.08);
+}
+
+/* Konten Teks & Informasi Kategori */
+.category-tile-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.category-tile-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-primary);
+  margin-bottom: 4px;
+}
+
+.category-tile-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.category-tile-link {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  transition: color var(--transition);
+}
+
+.category-tile:hover .category-tile-link {
+  color: var(--c-primary);
+}
+
+.category-tile-link .arrow {
+  display: inline-block;
+  transition: transform var(--transition);
+}
+
+.category-tile:hover .category-tile-link .arrow {
+  transform: translateX(4px);
+}
+
+/* Grid 4 Kolom untuk Produk Unggulan */
+.home-featured-section {
+  padding: 16px 0 60px 0;
+}
+
+.grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ==========================================================================
+   7. HALAMAN 2: KATALOG PRODUK (CATALOG WIREFRAME STYLES)
+   Fungsi: Mengatur sidebar filter kiri dan grid katalog 6 produk kanan.
+   ========================================================================== */
+.catalog-section {
+  padding: 32px 0 60px 0;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;   /* Sidebar 260px, sisa ruang untuk grid produk */
+  gap: 32px;
+  align-items: start;
+}
+
+/* Sidebar Kotak Filter Kiri */
+.catalog-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-box {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.filter-box-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--c-border-light);
+}
+
+.filter-options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--c-text);
+  cursor: pointer;
+}
+
+.filter-option-label input[type="radio"] {
+  accent-color: var(--c-primary);
+  width: 16px;
+  height: 16px;
+}
+
+/* Grid Katalog 3 Kolom × 2 Baris (6 Produk Sesuai Wireframe) */
+.grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Pagination [<] [1] [2] [>] */
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.page-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--c-dark);
+  transition: all var(--transition);
+}
+
+.page-btn:hover,
+.page-btn.active {
+  background-color: var(--c-dark-btn);
+  color: white;
+  border-color: var(--c-dark-btn);
+}
+
+.page-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: var(--c-surface-alt);
+  border-color: var(--c-border-light);
+  color: var(--c-text-light);
+}
+
+/* Status Bar & Info Hasil Filter Katalog */
+.catalog-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--c-border-light);
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+}
+
+.catalog-counter strong {
+  color: var(--c-dark);
+}
+
+.btn-reset-filter {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--c-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.btn-reset-filter:hover {
+  color: var(--c-primary-dark);
+  background-color: var(--c-primary-light);
+}
+
+/* Empty State saat tidak ada produk yang cocok dengan filter */
+.empty-state {
+  grid-column: 1 / -1;
+  background: var(--c-surface);
+  border: 1.5px dashed var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--c-surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-muted);
+  margin-bottom: 14px;
+}
+
+.empty-state-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin-bottom: 6px;
+}
+
+.empty-state-text {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  max-width: 420px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Animasi 3D Halus saat Filter Diaktifkan */
+.product-card.filtering {
+  animation: cardFadeIn3D 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn3D {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(10px) rotateX(-3deg) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) translateY(0) rotateX(0deg) scale(1);
+  }
+}
+
+/* ==========================================================================
+   8. HALAMAN 3: DETAIL PRODUK (DETAIL WIREFRAME STYLES)
+   Fungsi: Mengatur galeri gambar foto besar + 3 thumbnail, kotak deskripsi,
+   dan section Produk Terkait.
+   ========================================================================== */
+.product-detail-page {
+  padding: 24px 0 60px 0;
+}
+
+.breadcrumb-nav {
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+  margin-bottom: 24px;
+}
+.breadcrumb-nav a:hover {
+  color: var(--c-primary);
+}
+
+/* Tata Letak Atas: 2 Kolom (Galeri Kiri & Rincian Kanan) */
+.detail-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+/* Galeri Interaktif Murni CSS via Radio Hack */
+.detail-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gallery-radio {
+  display: none;                     /* Menyembunyikan elemen input radio asli */
+}
+
+/* Kotak Foto Utama Besar */
+.detail-main-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--c-surface-alt);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+.detail-main-image-box .slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Logika Pergantian Foto saat Radio di-Check (Pure CSS) */
+#gallery-1:checked ~ .detail-main-image-box .slide-1,
+#gallery-2:checked ~ .detail-main-image-box .slide-2,
+#gallery-3:checked ~ .detail-main-image-box .slide-3 {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Baris 3 Thumbnail di Bawah Foto Utama */
+.detail-thumbnails-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.detail-thumb-item {
+  aspect-ratio: 1 / 1;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--c-surface-alt);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.detail-thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Indikator Border Aktif pada Thumbnail Terpilih */
+#gallery-1:checked ~ .detail-thumbnails-row label[for="gallery-1"],
+#gallery-2:checked ~ .detail-thumbnails-row label[for="gallery-2"],
+#gallery-3:checked ~ .detail-thumbnails-row label[for="gallery-3"] {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 2px var(--c-primary-glow);
+}
+
+/* Kolom Kanan: Rincian & Deskripsi */
+.detail-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-category-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--c-primary);
+  background-color: var(--c-primary-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(139, 69, 19, 0.12);
+  align-self: flex-start;
+}
+
+.detail-product-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 8px;
+}
+
+.detail-product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c-primary);
+  margin-bottom: 20px;
+}
+
+/* Kotak Kartu Deskripsi Produk Sesuai Wireframe */
+.detail-desc-card {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.detail-desc-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.detail-desc-card p {
+  color: var(--c-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.product-specs-box {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1.5px dashed var(--c-border);
+}
+
+.product-specs-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  margin-bottom: 10px;
+}
+
+.specs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.86rem;
+}
+
+.specs-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background-color: var(--c-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--c-border-light);
+}
+
+.specs-item-label {
+  color: var(--c-text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.specs-item-val {
+  color: var(--c-dark);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Kontrol Jumlah & Tombol Beli */
+.detail-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.qty-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  height: 44px;
+}
+
+.qty-btn {
+  width: 38px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-dark);
+}
+
+.qty-number {
+  width: 44px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Bagian Produk Terkait (3 Kartu Sejajar) */
+.related-products-section {
+  border-top: 1.5px solid var(--c-border);
+  padding-top: 40px;
+}
+
+/* ==========================================================================
+   9. HALAMAN 4: KERANJANG BELANJA (CART TABLE WIREFRAME STYLES)
+   Fungsi: Mengatur tabel daftar barang belanjaan dan panel ringkasan biaya.
+   ========================================================================== */
+.cart-page-section {
+  padding: 32px 0 60px 0;
+}
+
+.cart-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;    /* Tabel fleksibel di kiri, ringkasan 340px di kanan */
+  gap: 32px;
+  align-items: start;
+}
+
+/* Kartu Pembungkus Tabel Keranjang */
+.cart-table-card {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;                  /* Menjamin tabel bisa di-scroll horizontal jika di layar sempit */
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.cart-table th {
+  background-color: var(--c-surface-alt);
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--c-dark);
+  border-bottom: 1.5px solid var(--c-border);
+}
+
+.cart-table td {
+  padding: 18px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--c-border-light);
+}
+
+.cart-product-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--c-border);
+}
+
+.cart-item-name {
+  font-weight: 700;
+  color: var(--c-dark);
+  font-size: 0.95rem;
+}
+
+/* Kartu Ringkasan Belanja di Kolom Kanan */
+.summary-card {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+
+.summary-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--c-border-light);
+}
+
+.summary-row-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+  color: var(--c-text-muted);
+}
+
+.summary-row-item.total {
+  border-top: 1.5px dashed var(--c-border);
+  padding-top: 16px;
+  margin-top: 16px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-dark);
+}
+
+.summary-row-item.total .price-tag {
+  color: var(--c-primary);
+}
+
+/* ==========================================================================
+   10. HALAMAN 5: CHECKOUT (CHECKOUT WIREFRAME STYLES)
+   Fungsi: Mengatur formulir Data Pembeli, 3 kotak Metode Pembayaran,
+   dan panel Ringkasan Pesanan.
+   ========================================================================== */
+.checkout-section {
+  padding: 32px 0 60px 0;
+}
+
+.checkout-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+.checkout-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checkout-card-box {
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+}
+
+.checkout-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--c-border-light);
+}
+
+/* Baris Form 2 Kolom (Nama & No Telepon) */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group-single {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-input-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 0.92rem;
+  transition: border-color var(--transition);
+}
+
+.form-input-control:focus {
+  outline: none;
+  border-color: var(--c-dark);
+  background: white;
+}
+
+/* ==========================================================================
+   10. METODE PEMBAYARAN DINAMIS MURNI CSS (CHECKOUT PAYMENT SYSTEM)
+   ========================================================================== */
+
+/* Radio Inputs Murni CSS Pengendali Opsi Pembayaran */
+.payment-method-radio {
+  display: none;
+}
+
+/* 3 Kotak Pilihan Metode Pembayaran Sejajar */
+.payment-tiles-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.payment-tile-label {
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 16px 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--c-surface);
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--c-dark-soft);
+}
+
+.payment-tile-label svg {
+  color: var(--c-text-muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.payment-tile-label:hover {
+  border-color: var(--c-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.payment-tile-label:hover svg {
+  color: var(--c-primary);
+  transform: scale(1.1);
+}
+
+/* Status Radio Terpilih (Checked State via Murni CSS Sibling Selector) */
+#bayar-bank:checked ~ .payment-tiles-row .label-bank,
+#bayar-ewallet:checked ~ .payment-tiles-row .label-ewallet,
+#bayar-cod:checked ~ .payment-tiles-row .label-cod {
+  border-color: var(--c-primary);
+  background: var(--c-primary-light);
+  color: var(--c-primary-dark);
+  box-shadow: 0 4px 14px rgba(139, 69, 19, 0.12);
+}
+
+#bayar-bank:checked ~ .payment-tiles-row .label-bank svg,
+#bayar-ewallet:checked ~ .payment-tiles-row .label-ewallet svg,
+#bayar-cod:checked ~ .payment-tiles-row .label-cod svg {
+  color: var(--c-primary);
+}
+
+/* Kontainer Panel Rincian Pembayaran Dinamis */
+.payment-details-container {
+  border-top: 1.5px dashed var(--c-border);
+  padding-top: 24px;
+}
+
+.payment-panel {
+  display: none;
+}
+
+/* Tampilkan Panel yang Bersesuaian saat Radio Dicentang */
+#bayar-bank:checked ~ .payment-details-container .panel-bank,
+#bayar-ewallet:checked ~ .payment-details-container .panel-qris,
+#bayar-cod:checked ~ .payment-details-container .panel-cod {
+  display: block;
+  animation: panelFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   QRIS 3D PAYMENT SHOWCASE (3D WEB EXPERIENCE & ANTI-UI-SLOP)
+   ========================================================================== */
+.qris-showcase-container {
+  display: grid;
+  grid-template-columns: 295px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* 3D Wrapper & Kartu QRIS Presisi */
+.qris-3d-wrapper {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+}
+
+.qris-3d-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 20px 16px 18px;
+  width: 100%;
+  max-width: 295px;
+  box-shadow: 0 12px 28px -6px rgba(43, 37, 32, 0.08), 0 4px 10px rgba(0, 0, 0, 0.03);
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(2deg) rotateY(-2deg);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.qris-3d-card:hover {
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 44px -8px rgba(139, 69, 19, 0.22), 0 8px 18px rgba(0, 0, 0, 0.06);
+  border-color: var(--c-primary);
+}
+
+/* Header Kartu QRIS */
+.qris-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-border-light);
+}
+
+.qris-brand-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.qris-badge-title {
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  color: #D9251D; /* Identitas warna resmi QRIS Indonesia */
+  line-height: 1;
+}
+
+.qris-badge-sub {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+}
+
+.qris-merchant-status {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.qris-merchant-status::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #2E7D32;
+  border-radius: 50%;
+}
+
+/* Frame Dekoratif dengan Border Ornamen di Samping QRIS */
+.qris-frame-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+/* Border Ornamen di Sisi Samping Kiri & Kanan (Ornamental Side Borders) */
+.qris-side-border {
+  width: 12px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.qris-side-border .border-line {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--c-primary) 20%, #D4A373 50%, var(--c-primary) 80%, transparent);
+  border-radius: 2px;
+}
+
+.qris-side-border.border-left .border-line {
+  box-shadow: -1px 0 4px rgba(139, 69, 19, 0.25);
+}
+
+.qris-side-border.border-right .border-line {
+  box-shadow: 1px 0 4px rgba(139, 69, 19, 0.25);
+}
+
+.qris-side-border .border-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--c-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--c-primary-glow);
+  z-index: 1;
+}
+
+/* Frame Utama Tempat Gambar QRIS dengan 3D Corner Brackets */
+.qris-code-frame {
+  position: relative;
+  background: #FFFFFF;
+  border: 2px solid var(--c-dark);
+  border-radius: 12px;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(43, 37, 32, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+/* Ornamen Sudut (Corner Brackets) 3D */
+.corner-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--c-primary);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.corner-bracket.top-left {
+  top: -2px;
+  left: -2px;
+  border-width: 3.5px 0 0 3.5px;
+  border-top-left-radius: 5px;
+}
+
+.corner-bracket.top-right {
+  top: -2px;
+  right: -2px;
+  border-width: 3.5px 3.5px 0 0;
+  border-top-right-radius: 5px;
+}
+
+.corner-bracket.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-width: 0 0 3.5px 3.5px;
+  border-bottom-left-radius: 5px;
+}
+
+.corner-bracket.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 3.5px 3.5px 0;
+  border-bottom-right-radius: 5px;
+}
+
+/* Gambar QRIS Asli */
+.qris-image {
+  width: 175px;
+  height: 175px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Animasi Kilau Garis Scan 3D Melintas */
+.qris-scan-sheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(24, 119, 242, 0.85), #FFFFFF, rgba(24, 119, 242, 0.85), transparent);
+  box-shadow: 0 0 10px rgba(24, 119, 242, 0.7);
+  border-radius: 2px;
+  animation: qrisScanAnim 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes qrisScanAnim {
+  0% { top: 6%; opacity: 0; }
+  12% { opacity: 0.9; }
+  50% { top: 88%; opacity: 0.9; }
+  85% { opacity: 0.9; }
+  98% { top: 6%; opacity: 0.4; }
+  100% { top: 6%; opacity: 0; }
+}
+
+/* Footer Kartu QRIS */
+.qris-card-footer {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid var(--c-border-light);
+}
+
+.qris-merchant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.qris-merchant-info strong {
+  font-size: 0.92rem;
+  color: var(--c-dark);
+}
+
+.qris-nmid {
+  font-size: 0.72rem;
+  color: var(--c-text-muted);
+  font-family: monospace;
+  letter-spacing: 0.05em;
+}
+
+.qris-total-badge {
+  background: var(--c-primary-light);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qris-total-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+.qris-total-amount {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--c-primary);
+}
+
+/* Kilau 3D Refleksi Halus pada Kartu */
+.qris-card-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 50%);
+  pointer-events: none;
+  border-radius: var(--radius-md);
+}
+
+/* Sisi Kanan: Panduan Langkah & Ekosistem */
+.qris-instructions-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qris-guide-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-primary);
+  margin-bottom: 4px;
+}
+
+.qris-guide-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.qris-guide-desc {
+  font-size: 0.86rem;
+  color: var(--c-text-muted);
+  line-height: 1.5;
+}
+
+.qris-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qris-steps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--c-dark);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-text strong {
+  display: block;
+  color: var(--c-dark);
+  font-size: 0.88rem;
+  margin-bottom: 2px;
+}
+
+.step-text span {
+  color: var(--c-text-muted);
+  font-size: 0.82rem;
+}
+
+.qris-supported-ecosystem {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.ecosystem-title {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--c-text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ecosystem-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.eco-pill {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Panel Bank & COD Styles */
+.bank-transfer-details,
+.cod-details-card {
+  padding: 6px 0;
+}
+
+.panel-intro-text {
+  font-size: 0.88rem;
+  color: var(--c-text-muted);
+  margin-bottom: 12px;
+}
+
+.bank-accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.bank-account-card {
+  background: var(--c-bg);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bank-badge {
+  background: var(--c-dark);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.bank-account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bank-acc-number {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--c-dark);
+  letter-spacing: 0.05em;
+  font-family: monospace;
+}
+
+.bank-acc-holder {
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+}
+
+.panel-note-text {
+  font-size: 0.8rem;
+  color: var(--c-text-light);
+}
+
+.cod-details-card {
+  background: var(--c-bg);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.cod-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cod-badge {
+  background: var(--c-primary-light);
+  color: var(--c-primary-dark);
+  border: 1px solid var(--c-border);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.cod-desc {
+  font-size: 0.86rem;
+  color: var(--c-text-muted);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   QRIS LIGHTBOX MODAL & CLICK-TO-ENLARGE (MURNI CSS CHECKBOX HACK)
+   ========================================================================== */
+
+/* Checkbox Pengendali Zoom QRIS Murni CSS */
+.qris-zoom-checkbox {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Frame QRIS yang Dapat Diklik Langsung */
+.qris-clickable-frame {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  position: relative;
+}
+
+.qris-clickable-frame:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(139, 69, 19, 0.18);
+  border-color: var(--c-primary);
+}
+
+/* Badge Petunjuk Hover "Klik Perbesar" */
+.qris-zoom-hint {
+  position: absolute;
+  bottom: 10px;
+  background: rgba(43, 37, 32, 0.88);
+  color: #FFFFFF;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.qris-clickable-frame:hover .qris-zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tombol CTA Perbesar di Bawah Kotak QRIS */
+.qris-zoom-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: var(--c-surface-alt);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.qris-zoom-cta-btn:hover {
+  background: var(--c-primary-light);
+  border-color: var(--c-primary);
+  color: var(--c-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Lightbox Modal QRIS Tampilan Penuh */
+.qris-lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 24, 20, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Saat Checkbox Tercentang, Tampilkan Modal Secara Halus */
+.qris-zoom-checkbox:checked ~ .qris-lightbox-modal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Area Backdrop untuk Menutup Modal saat Diklik di Luar */
+.qris-lightbox-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+/* Kartu Modal QRIS Besar dengan Efek 3D */
+.qris-lightbox-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  max-width: 440px;
+  width: 100%;
+  padding: 26px 22px 22px;
+  text-align: center;
+  box-shadow: 0 28px 65px -10px rgba(0, 0, 0, 0.45), 0 10px 25px rgba(139, 69, 19, 0.2);
+  border: 2px solid var(--c-border);
+  z-index: 2001;
+  transform: perspective(1000px) rotateX(6deg) scale(0.92);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.qris-zoom-checkbox:checked ~ .qris-lightbox-modal .qris-lightbox-card {
+  transform: perspective(1000px) rotateX(0deg) scale(1);
+}
+
+/* Tombol Tutup Silang di Pojok Kanan Atas */
+.qris-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: var(--c-surface-alt);
+  border-radius: 50%;
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--c-dark);
+  cursor: pointer;
+  transition: all var(--transition);
+  line-height: 1;
+}
+
+.qris-lightbox-close:hover {
+  background: var(--c-primary);
+  color: #FFFFFF;
+  border-color: var(--c-primary);
+  transform: rotate(90deg);
+}
+
+.qris-lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-border-light);
+}
+
+.qris-lightbox-merchant {
+  margin-bottom: 16px;
+}
+
+.qris-lightbox-merchant h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 2px;
+}
+
+.qris-lightbox-frame-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.qris-large-code-frame {
+  padding: 12px;
+  background: #FFFFFF;
+  border: 2.5px solid var(--c-dark);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(43, 37, 32, 0.12);
+}
+
+.qris-large-image {
+  width: 270px;
+  height: 270px;
+  max-width: 65vw;
+  max-height: 65vw;
+  object-fit: contain;
+  display: block;
+}
+
+.qris-lightbox-total {
+  background: var(--c-primary-light);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.qris-lightbox-total span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+
+.qris-lightbox-total strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-primary);
+}
+
+.qris-lightbox-hint {
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   11. FOOTER (3-COLUMN WIREFRAME FOOTER)
+   Fungsi: Menampilkan identitas sekolah/toko, kontak, dan jam operasional
+   secara konsisten di kelima halaman.
+   ========================================================================== */
+.site-footer-wireframe {
+  margin-top: auto;                  /* Mendorong footer ke bagian paling bawah */
+  background: var(--c-surface);
+  border-top: 1.5px solid var(--c-border);
+  padding: 40px 0 20px 0;
+}
+
+.footer-3col-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr; /* 3 kolom informasi terstruktur */
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--c-dark);
+  margin-bottom: 14px;
+}
+
+.footer-column p {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links-list a {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+
+.footer-links-list a:hover {
+  color: var(--c-primary);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid var(--c-border-light);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--c-text-light);
+}
+
+/* ==========================================================================
+   12. MEDIA QUERIES RESPONSIVE (DESKTOP, TABLET, MOBILE)
+   Fungsi: Memastikan antarmuka menyesuaikan diri secara otomatis saat dibuka
+   di layar Desktop (lebar), Tablet (menengah), maupun Ponsel Pintar (sempit).
+   ========================================================================== */
+
+/* Tablet (Layar ≤ 992px) */
+@media (max-width: 992px) {
+  .catalog-layout,
+  .cart-layout-grid,
+  .checkout-grid-layout,
+  .detail-main-grid {
+    grid-template-columns: 1fr;       /* Mengubah tata letak 2 kolom menjadi 1 kolom bertumpuk */
+  }
+  
+  .grid-4-col {
+    grid-template-columns: repeat(2, 1fr); /* 4 kolom produk menjadi 2 kolom */
+  }
+  
+  .grid-3-col {
+    grid-template-columns: repeat(2, 1fr); /* 3 kolom produk menjadi 2 kolom */
+  }
+  
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* 4 kategori menjadi 2 kolom */
+  }
+  
+  .footer-3col-grid {
+    grid-template-columns: 1fr;       /* Footer 3 kolom menjadi 1 kolom vertikal */
+    gap: 24px;
+  }
+
+  .qris-showcase-container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .bank-accounts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Smartphone (Layar ≤ 680px) */
+@media (max-width: 680px) {
+  /* Mengaktifkan Tombol Hamburger */
+  .nav-toggle-btn {
+    display: flex;
+  }
+  
+  /* Menu Navigasi Melayang (Dropdown Mobile) */
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--c-surface);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 2px solid var(--c-border);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    clip-path: circle(0% at 100% 0);  /* Tersembunyi saat checkbox belum dicentang */
+    transition: clip-path 0.35s ease-in-out;
+  }
+  
+  /* Menampilkan Menu saat Checkbox Dicentang (Pure CSS Checkbox Hack) */
+  .nav-toggle-checkbox:checked ~ .nav-links {
+    clip-path: circle(150% at 100% 0); /* Membuka menu secara melingkar */
+  }
+  
+  .grid-4-col,
+  .grid-3-col,
+  .categories-grid,
+  .form-row-2,
+  .payment-tiles-row {
+    grid-template-columns: 1fr;       /* Menjadi 1 kolom penuh di layar HP */
+  }
+
+  .qris-3d-card {
+    max-width: 100%;
+  }
+  
+  .hero-banner {
+    height: 320px;
+  }
+  
+  .hero-banner-overlay {
+    padding: 20px;
+    margin: 16px;
+  }
+  
+  .detail-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .cart-table {
+    display: block;
+  }
+}

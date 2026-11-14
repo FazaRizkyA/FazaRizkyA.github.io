@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!-- Tag <!DOCTYPE html> berfungsi mendeklarasikan dokumen sebagai standar HTML5 -->
+<html lang="id">
+<!-- Tag <head> menyimpan metadata, judul tab browser, dan link styling CSS -->
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport"> membuat tata letak halaman responsif di semua perangkat -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Produk — Toko Kriya Sidoarjo</title>
+  <meta name="description" content="Detail lengkap produk kerajinan tangan Tas Kulit Nabati Tanggulangin asli Sidoarjo.">
+  <!-- Menghubungkan file stylesheet CSS utama -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Tag <body> membungkus seluruh elemen yang tampil di layar -->
+<body>
+
+  <!-- ========================================================================
+       BAGIAN 1: HEADER & NAVIGASI GLOBAL (<header>)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <!-- Tautan logo toko kriya -->
+      <a href="index.html" class="brand-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>Toko Kriya Sidoarjo</span>
+      </a>
+
+      <!-- PURE CSS MOBILE TOGGLE: Saklar checkbox untuk menu hamburger HP -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Daftar tautan navigasi -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="katalog.html" class="nav-link">Katalog</a></li>
+        <li><a href="keranjang.html" class="nav-link">Keranjang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       BAGIAN 2: KONTEN UTAMA DETAIL PRODUK (<main>)
+       Sesuai Wireframe Page 3:
+       - Breadcrumb Navigasi: Home / Produk / Detail
+       - Grid 2 Kolom:
+         * Kiri: Foto Produk Utama + 3 Thumbnail Sejajar (Pure CSS Switcher)
+         * Kanan: Judul, Harga, Kartu Deskripsi, Kontrol Jumlah, & Tombol Aksi
+       - Bagian Bawah: 3 Kartu Produk Terkait
+       ======================================================================== -->
+  <main class="product-detail-page">
+    <div class="container">
+      
+      <!-- BREADCRUMB (<nav>): Menampilkan jejak navigasi hirarki halaman -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="katalog.html">Produk</a>
+        <span>/</span>
+        <span id="breadcrumb-product-name" style="color: var(--c-dark); font-weight: 700;">Detail Produk</span>
+      </nav>
+
+      <!-- TATA LETAK UTAMA 2 KOLOM (Grid 50% - 50%) -->
+      <div class="detail-main-grid">
+        
+        <!-- ====================================================================
+             KOLOM KIRI: GALERI GAMBAR INTERAKTIF MURNI CSS (Pure CSS Radio Hack)
+             Cara kerja: Tiga input radio tersembunyi dengan nama yang sama.
+             Ketika label thumbnail diklik, CSS selektor mendeteksi input yang aktif (:checked)
+             dan menampilkan foto utama yang bersesuaian tanpa butuh JavaScript.
+             ==================================================================== -->
+        <div class="detail-gallery scene-3d">
+          <!-- Radio button untuk sudut foto 1 (Aktif default) -->
+          <input type="radio" name="detail-gallery" id="gallery-1" class="gallery-radio" checked>
+          <!-- Radio button untuk sudut foto 2 -->
+          <input type="radio" name="detail-gallery" id="gallery-2" class="gallery-radio">
+          <!-- Radio button untuk sudut foto 3 -->
+          <input type="radio" name="detail-gallery" id="gallery-3" class="gallery-radio">
+
+          <!-- Kotak Foto Utama Besar (Aspect Ratio 1:1) -->
+          <div class="detail-main-image-box">
+            <!-- Foto Sudut 1: Tampil saat #gallery-1 checked -->
+            <img src="assets/images/tas-kulit.jpg" alt="Tas Kulit Nabati Tanggulangin - Sudut 1" class="slide-img slide-1">
+            <!-- Foto Sudut 2: Tampil saat #gallery-2 checked -->
+            <img src="assets/images/kategori-kulit.jpg" alt="Tas Kulit Nabati Tanggulangin - Sudut 2" class="slide-img slide-2">
+            <!-- Foto Sudut 3: Tampil saat #gallery-3 checked -->
+            <img src="assets/images/hero-showcase.jpg" alt="Tas Kulit Nabati Tanggulangin - Sudut 3" class="slide-img slide-3">
+          </div>
+
+          <!-- Baris 3 Thumbnail di Bawah Foto Utama Sesuai Sketsa Wireframe -->
+          <div class="detail-thumbnails-row">
+            <!-- <label for="gallery-1"> bertindak sebagai tombol yang mengaktifkan radio input #gallery-1 -->
+            <label for="gallery-1" class="detail-thumb-item" title="Sudut 1">
+              <img src="assets/images/tas-kulit.jpg" alt="Thumbnail 1">
+            </label>
+            <!-- <label for="gallery-2"> mengaktifkan radio input #gallery-2 -->
+            <label for="gallery-2" class="detail-thumb-item" title="Sudut 2">
+              <img src="assets/images/kategori-kulit.jpg" alt="Thumbnail 2">
+            </label>
+            <!-- <label for="gallery-3"> mengaktifkan radio input #gallery-3 -->
+            <label for="gallery-3" class="detail-thumb-item" title="Sudut 3">
+              <img src="assets/images/hero-showcase.jpg" alt="Thumbnail 3">
+            </label>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             KOLOM KANAN: INFORMASI PRODUK, DESKRIPSI, & AKSI PEMBELIAN
+             ==================================================================== -->
+        <div class="detail-info-col">
+          <!-- Kategori & Sentra Badge -->
+          <span class="detail-category-badge" id="detail-category-badge">Sentra Tanggulangin</span>
+          <!-- Judul nama produk kriya -->
+          <h1 class="detail-product-title">Tas Kulit Nabati Tanggulangin</h1>
+          <!-- Harga produk -->
+          <div class="detail-product-price">Rp 685.000</div>
+
+          <!-- KOTAK DESKRIPSI PRODUK (Sesuai Kotak Deskripsi di Wireframe) -->
+          <div class="detail-desc-card">
+            <h4>Deskripsi Produk</h4>
+            <p>
+              Tas jinjing ini diproduksi langsung oleh para pengrajin kulit senior di sentra kerajinan Tanggulangin, Sidoarjo. Menggunakan bahan 100% kulit sapi samak nabati (vegetable-tanned leather) yang ramah lingkungan dan terkenal kuat.
+            </p>
+            <p style="margin-top: 10px;">
+              Jahitan tangan rapi menggunakan benang wax tebal dengan gesper kuningan asli antik yang tahan karat. Cocok untuk penggunaan formal maupun kasual harian.
+            </p>
+          </div>
+
+          <!-- BARIS KONTROL KUANTITAS & TOMBOL AKSI -->
+          <div class="detail-actions-row">
+            <!-- Kontrol Kuantitas [- 1 +] -->
+            <div class="qty-input-wrap" aria-label="Jumlah Pembelian">
+              <button type="button" class="qty-btn" id="btn-qty-minus" aria-label="Kurang">&minus;</button>
+              <span class="qty-number" id="detail-qty-val">1</span>
+              <button type="button" class="qty-btn" id="btn-qty-plus" aria-label="Tambah">&plus;</button>
+            </div>
+
+            <!-- Tombol Tambah ke Keranjang: Menuju ke halaman keranjang.html -->
+            <a href="keranjang.html" id="btn-add-to-cart-main" class="btn btn-dark" style="flex: 1;">
+              Tambah ke Keranjang
+            </a>
+            <!-- Tombol Beli Sekarang: Langsung menuju ke formulir checkout.html -->
+            <a href="checkout.html" id="btn-buy-now-main" class="btn btn-outline">
+              Beli Sekarang
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ====================================================================
+           BAGIAN BAWAH: PRODUK TERKAIT (3 Kartu Sejajar Sesuai Wireframe)
+           ==================================================================== -->
+      <section class="related-products-section">
+        <h2 class="section-title">Produk Terkait</h2>
+        <!-- .grid-3-col menyusun 3 kartu produk rekomendasi secara sejajar -->
+        <div class="grid-3-col">
+          
+          <!-- Kartu Rekomendasi 1: Batik Jetis -->
+          <article class="product-card" data-id="prod-2">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-2" aria-label="Lihat detail Batik Tulis Motif Beras Wutah">
+                <img src="assets/images/batik-jetis.jpg" alt="Batik Tulis Motif Beras Wutah">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-2" class="product-title-link">Batik Tulis Motif Beras Wutah</a>
+              </h3>
+              <div class="product-card-price">Rp 520.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-2">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Kartu Rekomendasi 2: Lampu Bambu -->
+          <article class="product-card" data-id="prod-3">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-3" aria-label="Lihat detail Lampu Meja Anyaman Bambu">
+                <img src="assets/images/lampu-bambu.jpg" alt="Lampu Meja Anyaman Bambu">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-3" class="product-title-link">Lampu Meja Anyaman Bambu</a>
+              </h3>
+              <div class="product-card-price">Rp 310.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-3">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Kartu Rekomendasi 3: Guci Terracotta -->
+          <article class="product-card" data-id="prod-4">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-4" aria-label="Lihat detail Guci Terracotta Ukir Tribal">
+                <img src="assets/images/guci-keramik.jpg" alt="Guci Terracotta Ukir Tribal">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-4" class="product-title-link">Guci Terracotta Ukir Tribal</a>
+              </h3>
+              <div class="product-card-price">Rp 275.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-4">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       BAGIAN 3: FOOTER 3 KOLOM SESUAI WIREFRAME (<footer>)
+       ======================================================================== -->
+  <footer class="site-footer-wireframe">
+    <div class="container">
+      <div class="footer-3col-grid">
+        <!-- Kolom 1: Profil Toko & Alamat -->
+        <div class="footer-column">
+          <h4>Toko Kriya Sidoarjo</h4>
+          <p>
+            Pusat kurasi produk kerajinan tangan otentik asli Kota Sidoarjo, Jawa Timur. Melestarikan warisan tradisi lokal dengan kualitas terbaik.
+          </p>
+          <p style="margin-top: 8px;">Jl. Raya Krian No. 45, Sidoarjo, Jawa Timur</p>
+        </div>
+
+        <!-- Kolom 2: Kontak -->
+        <div class="footer-column">
+          <h4>Kontak</h4>
+          <ul class="footer-links-list">
+            <li>WhatsApp: +62 895-3970-81621</li>
+            <li>Telepon: 0895-3970-81621</li>
+            <li>Email: Fazaawan61@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Jam Operasional -->
+        <div class="footer-column">
+          <h4>Jam Operasional</h4>
+          <ul class="footer-links-list">
+            <li>Senin - Jumat: 08.00 - 20.00 WIB</li>
+            <li>Sabtu - Minggu: 09.00 - 21.00 WIB</li>
+            <li>Pengiriman Setiap Hari Kerja</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris Hak Cipta -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Toko Kriya Sidoarjo. Seluruh Hak Cipta Dilindungi.</span>
+        <span>Materi Uji STS Pemrograman Web â€” SMK Krian 1 Sidoarjo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT STORE & SINKRONISASI PRODUK DARI ADMIN -->
+  <script src="js/products.js"></script>
+
+  <!-- Script Kontrol Kuantitas & Sinkronisasi Detail Produk -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Kontrol Pengatur Kuantitas (Jumlah Pembelian)
+      let currentQty = 1;
+      let currentProduct = null;
+      const qtyValEl = document.getElementById('detail-qty-val');
+      const btnMinus = document.getElementById('btn-qty-minus');
+      const btnPlus = document.getElementById('btn-qty-plus');
+      const btnAddToCart = document.getElementById('btn-add-to-cart-main');
+      const btnBuyNow = document.getElementById('btn-buy-now-main');
+
+      // Perbarui tautan tombol aksi dengan ID produk dan kuantitas saat ini
+      function updateActionButtons() {
+        if (!currentProduct) return;
+        if (btnAddToCart) {
+          btnAddToCart.setAttribute('data-id', currentProduct.id);
+          btnAddToCart.href = `keranjang.html?add=${encodeURIComponent(currentProduct.id)}&qty=${currentQty}`;
+        }
+        if (btnBuyNow) {
+          btnBuyNow.setAttribute('data-id', currentProduct.id);
+          btnBuyNow.href = `checkout.html?buy=${encodeURIComponent(currentProduct.id)}&qty=${currentQty}`;
+        }
+      }
+
+      if (btnMinus && qtyValEl) {
+        btnMinus.addEventListener('click', function() {
+          if (currentQty > 1) {
+            currentQty--;
+            qtyValEl.textContent = currentQty;
+            updateActionButtons();
+          }
+        });
+      }
+
+      if (btnPlus && qtyValEl) {
+        btnPlus.addEventListener('click', function() {
+          currentQty++;
+          qtyValEl.textContent = currentQty;
+          updateActionButtons();
+        });
+      }
+
+      // Memperbarui tampilan Galeri Foto (3 Foto Sudut & 3 Thumbnail)
+      function updateProductGallery(prod) {
+        // Ambil galeri khusus produk atau fallback ke foto produk utama
+        const gallery = (Array.isArray(prod.gallery) && prod.gallery.length > 0)
+          ? prod.gallery
+          : [prod.image, prod.image, prod.image];
+
+        // Reset radio switcher kembali ke foto pertama (gallery-1)
+        const radio1 = document.getElementById('gallery-1');
+        if (radio1) {
+          radio1.checked = true;
+        }
+
+        // Loop untuk mengupdate 3 foto sudut besar dan 3 thumbnail
+        [1, 2, 3].forEach(function(num, index) {
+          const imgSrc = gallery[index] || prod.image || 'assets/images/tas-kulit.jpg';
+          const angleLabel = (index === 0) ? 'Tampak Utama' : (index === 1 ? 'Detail Bahan & Tekstur' : 'Tampilan Sudut');
+
+          // Update foto slide besar
+          const slideImg = document.querySelector(`.slide-img.slide-${num}`);
+          if (slideImg) {
+            slideImg.src = imgSrc;
+            slideImg.alt = `${prod.name} - ${angleLabel}`;
+            slideImg.onerror = function() {
+              this.src = prod.image || 'assets/images/tas-kulit.jpg';
+            };
+          }
+
+          // Update thumbnail kecil di bawah foto utama
+          const thumbLabel = document.querySelector(`label[for="gallery-${num}"]`);
+          if (thumbLabel) {
+            thumbLabel.title = `${prod.name} (${angleLabel})`;
+            const thumbImg = thumbLabel.querySelector('img');
+            if (thumbImg) {
+              thumbImg.src = imgSrc;
+              thumbImg.alt = `${prod.name} Thumbnail ${num}`;
+              thumbImg.onerror = function() {
+                this.src = prod.image || 'assets/images/tas-kulit.jpg';
+              };
+            }
+          }
+        });
+      }
+
+      // Memperbarui Kotak Deskripsi Lengkap & Spesifikasi Teknis Produk
+      function updateProductDescription(prod) {
+        const descCard = document.querySelector('.detail-desc-card');
+        if (!descCard) return;
+
+        // Render paragraf deskripsi mendalam
+        let paragraphsHtml = '';
+        if (Array.isArray(prod.detailedDescription) && prod.detailedDescription.length > 0) {
+          paragraphsHtml = prod.detailedDescription.map(function(pText, idx) {
+            return `<p ${idx > 0 ? 'style="margin-top: 12px;"' : ''}>${pText}</p>`;
+          }).join('');
+        } else if (prod.description) {
+          paragraphsHtml = `<p>${prod.description}</p>`;
+        } else {
+          paragraphsHtml = '<p>Kerajinan tangan otentik berkualitas dari para pengrajin lokal Sidoarjo.</p>';
+        }
+
+        // Susun item spesifikasi produk
+        const specs = prod.specs || {};
+        const specItems = [];
+
+        if (specs.bahan) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Bahan / Material:</span>
+              <span class="specs-item-val">${specs.bahan}</span>
+            </li>
+          `);
+        }
+        if (specs.dimensi) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Dimensi / Ukuran:</span>
+              <span class="specs-item-val">${specs.dimensi}</span>
+            </li>
+          `);
+        }
+        if (specs.warna) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Warna:</span>
+              <span class="specs-item-val">${specs.warna}</span>
+            </li>
+          `);
+        }
+        if (specs.teknik) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Teknik Pembuatan:</span>
+              <span class="specs-item-val">${specs.teknik}</span>
+            </li>
+          `);
+        }
+        if (specs.outsole) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Sol Luar:</span>
+              <span class="specs-item-val">${specs.outsole}</span>
+            </li>
+          `);
+        }
+        if (specs.ukuran) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Ukuran Tersedia:</span>
+              <span class="specs-item-val">${specs.ukuran}</span>
+            </li>
+          `);
+        }
+        if (specs.kelistrikan) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Kelistrikan:</span>
+              <span class="specs-item-val">${specs.kelistrikan}</span>
+            </li>
+          `);
+        }
+        if (specs.finishing) {
+          specItems.push(`
+            <li class="specs-item">
+              <span class="specs-item-label">Finishing:</span>
+              <span class="specs-item-val">${specs.finishing}</span>
+            </li>
+          `);
+        }
+
+        const sentraNama = specs.sentra || prod.categoryLabel || ((typeof ProductStore !== 'undefined') ? ProductStore.getCategoryName(prod.category) : 'Sidoarjo');
+        specItems.push(`
+          <li class="specs-item">
+            <span class="specs-item-label">Sentra Pengrajin:</span>
+            <span class="specs-item-val">${sentraNama}</span>
+          </li>
+        `);
+
+        specItems.push(`
+          <li class="specs-item">
+            <span class="specs-item-label">Ketersediaan Stok:</span>
+            <span class="specs-item-val" style="color: #2E7D32;">${prod.stock || 0} unit (Tersedia)</span>
+          </li>
+        `);
+
+        if (specs.perawatan) {
+          specItems.push(`
+            <li class="specs-item" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+              <span class="specs-item-label">Panduan Perawatan:</span>
+              <span class="specs-item-val" style="text-align: left; font-weight: 500; font-size: 0.84rem;">${specs.perawatan}</span>
+            </li>
+          `);
+        }
+
+        const specsHtml = (specItems.length > 0) ? `
+          <div class="product-specs-box">
+            <h5 class="product-specs-title">Spesifikasi & Keaslian Produk</h5>
+            <ul class="specs-list">
+              ${specItems.join('')}
+            </ul>
+          </div>
+        ` : '';
+
+        descCard.innerHTML = `
+          <h4>Deskripsi Produk</h4>
+          ${paragraphsHtml}
+          ${specsHtml}
+        `;
+      }
+
+      // Memuat Data Produk Dinamis Sesuai Parameter ID di URL
+      function loadProductDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const prodId = urlParams.get('id') || 'prod-1';
+
+        if (typeof ProductStore === 'undefined') return;
+
+        const prod = ProductStore.getById(prodId);
+        const mainGrid = document.querySelector('.detail-main-grid');
+
+        if (!prod) {
+          if (mainGrid) {
+            mainGrid.innerHTML = `
+              <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: var(--c-surface); border: 1.5px solid var(--c-border); border-radius: var(--radius-sm);">
+                <div style="font-size: 3rem; margin-bottom: 12px;">🔍</div>
+                <h2 style="font-size: 1.4rem; color: var(--c-dark); margin-bottom: 8px;">Produk Tidak Ditemukan atau Telah Dihapus</h2>
+                <p style="color: var(--c-text-muted); margin-bottom: 24px; max-width: 480px; margin-inline: auto;">
+                  Produk dengan ID <code>${prodId}</code> tidak tersedia atau telah dihapus melalui panel admin Toko Kriya.
+                </p>
+                <a href="katalog.html" class="btn btn-dark">Kembali ke Katalog Produk</a>
+              </div>
+            `;
+          }
+          return;
+        }
+
+        currentProduct = prod;
+
+        // 1. Update Judul Tab Dokumen & Meta Tag SEO
+        document.title = `${prod.name} — Toko Kriya Sidoarjo`;
+        const metaDescEl = document.querySelector('meta[name="description"]');
+        if (metaDescEl) {
+          metaDescEl.setAttribute('content', prod.description || `Detail lengkap produk kerajinan tangan ${prod.name} asli Sidoarjo.`);
+        }
+
+        // 2. Update Breadcrumb
+        const breadcrumbNameEl = document.getElementById('breadcrumb-product-name');
+        if (breadcrumbNameEl) {
+          breadcrumbNameEl.textContent = prod.name;
+        }
+
+        // 3. Update Badge Kategori / Sentra
+        const categoryBadgeEl = document.getElementById('detail-category-badge');
+        if (categoryBadgeEl) {
+          categoryBadgeEl.textContent = prod.categoryLabel || ProductStore.getCategoryName(prod.category);
+        }
+
+        // 4. Update Judul & Harga
+        const titleEl = document.querySelector('.detail-product-title');
+        const priceEl = document.querySelector('.detail-product-price');
+        if (titleEl) titleEl.textContent = prod.name;
+        if (priceEl) priceEl.textContent = ProductStore.formatRupiah(prod.price);
+
+        // 5. Update Galeri Foto Utama & 3 Thumbnail Sesuai Produk yang Diklik
+        updateProductGallery(prod);
+
+        // 6. Update Kotak Deskripsi Lengkap & Spesifikasi Sesuai Produk yang Diklik
+        updateProductDescription(prod);
+
+        // 7. Update Tautan Tombol Aksi (Keranjang & Checkout)
+        updateActionButtons();
+
+        // 8. Update Produk Terkait (Rekomendasi Lainnya)
+        const relatedGrid = document.querySelector('.related-products-section .grid-3-col');
+        if (relatedGrid) {
+          const allProducts = ProductStore.getAll();
+          const related = allProducts.filter(function(p) {
+            return String(p.id) !== String(prodId);
+          }).slice(0, 3);
+
+          relatedGrid.innerHTML = '';
+          related.forEach(function(rp) {
+            const art = document.createElement('article');
+            art.className = 'product-card scene-3d';
+            art.setAttribute('data-id', rp.id);
+            art.innerHTML = `
+              <div class="product-card-thumb">
+                <a href="detail-produk.html?id=${rp.id}" aria-label="Lihat detail ${rp.name}">
+                  <img src="${rp.image}" alt="${rp.name}" loading="lazy" onerror="this.src='assets/images/tas-kulit.jpg'">
+                </a>
+              </div>
+              <div class="product-card-body">
+                <h3 class="product-card-title">
+                  <a href="detail-produk.html?id=${rp.id}" class="product-title-link">${rp.name}</a>
+                </h3>
+                <div class="product-card-price">${ProductStore.formatRupiah(rp.price)}</div>
+                <div class="product-card-action">
+                  <a href="keranjang.html?add=${rp.id}&qty=1" class="btn btn-dark btn-block btn-add-cart" data-id="${rp.id}">Tambah ke Keranjang</a>
+                </div>
+              </div>
+            `;
+            relatedGrid.appendChild(art);
+          });
+        }
+      }
+
+      // Deteksi perubahan URL dari history navigasi browser
+      window.addEventListener('popstate', loadProductDetail);
+
+      // Sinkronisasi otomatis saat data produk diubah di admin
+      if (typeof ProductStore !== 'undefined') {
+        ProductStore.listen(loadProductDetail);
+      }
+
+      // Inisialisasi saat halaman pertama kali dibuka
+      loadProductDetail();
+    });
+  </script>
+</body>
+</html>
+

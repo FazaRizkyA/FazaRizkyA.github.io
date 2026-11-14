@@ -1,0 +1,238 @@
+/* ==========================================================================
+   KARYAFRAME // ANTIGRAVITY EDITION — THREE-LAYER DESIGN SYSTEM TOKENS
+   Layer 1: Primitive Tokens (Deep Space Obsidian, Specular Light, Accents)
+   Layer 2: Semantic Tokens (Purpose-Based Aliases + Theme Switching)
+   Layer 3: Component Tokens (Glass Dock, Spotlight Cards, Command Palette)
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     LAYER 1: PRIMITIVE TOKENS
+     ------------------------------------------------------------------------ */
+  /* Deep Space Obsidian Palette (Antigravity Dark Core) */
+  --prim-space-950: #040508;
+  --prim-space-900: #090B11;
+  --prim-space-850: #0E111A;
+  --prim-space-800: #141824;
+  --prim-space-750: #1C2233;
+  --prim-space-700: #262E45;
+
+  /* Daylight Editorial Palette (Light Mode Core) */
+  --prim-day-50:  #F7F7F5;
+  --prim-day-100: #FFFFFF;
+  --prim-day-200: #EEEEEC;
+  --prim-day-300: #DFDFDC;
+  --prim-day-400: #B5B5B0;
+
+  /* Ink & Specular Text Neutrals */
+  --prim-ink-50:  #F9FAFB;
+  --prim-ink-100: #ECEEF4;
+  --prim-ink-200: #CFD5E2;
+  --prim-ink-400: #8E96AA;
+  --prim-ink-500: #636B80;
+  --prim-ink-700: #333947;
+  --prim-ink-950: #0B0D13;
+
+  /* Accents: Signal Vermilion, Quantum Cyan, Electric Indigo, Keylight Amber */
+  --prim-vermilion-400: #FF6E54;
+  --prim-vermilion-500: #FF4D2D;
+  --prim-vermilion-600: #E03A1B;
+
+  --prim-cyan-300: #67E8F9;
+  --prim-cyan-400: #22D3EE;
+  --prim-cyan-500: #06B6D4;
+  --prim-cyan-600: #0891B2;
+
+  --prim-indigo-400: #818CF8;
+  --prim-indigo-500: #6366F1;
+
+  --prim-amber-400: #FBBF24;
+  --prim-amber-500: #F59E0B;
+  --prim-amber-600: #D97706;
+
+  --prim-emerald-400: #34D399;
+  --prim-emerald-600: #059669;
+  --prim-rose-500:    #F43F5E;
+
+  /* Typography Families */
+  --prim-font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --prim-font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --prim-font-mono:    'JetBrains Mono', monospace;
+
+  /* Fluid Font Scale (Antigravity Monumental Scale) */
+  --prim-text-xs:   0.75rem;     /* 12px */
+  --prim-text-sm:   0.875rem;    /* 14px */
+  --prim-text-base: 1rem;        /* 16px */
+  --prim-text-lg:   1.125rem;    /* 18px */
+  --prim-text-xl:   1.25rem;     /* 20px */
+  --prim-text-2xl:  1.5rem;      /* 24px */
+  --prim-text-3xl:  clamp(1.75rem, 2.6vw, 2.35rem);
+  --prim-text-4xl:  clamp(2.25rem, 3.8vw, 3.25rem);
+  --prim-text-5xl:  clamp(2.65rem, 5.4vw, 4.5rem);
+
+  /* Spacing Scale (4px / 8px Rhythm) */
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.25rem;  /* 20px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* Radii */
+  --radius-xs:   0.375rem; /* 6px */
+  --radius-sm:   0.5rem;   /* 8px */
+  --radius-md:   0.875rem; /* 14px */
+  --radius-lg:   1.25rem;  /* 20px */
+  --radius-xl:   1.75rem;  /* 28px */
+  --radius-full: 9999px;
+
+  /* Physics & Choreography Curves */
+  --duration-fast:   160ms;
+  --duration-normal: 300ms;
+  --duration-slow:   650ms;
+  --ease-spring:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ------------------------------------------------------------------------
+     LAYER 2: SEMANTIC TOKENS (Default: Antigravity Deep Space Dark)
+     ------------------------------------------------------------------------ */
+  --color-bg-primary:       var(--prim-space-950);
+  --color-bg-secondary:     var(--prim-space-900);
+  --color-bg-surface:       rgba(14, 17, 26, 0.78);
+  --color-bg-surface-solid: var(--prim-space-850);
+  --color-bg-elevated:      var(--prim-space-800);
+  --color-bg-glass:         rgba(9, 11, 17, 0.72);
+  --color-bg-scrim:         rgba(3, 4, 7, 0.82);
+
+  --color-text-primary:     var(--prim-ink-50);
+  --color-text-secondary:   var(--prim-ink-200);
+  --color-text-muted:       var(--prim-ink-400);
+  --color-text-inverse:     var(--prim-ink-950);
+
+  --color-primary:          var(--prim-vermilion-500);
+  --color-primary-hover:    var(--prim-vermilion-400);
+  --color-primary-active:   var(--prim-vermilion-600);
+  --color-primary-subtle:   rgba(255, 77, 45, 0.14);
+
+  --color-accent-cyan:      var(--prim-cyan-400);
+  --color-accent-cyan-bg:   rgba(34, 211, 238, 0.12);
+  --color-accent-indigo:    var(--prim-indigo-400);
+  --color-accent-indigo-bg: rgba(129, 140, 248, 0.12);
+  --color-accent-amber:     var(--prim-amber-400);
+  --color-accent-amber-bg:  rgba(251, 191, 36, 0.12);
+
+  --color-success:          var(--prim-emerald-400);
+  --color-success-bg:       rgba(52, 211, 153, 0.12);
+  --color-danger:           var(--prim-rose-500);
+  --color-danger-bg:        rgba(244, 63, 94, 0.14);
+
+  --color-border-subtle:    rgba(255, 255, 255, 0.07);
+  --color-border-default:   rgba(255, 255, 255, 0.13);
+  --color-border-strong:    rgba(255, 255, 255, 0.28);
+  --color-focus-ring:       var(--prim-cyan-400);
+
+  /* Cursor Spotlight Tokens */
+  --spotlight-surface:      rgba(255, 255, 255, 0.045);
+  --spotlight-border:       rgba(255, 255, 255, 0.26);
+
+  /* Specular Gradients */
+  --gradient-heading:       linear-gradient(180deg, #FFFFFF 0%, #D5DCEB 100%);
+  --gradient-accent-text:   linear-gradient(135deg, #FF6E54 0%, #FF4D2D 50%, #F59E0B 100%);
+  --gradient-cyan-text:     linear-gradient(135deg, #67E8F9 0%, #22D3EE 55%, #818CF8 100%);
+
+  --shadow-sm:   0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-md:   0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-lg:   0 28px 72px rgba(0, 0, 0, 0.72);
+  --shadow-glow: 0 0 42px rgba(255, 77, 45, 0.30);
+  --shadow-cyan: 0 0 38px rgba(34, 211, 238, 0.22);
+
+  /* Typography Aliases */
+  --font-heading: var(--prim-font-heading);
+  --font-body:    var(--prim-font-body);
+  --font-mono:    var(--prim-font-mono);
+
+  /* Layout Rhythm */
+  --container-max: 1320px;
+  --header-height: 72px;
+
+  /* ------------------------------------------------------------------------
+     LAYER 3: COMPONENT TOKENS
+     ------------------------------------------------------------------------ */
+  --btn-height-sm:      40px;
+  --btn-height-md:      46px;
+  --btn-height-lg:      54px;
+  --btn-radius:         var(--radius-full);
+  --btn-primary-bg:     var(--color-primary);
+  --btn-primary-fg:     #FFFFFF;
+  --btn-primary-hover:  var(--color-primary-hover);
+
+  --card-bg:            var(--color-bg-surface);
+  --card-border:        var(--color-border-subtle);
+  --card-border-hover:  var(--color-border-strong);
+  --card-radius:        var(--radius-lg);
+  --card-padding:       var(--space-6);
+
+  --input-bg:           rgba(9, 11, 17, 0.85);
+  --input-border:       var(--color-border-default);
+  --input-fg:           var(--color-text-primary);
+  --input-radius:       var(--radius-sm);
+  --input-height:       46px;
+
+  --badge-radius:       var(--radius-full);
+}
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES (Antigravity Daylight Lab)
+   ========================================================================== */
+[data-theme="light"] {
+  --color-bg-primary:       var(--prim-day-50);
+  --color-bg-secondary:     var(--prim-day-200);
+  --color-bg-surface:       rgba(255, 255, 255, 0.88);
+  --color-bg-surface-solid: #FFFFFF;
+  --color-bg-elevated:      #FFFFFF;
+  --color-bg-glass:         rgba(247, 247, 245, 0.82);
+  --color-bg-scrim:         rgba(11, 13, 19, 0.58);
+
+  --color-text-primary:     var(--prim-ink-950);
+  --color-text-secondary:   var(--prim-ink-700);
+  --color-text-muted:       var(--prim-ink-500);
+  --color-text-inverse:     var(--prim-ink-50);
+
+  --color-primary:          var(--prim-vermilion-600);
+  --color-primary-hover:    #C52F13;
+  --color-primary-active:   #A6260E;
+  --color-primary-subtle:   rgba(224, 58, 27, 0.09);
+
+  --color-accent-cyan:      var(--prim-cyan-600);
+  --color-accent-cyan-bg:   rgba(8, 145, 178, 0.09);
+  --color-accent-indigo:    var(--prim-indigo-500);
+  --color-accent-indigo-bg: rgba(99, 102, 241, 0.09);
+  --color-accent-amber:     var(--prim-amber-600);
+  --color-accent-amber-bg:  rgba(217, 119, 6, 0.10);
+
+  --color-success:          var(--prim-emerald-600);
+  --color-success-bg:       rgba(5, 150, 105, 0.10);
+
+  --color-border-subtle:    rgba(11, 13, 19, 0.08);
+  --color-border-default:   rgba(11, 13, 19, 0.14);
+  --color-border-strong:    rgba(11, 13, 19, 0.28);
+  --color-focus-ring:       var(--prim-vermilion-600);
+
+  --spotlight-surface:      rgba(224, 58, 27, 0.04);
+  --spotlight-border:       rgba(224, 58, 27, 0.25);
+
+  --gradient-heading:       linear-gradient(180deg, #0B0D13 0%, #333947 100%);
+
+  --shadow-sm:   0 2px 8px rgba(11, 13, 19, 0.05);
+  --shadow-md:   0 14px 34px rgba(11, 13, 19, 0.08);
+  --shadow-lg:   0 24px 56px rgba(11, 13, 19, 0.12);
+  --shadow-glow: 0 10px 30px rgba(224, 58, 27, 0.20);
+
+  --input-bg:    #FFFFFF;
+}

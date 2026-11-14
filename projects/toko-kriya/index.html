@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- Tag <!DOCTYPE html> berfungsi mendeklarasikan tipe dokumen sebagai standar HTML5 ke web browser -->
+<html lang="id">
+<!-- Tag <head> berfungsi menyimpan informasi metadata, judul tab browser, dan link styling CSS eksternal -->
+
+<head>
+  <!-- <meta charset="UTF-8"> mengatur pengkodean karakter internasional agar mendukung semua karakter teks -->
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport"> membuat tata letak halaman responsif di semua perangkat (HP, Tablet, Laptop) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda â€” Toko Kriya Sidoarjo</title>
+  <meta name="description"
+    content="Toko Kriya Sidoarjo menghadirkan produk kerajinan tangan lokal: Kulit Khas Tanggulangin, Batik Jetis, Anyaman Bambu Candi, dan Gerabah Tarik.">
+  <!-- Menghubungkan file stylesheet CSS utama (css/style.css) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Tag <body> membungkus seluruh konten visual yang ditampilkan ke pengguna -->
+
+<body>
+
+  <!-- ========================================================================
+       BAGIAN 1: HEADER & NAVIGASI GLOBAL (<header>, <nav>)
+       Fungsi: Menampilkan identitas logo toko dan menu navigasi antar 5 halaman
+       ======================================================================== -->
+  <header class="site-header">
+    <!-- .container berfungsi membatasi lebar konten maksimal agar berada rapi di tengah -->
+    <div class="container nav-bar">
+
+      <!-- Tag <a> logo toko: Tautan kembali ke beranda (index.html) -->
+      <a href="index.html" class="brand-logo">
+        <!-- <svg> menampilkan ikon logo vektor berbasis kode yang tajam di semua resolusi -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <span>Toko Kriya Sidoarjo</span>
+      </a>
+
+      <!-- PURE CSS MOBILE TOGGLE:
+           <input type="checkbox"> tersembunyi sebagai saklar pembuka menu navigasi mobile tanpa JavaScript -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <!-- <label> berfungsi sebagai tombol ikon tiga garis (hamburger) yang dapat disentuh di HP -->
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- <ul> & <li> menyusun daftar menu navigasi secara semantik -->
+      <ul class="nav-links">
+        <!-- Class 'active' menandai bahwa menu 'Beranda' sedang aktif dikunjungi -->
+        <li><a href="index.html" class="nav-link active">Beranda</a></li>
+        <li><a href="katalog.html" class="nav-link">Katalog</a></li>
+        <li><a href="keranjang.html" class="nav-link">Keranjang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       BAGIAN 2: KONTEN UTAMA HALAMAN BERANDA (<main>)
+       Berisi 3 section sesuai sketsa wireframe: Banner Promosi, Kategori, & Produk Unggulan
+       ======================================================================== -->
+  <main>
+
+    <!-- 1. HERO BANNER PROMOSI (Sesuai Kotak Banner Lebar di Wireframe)
+         Tag semantik <section> berfungsi mengelompokkan area promosi utama toko -->
+    <section class="hero-banner-section">
+      <div class="container">
+        <!-- .hero-banner berfungsi sebagai bingkai banner besar dengan efek 3D -->
+        <div class="hero-banner scene-3d">
+          <img src="assets/images/hero-showcase.jpg" alt="Banner Promosi Kriya Sidoarjo" class="hero-banner-img">
+          <!-- .hero-banner-overlay adalah kotak putih di tengah banner yang memuat teks ajakan & tombol -->
+          <div class="hero-banner-overlay">
+            <h1>Warisan Kriya Otentik Sidoarjo</h1>
+            <p>Koleksi pilihan kerajinan tangan dari pengrajin lokal Tanggulangin, Jetis, dan Candi.</p>
+            <a href="katalog.html" class="btn btn-dark">Jelajahi Katalog Kriya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. KATEGORI PRODUK (4 Kotak Horizontal Sesuai Wireframe) -->
+    <section class="home-categories-section">
+      <div class="container">
+        <h2 class="section-title">Kategori Produk</h2>
+        <!-- .categories-grid membagi 4 kotak kategori secara sejajar sama rata (CSS Grid 4 Kolom) -->
+        <div class="categories-grid">
+          <!-- Kotak Kategori 1: Produk Kulit Khas Tanggulangin -->
+          <a href="katalog.html?kategori=kulit" class="category-tile">
+            <div class="category-tile-thumb">
+              <img src="assets/images/kategori-kulit.jpg" alt="Kategori Kerajinan Produk Kulit Khas Tanggulangin"
+                loading="lazy">
+            </div>
+            <div class="category-tile-body">
+              <span class="category-tile-tag">Sentra Tanggulangin</span>
+              <h3 class="category-tile-title">Produk Kulit Khas Tanggulangin</h3>
+              <span class="category-tile-link">Lihat Produk <span class="arrow">&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Kotak Kategori 2: Batik Tulis Jetis -->
+          <a href="katalog.html?kategori=batik" class="category-tile">
+            <div class="category-tile-thumb">
+              <img src="assets/images/kategori-batik.jpg" alt="Kategori Batik Tulis Jetis" loading="lazy">
+            </div>
+            <div class="category-tile-body">
+              <span class="category-tile-tag">Kampung Batik Jetis</span>
+              <h3 class="category-tile-title">Batik Tulis Jetis</h3>
+              <span class="category-tile-link">Lihat Produk <span class="arrow">&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Kotak Kategori 3: Anyaman Bambu Candi -->
+          <a href="katalog.html?kategori=bambu" class="category-tile">
+            <div class="category-tile-thumb">
+              <img src="assets/images/kategori-anyaman.jpg" alt="Kategori Anyaman Bambu Candi" loading="lazy">
+            </div>
+            <div class="category-tile-body">
+              <span class="category-tile-tag">Pengrajin Candi</span>
+              <h3 class="category-tile-title">Anyaman Bambu</h3>
+              <span class="category-tile-link">Lihat Produk <span class="arrow">&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Kotak Kategori 4: Gerabah & Keramik Tarik -->
+          <a href="katalog.html?kategori=keramik" class="category-tile">
+            <div class="category-tile-thumb">
+              <img src="assets/images/kategori-keramik.jpg" alt="Kategori Gerabah & Keramik Tarik" loading="lazy">
+            </div>
+            <div class="category-tile-body">
+              <span class="category-tile-tag">Sentra Gerabah Tarik</span>
+              <h3 class="category-tile-title">Gerabah & Keramik</h3>
+              <span class="category-tile-link">Lihat Produk <span class="arrow">&rarr;</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PRODUK UNGGULAN (4 Kartu Produk Sejajar Sesuai Wireframe) -->
+    <section class="home-featured-section">
+      <div class="container">
+        <h2 class="section-title">Produk Unggulan</h2>
+        <!-- .grid-4-col menyusun 4 kartu produk secara sejajar (CSS Grid 4 Kolom) -->
+        <div class="grid-4-col" id="featured-products-grid">
+
+          <!-- KARTU PRODUK 1: Tas Kulit
+               Tag semantik <article> menandai konten kartu produk mandiri yang independen -->
+          <article class="product-card" data-id="prod-1">
+            <!-- .product-card-thumb adalah wadah gambar bujur sangkar (aspect-ratio 1:1) -->
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-1" aria-label="Lihat detail Tas Kulit Nabati Tanggulangin">
+                <img src="assets/images/tas-kulit.jpg" alt="Tas Kulit Nabati Tanggulangin">
+              </a>
+            </div>
+            <!-- .product-card-body membungkus judul, harga, dan tombol aksi -->
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-1" class="product-title-link">Tas Kulit Nabati Tanggulangin</a>
+              </h3>
+              <div class="product-card-price">Rp 685.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-1">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KARTU PRODUK 2: Kain Batik -->
+          <article class="product-card" data-id="prod-2">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-2" aria-label="Lihat detail Batik Tulis Motif Beras Wutah">
+                <img src="assets/images/batik-jetis.jpg" alt="Kain Batik Tulis Jetis">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-2" class="product-title-link">Batik Tulis Motif Beras Wutah</a>
+              </h3>
+              <div class="product-card-price">Rp 520.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-2">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KARTU PRODUK 3: Lampu Bambu -->
+          <article class="product-card" data-id="prod-3">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-3" aria-label="Lihat detail Lampu Meja Anyaman Bambu">
+                <img src="assets/images/lampu-bambu.jpg" alt="Lampu Meja Anyaman Geometris">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-3" class="product-title-link">Lampu Meja Anyaman Bambu</a>
+              </h3>
+              <div class="product-card-price">Rp 310.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-3">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KARTU PRODUK 4: Guci Terracotta -->
+          <article class="product-card" data-id="prod-4">
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=prod-4" aria-label="Lihat detail Guci Terracotta Ukir Tribal">
+                <img src="assets/images/guci-keramik.jpg" alt="Guci Terracotta Ukir Tribal">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=prod-4" class="product-title-link">Guci Terracotta Ukir Tribal</a>
+              </h3>
+              <div class="product-card-price">Rp 275.000</div>
+              <div class="product-card-action">
+                <a href="keranjang.html" class="btn btn-dark btn-block btn-add-cart" data-id="prod-4">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       BAGIAN 3: FOOTER (3 KOLOM SESUAI WIREFRAME) (<footer>)
+       Fungsi: Memuat informasi profil, kontak, dan jadwal operasional toko.
+       ======================================================================== -->
+  <footer class="site-footer-wireframe">
+    <div class="container">
+      <div class="footer-3col-grid">
+        <!-- Kolom 1: Profil Singkat & Alamat Toko -->
+        <div class="footer-column">
+          <h4>Toko Kriya Sidoarjo</h4>
+          <p>
+            Pusat kurasi produk kerajinan tangan otentik asli Kota Sidoarjo, Jawa Timur. Melestarikan warisan tradisi
+            lokal dengan kualitas terbaik.
+          </p>
+          <p style="margin-top: 8px;">Jl. Raya Krian No. 45, Sidoarjo, Jawa Timur</p>
+        </div>
+
+        <!-- Kolom 2: Saluran Komunikasi (Kontak) -->
+        <div class="footer-column">
+          <h4>Kontak</h4>
+          <ul class="footer-links-list">
+            <li>WhatsApp: +62 895-3970-81621</li>
+            <li>Telepon: 0895-3970-81621</li>
+            <li>Email: Fazaawan61@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Jadwal Buka & Pengiriman -->
+        <div class="footer-column">
+          <h4>Jam Operasional</h4>
+          <ul class="footer-links-list">
+            <li>Senin - Jumat: 08.00 - 20.00 WIB</li>
+            <li>Sabtu - Minggu: 09.00 - 21.00 WIB</li>
+            <li>Pengiriman Setiap Hari Kerja</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris Bawah: Informasi Hak Cipta & Mata Pelajaran Sekolah -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Toko Kriya Sidoarjo. Seluruh Hak Cipta Dilindungi.</span>
+        <span>Materi Uji STS Pemrograman Web — SMK Krian 1 Sidoarjo</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT STORE & SINKRONISASI PRODUK DARI ADMIN -->
+  <script src="js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const featuredGrid = document.getElementById('featured-products-grid');
+
+      function renderFeatured() {
+        if (!featuredGrid) return;
+        const products = (typeof ProductStore !== 'undefined') ? ProductStore.getAll() : [];
+        const featured = products.slice(0, 4);
+
+        featuredGrid.innerHTML = '';
+        if (featured.length === 0) {
+          featuredGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--c-text-muted);">Belum ada produk unggulan yang ditampilkan.</div>';
+          return;
+        }
+
+        featured.forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+          card.setAttribute('data-id', p.id);
+
+          const formattedPrice = (typeof ProductStore !== 'undefined')
+            ? ProductStore.formatRupiah(p.price)
+            : 'Rp ' + Number(p.price || 0).toLocaleString('id-ID');
+
+          card.innerHTML = `
+            <div class="product-card-thumb">
+              <a href="detail-produk.html?id=${p.id}" aria-label="Lihat detail ${p.name}">
+                <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='assets/images/tas-kulit.jpg'">
+              </a>
+            </div>
+            <div class="product-card-body">
+              <h3 class="product-card-title">
+                <a href="detail-produk.html?id=${p.id}" class="product-title-link">${p.name}</a>
+              </h3>
+              <div class="product-card-price">${formattedPrice}</div>
+              <div class="product-card-action">
+                <a href="keranjang.html?add=${p.id}&qty=1" class="btn btn-dark btn-block btn-add-cart" data-id="${p.id}">Tambah ke Keranjang</a>
+              </div>
+            </div>
+          `;
+          featuredGrid.appendChild(card);
+        });
+      }
+
+      if (typeof ProductStore !== 'undefined') {
+        ProductStore.listen(renderFeatured);
+      }
+      renderFeatured();
+    });
+  </script>
+</body>
+</html>

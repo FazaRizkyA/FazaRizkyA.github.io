@@ -1,0 +1,62 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "primitive": {
+    "color": {
+      "obsidian": {
+        "950": { "$value": "#0B0C10", "$type": "color" },
+        "900": { "$value": "#13151C", "$type": "color" },
+        "800": { "$value": "#1C1F2A", "$type": "color" },
+        "700": { "$value": "#2A2E3D", "$type": "color" }
+      },
+      "alabaster": {
+        "50": { "$value": "#F8F7F4", "$type": "color" },
+        "100": { "$value": "#FFFFFF", "$type": "color" },
+        "200": { "$value": "#EAE8E1", "$type": "color" },
+        "300": { "$value": "#D5D2C8", "$type": "color" }
+      },
+      "vermilion": {
+        "400": { "$value": "#FF6B4F", "$type": "color" },
+        "500": { "$value": "#FF4D2D", "$type": "color" },
+        "600": { "$value": "#E03A1B", "$type": "color" }
+      },
+      "cyan": {
+        "400": { "$value": "#2DD4BF", "$type": "color" },
+        "500": { "$value": "#14B8A6", "$type": "color" },
+        "600": { "$value": "#0D9488", "$type": "color" }
+      },
+      "amber": {
+        "400": { "$value": "#FBBF24", "$type": "color" },
+        "500": { "$value": "#F59E0B", "$type": "color" }
+      }
+    },
+    "space": {
+      "1": { "$value": "0.25rem", "$type": "dimension" },
+      "2": { "$value": "0.5rem", "$type": "dimension" },
+      "3": { "$value": "0.75rem", "$type": "dimension" },
+      "4": { "$value": "1rem", "$type": "dimension" },
+      "6": { "$value": "1.5rem", "$type": "dimension" },
+      "8": { "$value": "2rem", "$type": "dimension" },
+      "12": { "$value": "3rem", "$type": "dimension" },
+      "16": { "$value": "4rem", "$type": "dimension" },
+      "24": { "$value": "6rem", "$type": "dimension" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "primary": { "$value": "{primitive.color.vermilion.500}", "$type": "color" },
+      "accent": { "$value": "{primitive.color.cyan.500}", "$type": "color" },
+      "bgPrimary": { "$value": "{primitive.color.obsidian.950}", "$type": "color" },
+      "bgSurface": { "$value": "{primitive.color.obsidian.900}", "$type": "color" }
+    }
+  },
+  "component": {
+    "button": {
+      "bg": { "$value": "{semantic.color.primary}", "$type": "color" },
+      "radius": { "$value": "0.625rem", "$type": "dimension" }
+    },
+    "card": {
+      "bg": { "$value": "{semantic.color.bgSurface}", "$type": "color" },
+      "radius": { "$value": "1rem", "$type": "dimension" }
+    }
+  }
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<!-- Tag <!DOCTYPE html> berfungsi mendeklarasikan tipe dokumen sebagai HTML5 modern kepada web browser -->
+<html lang="id">
+<!-- Tag <head> berfungsi menyimpan informasi metadata halaman, judul web, dan pemanggilan file CSS eksternal -->
+<head>
+  <!-- <meta charset="UTF-8"> berfungsi mengatur pengkodean karakter agar mendukung seluruh simbol dan huruf standar internasional -->
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport"> berfungsi membuat tata letak halaman responsif menyesuaikan lebar layar perangkat (HP, Tablet, Desktop) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- <title> berfungsi menentukan judul halaman yang tampil di tab browser -->
+  <title>Checkout — Toko Kriya Sidoarjo</title>
+  
+  <!-- <meta name="description"> berfungsi memberikan ringkasan isi halaman untuk mesin pencari (SEO) -->
+  <meta name="description" content="Formulir checkout dan pembayaran pemesanan produk kerajinan tangan lokal Sidoarjo.">
+  
+  <!-- <link rel="stylesheet"> berfungsi menghubungkan halaman HTML ini dengan file styling CSS utama (css/style.css) -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- <style> internal di bawah ini berfungsi khusus mengatur pop-up modal dialog notifikasi sukses murni CSS tanpa JavaScript -->
+  <style>
+    /* .modal-overlay berfungsi sebagai lapisan latar belakang gelap transparan di seluruh layar */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(43, 37, 32, 0.75);
+      backdrop-filter: blur(6px);     /* Efek blur pada konten di belakang pop-up */
+      display: none;                  /* Disembunyikan secara default saat halaman baru dibuka */
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;                  /* Memastikan pop-up berada di lapisan paling atas */
+      padding: 20px;
+    }
+    
+    /* Pseudo-class :target berfungsi mendeteksi saat URL memiliki hash '#modal-sukses'
+       sehingga modal otomatis tampil (display: flex) tanpa memerlukan script JavaScript */
+    .modal-overlay:target {
+      display: flex;
+    }
+    
+    /* .modal-card berfungsi sebagai kotak putih tempat menampilkan pesan berhasil */
+    .modal-card {
+      background: var(--c-surface);
+      border-radius: var(--radius-md);
+      max-width: 440px;
+      width: 100%;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.2);
+      border: 1.5px solid var(--c-border);
+    }
+  </style>
+</head>
+
+<!-- Tag <body> berfungsi membungkus seluruh konten visual yang dilihat oleh pengguna -->
+<body>
+
+  <!-- Checkbox Murni CSS untuk Membuka / Menutup Modal Zoom QRIS -->
+  <input type="checkbox" id="qris-zoom-toggle" class="qris-zoom-checkbox" aria-hidden="true">
+
+  <!-- ========================================================================
+       BAGIAN 1: HEADER & NAVIGASI GLOBAL (<header>, <nav>)
+       Fungsi: Menampilkan identitas logo toko dan menu navigasi antar 5 halaman
+       ======================================================================== -->
+  <header class="site-header">
+    <!-- <div class="container"> berfungsi membatasi lebar maksimal konten agar rapi di tengah layar -->
+    <div class="container nav-bar">
+      
+      <!-- Tag <a> brand logo berfungsi sebagai tautan kembali ke halaman beranda (index.html) -->
+      <a href="index.html" class="brand-logo">
+        <!-- Tag <svg> berfungsi menampilkan ikon logo vektor berbasis kode yang tajam tanpa pecah -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <!-- <span> berfungsi membungkus teks nama brand toko -->
+        <span>Toko Kriya Sidoarjo</span>
+      </a>
+
+      <!-- PURE CSS MOBILE TOGGLE:
+           <input type="checkbox"> tersembunyi ini berfungsi sebagai saklar menu di HP.
+           Ketika dicentang, CSS selektor akan menampilkan menu navigasi tanpa butuh JS -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+      <!-- <label> berfungsi sebagai tombol ikon tiga garis (hamburger) yang dapat diklik pengguna HP -->
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Tag <ul> & <li> berfungsi menyusun daftar menu navigasi secara semantik -->
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="katalog.html" class="nav-link">Katalog</a></li>
+        <li><a href="keranjang.html" class="nav-link">Keranjang</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       BAGIAN 2: KONTEN UTAMA CHECKOUT (<main>)
+       Fungsi: Menyediakan formulir pengisian data alamat pembeli, pemilihan
+       metode pembayaran, dan panel ringkasan pesanan sesuai gambar wireframe Page 5
+       ======================================================================== -->
+  <main class="checkout-section">
+    <div class="container">
+      <!-- BREADCRUMB (<nav>): Menampilkan alur dari keranjang menuju ke checkout -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 16px;">
+        <a href="index.html">Beranda</a>
+        <span>/</span>
+        <a href="keranjang.html">Keranjang</a>
+        <span>/</span>
+        <span style="color: var(--c-dark); font-weight: 700;">Checkout</span>
+      </nav>
+
+      <!-- <h1> berfungsi sebagai judul utama halaman (hierarki heading level 1 untuk SEO) -->
+      <h1 class="section-title">Checkout</h1>
+
+      <!-- Pembungkus 2 Kolom: Kolom Kiri untuk Formulir, Kolom Kanan untuk Ringkasan Pesanan -->
+      <div class="checkout-grid-layout">
+        
+        <!-- ====================================================================
+             KOLOM KIRI: FORMULIR PENGIRIMAN & METODE PEMBAYARAN (<form>)
+             Fungsi atribut action="#modal-sukses": Saat form dikirim, halaman akan
+             mengarahkan URL hash ke #modal-sukses untuk memicu pop-up konfirmasi
+             ==================================================================== -->
+        <form action="#modal-sukses" method="get" class="checkout-form-container">
+          
+          <!-- KOTAK 1: FORMULIR DATA PEMBELI (Sesuai Kotak Pertama di Wireframe) -->
+          <div class="checkout-card-box">
+            <h2 class="checkout-card-title">Data Pembeli</h2>
+            
+            <!-- Baris Form 2 Kolom: Nama Lengkap & Nomor HP -->
+            <div class="form-row-2">
+              <!-- Grup input untuk Nama Lengkap -->
+              <div class="form-group-single">
+                <!-- <label> berfungsi memberikan label penjelas untuk input terkait -->
+                <label for="nama" style="font-weight: 700; font-size: 0.88rem;">Nama Lengkap</label>
+                <!-- <input type="text"> berfungsi sebagai field isian teks nama, required artinya wajib diisi -->
+                <input type="text" id="nama" class="form-input-control" placeholder="Nama Lengkap" required>
+              </div>
+
+              <!-- Grup input untuk Nomor Telepon / WhatsApp -->
+              <div class="form-group-single">
+                <label for="telepon" style="font-weight: 700; font-size: 0.88rem;">Nomor Telepon / WhatsApp</label>
+                <!-- <input type="tel"> berfungsi sebagai field khusus nomor telepon -->
+                <input type="tel" id="telepon" class="form-input-control" placeholder="0812xxxxxxxx" required>
+              </div>
+            </div>
+
+            <!-- Baris Form Kolom Penuh: Alamat Lengkap Pembeli -->
+            <div class="form-group-single">
+              <label for="alamat" style="font-weight: 700; font-size: 0.88rem;">Alamat Lengkap</label>
+              <!-- <textarea> berfungsi untuk input teks panjang multi-baris (jalan, nomor rumah, RT/RW, kecamatan) -->
+              <textarea id="alamat" class="form-input-control" rows="3" placeholder="Alamat Lengkap Rumah / Kantor" required></textarea>
+            </div>
+
+            <!-- Baris Form 2 Kolom: Kota/Kecamatan & Kode Pos -->
+            <div class="form-row-2">
+              <div class="form-group-single">
+                <label for="kota" style="font-weight: 700; font-size: 0.88rem;">Kota / Kecamatan</label>
+                <input type="text" id="kota" class="form-input-control" value="Sidoarjo" required>
+              </div>
+              <div class="form-group-single">
+                <label for="kodepos" style="font-weight: 700; font-size: 0.88rem;">Kode Pos</label>
+                <input type="text" id="kodepos" class="form-input-control" placeholder="61262" required>
+              </div>
+            </div>
+
+            <!-- Baris Form: Catatan Tambahan (Opsional) -->
+            <div class="form-group-single" style="margin-bottom: 0;">
+              <label for="catatan" style="font-weight: 700; font-size: 0.88rem;">Catatan Pesanan (Opsional)</label>
+              <input type="text" id="catatan" class="form-input-control" placeholder="Catatan khusus untuk pengrajin / kurir">
+            </div>
+          </div>
+
+          <!-- KOTAK 2: METODE PEMBAYARAN (Sesuai Wireframe dengan Detail Dinamis Murni CSS) -->
+          <div class="checkout-card-box payment-section-card">
+            <h2 class="checkout-card-title">Metode Pembayaran</h2>
+
+            <!-- Radio Inputs Pengendali Opsi Pembayaran Murni CSS -->
+            <input type="radio" name="metode-bayar" id="bayar-bank" class="payment-method-radio">
+            <input type="radio" name="metode-bayar" id="bayar-ewallet" class="payment-method-radio" checked>
+            <input type="radio" name="metode-bayar" id="bayar-cod" class="payment-method-radio">
+
+            <!-- 3 Kotak Pilihan Metode Pembayaran Sejajar -->
+            <div class="payment-tiles-row">
+              <!-- Pilihan 1: Transfer Bank -->
+              <label for="bayar-bank" class="payment-tile-label label-bank">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 2L2 7h20L12 2z"></path>
+                </svg>
+                <span>Transfer Bank</span>
+              </label>
+
+              <!-- Pilihan 2: E-Wallet / QRIS (Default Terpilih) -->
+              <label for="bayar-ewallet" class="payment-tile-label label-ewallet">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span>E-Wallet / QRIS</span>
+              </label>
+
+              <!-- Pilihan 3: COD (Bayar di Tempat) -->
+              <label for="bayar-cod" class="payment-tile-label label-cod">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M6 12h.01M18 12h.01"></path>
+                </svg>
+                <span>Bayar di Tempat (COD)</span>
+              </label>
+            </div>
+
+            <!-- Panel Rincian Pembayaran Berdasarkan Opsi yang Dipilih (Murni CSS) -->
+            <div class="payment-details-container">
+              
+              <!-- Panel 1: Transfer Bank -->
+              <div class="payment-panel panel-bank">
+                <div class="bank-transfer-details">
+                  <p class="panel-intro-text">
+                    Silakan transfer pembayaran ke salah satu rekening bank resmi Toko Kriya Sidoarjo:
+                  </p>
+                  <div class="bank-accounts-grid">
+                    <div class="bank-account-card">
+                      <div class="bank-badge">BCA</div>
+                      <div class="bank-account-info">
+                        <span class="bank-acc-number">829-019-2811</span>
+                        <span class="bank-acc-holder">a.n. Toko Kriya Sidoarjo</span>
+                      </div>
+                    </div>
+                    <div class="bank-account-card">
+                      <div class="bank-badge">MANDIRI</div>
+                      <div class="bank-account-info">
+                        <span class="bank-acc-number">142-00-1928374-1</span>
+                        <span class="bank-acc-holder">a.n. Toko Kriya Sidoarjo</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="panel-note-text">
+                    * Verifikasi pembayaran transfer bank diproses otomatis dalam 1-5 menit kerja.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Panel 2: E-Wallet / QRIS (3D Interactive Experience & Decorative Framed Borders) -->
+              <div class="payment-panel panel-qris">
+                <div class="qris-showcase-container">
+                  
+                  <!-- Sisi Kiri: Kartu QRIS Interaktif 3D Berbingkai Cantik (3D Web Experience) -->
+                  <div class="qris-3d-wrapper scene-3d">
+                    <div class="qris-3d-card">
+                      
+                      <!-- Header Identitas QRIS Nasional -->
+                      <div class="qris-card-header">
+                        <div class="qris-brand-badge">
+                          <span class="qris-badge-title">QRIS</span>
+                          <span class="qris-badge-sub">Standar Pembayaran Nasional</span>
+                        </div>
+                        <span class="qris-merchant-status">Terverifikasi</span>
+                      </div>
+
+                      <!-- Bingkai Ornamen Dekoratif di Samping & Sekeliling QRIS -->
+                      <div class="qris-frame-container">
+                        <!-- Border Ornamen Dekoratif Sisi Kiri -->
+                        <div class="qris-side-border border-left" aria-hidden="true">
+                          <span class="border-dot"></span>
+                          <span class="border-line"></span>
+                          <span class="border-dot"></span>
+                        </div>
+
+                        <!-- Frame Utama Tempat Gambar QRIS dengan 3D Corner Brackets (Bisa Diklik untuk Memperbesar) -->
+                        <label for="qris-zoom-toggle" class="qris-code-frame qris-clickable-frame" title="Klik untuk Memperbesar QRIS">
+                          <span class="corner-bracket top-left" aria-hidden="true"></span>
+                          <span class="corner-bracket top-right" aria-hidden="true"></span>
+                          <span class="corner-bracket bottom-left" aria-hidden="true"></span>
+                          <span class="corner-bracket bottom-right" aria-hidden="true"></span>
+
+                          <!-- Gambar QRIS Asli dari Pengguna -->
+                          <img src="assets/images/qris-pembayaran.jpg" alt="Kode QRIS Resmi Toko Kriya Sidoarjo" class="qris-image">
+
+                          <!-- Efek Animasi Garis Scan 3D Melintas Halus -->
+                          <div class="qris-scan-sheen" aria-hidden="true"></div>
+
+                          <!-- Petunjuk Klik Perbesar (Hover Overlay) -->
+                          <span class="qris-zoom-hint" aria-hidden="true">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                              <circle cx="11" cy="11" r="8"></circle>
+                              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                              <line x1="11" y1="8" x2="11" y2="14"></line>
+                              <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                            Klik Perbesar
+                          </span>
+                        </label>
+
+                        <!-- Border Ornamen Dekoratif Sisi Kanan -->
+                        <div class="qris-side-border border-right" aria-hidden="true">
+                          <span class="border-dot"></span>
+                          <span class="border-line"></span>
+                          <span class="border-dot"></span>
+                        </div>
+                      </div>
+
+                      <!-- Tombol Tambahan untuk Memperbesar Kode QR -->
+                      <label for="qris-zoom-toggle" class="qris-zoom-cta-btn" title="Perbesar tampilan QR agar lebih mudah discan kamera">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <polyline points="9 21 3 21 3 15"></polyline>
+                          <line x1="21" y1="3" x2="14" y2="10"></line>
+                          <line x1="3" y1="21" x2="10" y2="14"></line>
+                        </svg>
+                        <span>Klik untuk Memperbesar QRIS</span>
+                      </label>
+
+                      <!-- Footer Informasi Merchant & Total Nominal -->
+                      <div class="qris-card-footer">
+                        <div class="qris-merchant-info">
+                          <strong>Toko Kriya Sidoarjo</strong>
+                          <span class="qris-nmid">NMID: ID1020261908845</span>
+                        </div>
+                        <div class="qris-total-badge">
+                          <span class="qris-total-label">Total Tagihan</span>
+                          <span class="qris-total-amount">Rp 1.010.000</span>
+                        </div>
+                      </div>
+
+                      <!-- Refleksi Pencahayaan 3D Sheen -->
+                      <div class="qris-card-glare" aria-hidden="true"></div>
+                    </div>
+                  </div>
+
+                  <!-- Sisi Kanan: Panduan Langkah Scan & Ekosistem E-Wallet (Anti-UI-Slop) -->
+                  <div class="qris-instructions-side">
+                    <div class="qris-guide-header">
+                      <span class="qris-guide-tag">Pembayaran Instan & Otomatis</span>
+                      <h3 class="qris-guide-title">Scan QRIS Toko Kriya Sidoarjo</h3>
+                      <p class="qris-guide-desc">
+                        Pindai kode QRIS di samping menggunakan aplikasi dompet digital atau mobile banking berstandar Bank Indonesia (ASPI).
+                      </p>
+                    </div>
+
+                    <!-- 3 Langkah Pembayaran Mudah -->
+                    <ol class="qris-steps-list">
+                      <li>
+                        <span class="step-num">1</span>
+                        <div class="step-text">
+                          <strong>Buka Aplikasi Pembayaran</strong>
+                          <span>Buka DANA, GoPay, OVO, ShopeePay, atau m-Banking pilihan Anda di ponsel.</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="step-num">2</span>
+                        <div class="step-text">
+                          <strong>Arahkan Kamera ke Kode QR</strong>
+                          <span>Pilih menu <em>Scan QR / Bayar</em> lalu arahkan kamera ke bingkai QRIS di samping.</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span class="step-num">3</span>
+                        <div class="step-text">
+                          <strong>Konfirmasi & Masukkan PIN</strong>
+                          <span>Periksa nama penerima <strong>Toko Kriya Sidoarjo</strong> dan nominal <strong>Rp 1.010.000</strong>, lalu konfirmasi pembayaran.</span>
+                        </div>
+                      </li>
+                    </ol>
+
+                    <!-- Ekosistem Dompet Digital & Bank yang Didukung -->
+                    <div class="qris-supported-ecosystem">
+                      <span class="ecosystem-title">Mendukung Seluruh Aplikasi QRIS:</span>
+                      <div class="ecosystem-badges">
+                        <span class="eco-pill">DANA</span>
+                        <span class="eco-pill">GoPay</span>
+                        <span class="eco-pill">OVO</span>
+                        <span class="eco-pill">ShopeePay</span>
+                        <span class="eco-pill">BCA Mobile</span>
+                        <span class="eco-pill">Livin' Mandiri</span>
+                        <span class="eco-pill">BRImo</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Panel 3: Bayar di Tempat (COD) -->
+              <div class="payment-panel panel-cod">
+                <div class="cod-details-card">
+                  <div class="cod-header">
+                    <strong>Layanan Bayar di Tempat (COD)</strong>
+                    <span class="cod-badge">Area Sidoarjo & Surabaya</span>
+                  </div>
+                  <p class="cod-desc">
+                    Siapkan uang tunai pas sejumlah <strong>Rp 1.010.000</strong> saat kurir mengantarkan pesanan kriya ke alamat rumah Anda. Pesanan Anda akan segera dipersiapkan dan dikirim dari pengrajin lokal Sidoarjo.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Input submit tersembunyi: berfungsi memproses pengiriman data formulir
+               Elemen ini akan dipicu secara otomatis saat label 'Buat Pesanan' di sisi kanan diklik -->
+          <input type="submit" id="submit-order-form" style="display: none;">
+        </form>
+
+        <!-- ====================================================================
+             KOLOM KANAN: PANEL RINGKASAN PESANAN (<aside>)
+             Tag semantik <aside> berfungsi sebagai informasi pendukung/samping
+             yang menampilkan rincian total belanja, ongkir, dan tombol submit
+             ==================================================================== -->
+        <aside class="summary-card">
+          <h2 class="summary-title">Ringkasan Pesanan</h2>
+
+          <!-- Baris biaya subtotal belanja barang -->
+          <div class="summary-row-item">
+            <span>Total Belanja</span>
+            <span style="font-weight: 700; color: var(--c-dark);">Rp 995.000</span>
+          </div>
+
+          <!-- Baris ongkos kirim lokal Sidoarjo -->
+          <div class="summary-row-item">
+            <span>Ongkos Kirim</span>
+            <span style="font-weight: 700; color: var(--c-dark);">Rp 15.000</span>
+          </div>
+
+          <!-- Baris total keseluruhan yang harus dibayar -->
+          <div class="summary-row-item total">
+            <span>Total Bayar</span>
+            <span class="price-tag">Rp 1.010.000</span>
+          </div>
+
+          <!-- Tombol Aksi "Buat Pesanan":
+               Menggunakan elemen <label for="submit-order-form"> agar saat tombol ini diklik,
+               formulir di sebelah kiri otomatis divalidasi dan disubmit tanpa bantuan JavaScript -->
+          <div style="margin-top: 24px;">
+            <label for="submit-order-form" class="btn btn-dark btn-block" style="padding: 12px 16px; cursor: pointer;">
+              Buat Pesanan
+            </label>
+          </div>
+
+          <!-- Tautan kembali ke halaman keranjang -->
+          <div style="margin-top: 14px; text-align: center;">
+            <a href="keranjang.html" style="font-size: 0.85rem; color: var(--c-text-muted); text-decoration: underline;">
+              &larr; Kembali ke Keranjang
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       BAGIAN 3: MODAL POP-UP NOTIFIKASI SUKSES (PURE CSS :target)
+       Fungsi: Menampilkan dialog konfirmasi pemesanan berhasil tanpa JavaScript.
+       Elemen ini aktif saat URL berubah menjadi checkout.html#modal-sukses
+       ======================================================================== -->
+  <aside id="modal-sukses" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <!-- Ikon ceklis centang hijau sukses -->
+      <div style="width: 54px; height: 54px; background: #E8F5EE; color: #2D6A4F; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 1.6rem; font-weight: 800;">
+        ✓
+      </div>
+      <!-- Judul pesan sukses -->
+      <h2 id="modal-title" style="font-size: 1.4rem; font-weight: 800; color: var(--c-dark); margin-bottom: 8px;">Pesanan Berhasil Dibuat!</h2>
+      <p style="color: var(--c-text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+        Terima kasih telah berbelanja kerajinan otentik Sidoarjo. Pengrajin kami akan segera memproses pesanan Anda.
+      </p>
+      
+      <!-- Kotak rincian kode pesanan dan tagihan -->
+      <div style="background: var(--c-surface-alt); padding: 12px; border-radius: var(--radius-sm); font-size: 0.88rem; margin-bottom: 24px; border: 1px solid var(--c-border);">
+        Kode Pesanan: <strong style="color: var(--c-primary);">#KRY-2026-0908</strong><br>
+        Total Tagihan: <strong>Rp 1.010.000</strong>
+      </div>
+      
+      <!-- Tombol navigasi setelah berhasil memesan -->
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <a href="index.html" class="btn btn-dark btn-sm">Ke Beranda</a>
+        <a href="katalog.html" class="btn btn-outline btn-sm">Lihat Katalog</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       MODAL ZOOM QRIS MURNI CSS (LIGHTBOX VIEW AGAR MUDAH DISCAN KAMERA HP)
+       ======================================================================== -->
+  <div class="qris-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="qris-modal-title">
+    <!-- Backdrop overlay: Saat diklik di luar area kartu, modal akan otomatis tertutup -->
+    <label for="qris-zoom-toggle" class="qris-lightbox-backdrop" aria-label="Tutup"></label>
+
+    <div class="qris-lightbox-card scene-3d">
+      <!-- Tombol Tutup Silang di Pojok Kanan Atas -->
+      <label for="qris-zoom-toggle" class="qris-lightbox-close" aria-label="Tutup Tampilan QRIS">&times;</label>
+
+      <!-- Header Modal QRIS -->
+      <div class="qris-lightbox-header">
+        <div class="qris-brand-badge">
+          <span class="qris-badge-title" style="font-size: 1.5rem;">QRIS</span>
+          <span class="qris-badge-sub">Standar Pembayaran Nasional</span>
+        </div>
+        <span class="qris-merchant-status">Terverifikasi</span>
+      </div>
+
+      <div class="qris-lightbox-merchant">
+        <h3 id="qris-modal-title">Toko Kriya Sidoarjo</h3>
+        <span class="qris-nmid">NMID: ID1020261908845</span>
+      </div>
+
+      <!-- Bingkai Besar QRIS dengan Border Ornamen di Samping -->
+      <div class="qris-lightbox-frame-wrap">
+        <!-- Border Ornamen Samping Kiri -->
+        <div class="qris-side-border border-left" style="height: 310px;" aria-hidden="true">
+          <span class="border-dot"></span>
+          <span class="border-line"></span>
+          <span class="border-dot"></span>
+        </div>
+
+        <!-- Frame Besar Kode QR -->
+        <div class="qris-code-frame qris-large-code-frame">
+          <span class="corner-bracket top-left" style="width: 20px; height: 20px; border-width: 4px 0 0 4px;" aria-hidden="true"></span>
+          <span class="corner-bracket top-right" style="width: 20px; height: 20px; border-width: 4px 4px 0 0;" aria-hidden="true"></span>
+          <span class="corner-bracket bottom-left" style="width: 20px; height: 20px; border-width: 0 0 4px 4px;" aria-hidden="true"></span>
+          <span class="corner-bracket bottom-right" style="width: 20px; height: 20px; border-width: 0 4px 4px 0;" aria-hidden="true"></span>
+
+          <!-- Gambar QRIS Ukuran Besar (Jelas & Sangat Mudah Di-scan oleh Kamera Smartphone) -->
+          <img src="assets/images/qris-pembayaran.jpg" alt="Kode QRIS Pembayaran Ukuran Besar" class="qris-large-image">
+
+          <!-- Animasi Garis Scan 3D Melintas Halus -->
+          <div class="qris-scan-sheen" style="height: 4px;" aria-hidden="true"></div>
+        </div>
+
+        <!-- Border Ornamen Samping Kanan -->
+        <div class="qris-side-border border-right" style="height: 310px;" aria-hidden="true">
+          <span class="border-dot"></span>
+          <span class="border-line"></span>
+          <span class="border-dot"></span>
+        </div>
+      </div>
+
+      <!-- Informasi Total Pembayaran -->
+      <div class="qris-lightbox-total">
+        <span>Total Tagihan Pesanan</span>
+        <strong>Rp 1.010.000</strong>
+      </div>
+
+      <!-- Instruksi Singkat -->
+      <p class="qris-lightbox-hint">
+        Arahkan kamera ponsel dari aplikasi <strong>DANA, GoPay, OVO, ShopeePay</strong>, atau <strong>Mobile Banking</strong> ke kode di atas.
+      </p>
+
+      <!-- Tombol Tutup Tampilan -->
+      <label for="qris-zoom-toggle" class="btn btn-dark btn-block" style="cursor: pointer; padding: 12px; margin-top: 14px;">
+        Tutup Tampilan Penuh
+      </label>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       BAGIAN 4: FOOTER (3 KOLOM SESUAI WIREFRAME) (<footer>)
+       Fungsi: Memuat informasi profil, kontak, dan jadwal operasional toko.
+       ======================================================================== -->
+  <footer class="site-footer-wireframe">
+    <div class="container">
+      <div class="footer-3col-grid">
+        <!-- Kolom 1: Profil Toko & Alamat -->
+        <div class="footer-column">
+          <h4>Toko Kriya Sidoarjo</h4>
+          <p>
+            Pusat kurasi produk kerajinan tangan otentik asli Kota Sidoarjo, Jawa Timur. Melestarikan warisan tradisi lokal dengan kualitas terbaik.
+          </p>
+          <p style="margin-top: 8px;">Jl. Raya Krian No. 45, Sidoarjo, Jawa Timur</p>
+        </div>
+
+        <!-- Kolom 2: Kontak -->
+        <div class="footer-column">
+          <h4>Kontak</h4>
+          <ul class="footer-links-list">
+            <li>WhatsApp: +62 895-3970-81621</li>
+            <li>Telepon: 0895-3970-81621</li>
+            <li>Email: Fazaawan61@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Jam Operasional -->
+        <div class="footer-column">
+          <h4>Jam Operasional</h4>
+          <ul class="footer-links-list">
+            <li>Senin - Jumat: 08.00 - 20.00 WIB</li>
+            <li>Sabtu - Minggu: 09.00 - 21.00 WIB</li>
+            <li>Pengiriman Setiap Hari Kerja</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Baris Hak Cipta -->
+      <div class="footer-bottom-bar">
+        <span>&copy; 2026 Toko Kriya Sidoarjo. Seluruh Hak Cipta Dilindungi.</span>
+        <span>Materi Uji STS Pemrograman Web — SMK Krian 1 Sidoarjo</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
