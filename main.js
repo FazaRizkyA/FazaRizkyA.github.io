@@ -42,7 +42,7 @@ const PROJECTS = [
 ];
 
 (function work() {
-  const rows = document.querySelectorAll('.work .trow');
+  const rows = document.querySelectorAll('#karya .trow');
   const img = document.getElementById('wp-img');
   const wip = document.getElementById('wp-wip');
   const frame = img.closest('.work__preview');

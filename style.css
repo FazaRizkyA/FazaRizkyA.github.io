@@ -239,12 +239,7 @@ a.bracket:hover { opacity: .55; }
 .work__stack { color: var(--muted); }
 .work__links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 6px; min-height: 34px; }
 .work__links .bracket { font-size: 11px; }
-.work__links .bracket.is-main {
-  background: var(--hl); color: #0a0a0a;
-  padding: 9px 14px;
-  transition: background .25s, color .25s;
-}
-.work__links .bracket.is-main:hover { opacity: 1; background: var(--ink); }
+.work__links .bracket.is-main { color: var(--ink); }
 .work__note { color: var(--muted); }
 
 .table { width: 100%; }
@@ -286,37 +281,20 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
 .srow--link { color: var(--ink); transition: background .25s; }
 .srow--link:hover { background: rgba(242,242,238,.07); }
 
-/* ================= DESAIN FIGMA ================= */
-.design {
-  display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px;
-  padding: clamp(40px, 6vw, 90px) var(--pad) clamp(60px, 8vw, 120px);
+/* ================= DESAIN FIGMA & SERTIFIKAT (pola sama dengan Karya) ================= */
+.showcase { padding-top: clamp(80px, 10vw, 150px); }
+.showcase__preview { display: block; cursor: zoom-in; }
+.showcase__preview img { object-fit: cover; object-position: top center; }
+.showcase__preview.is-tall img { object-fit: contain; object-position: center; background: #e9e9e6; }
+.showcase__preview--cert { aspect-ratio: 1.41; }
+.showcase__preview--cert img { object-position: center; }
+.showcase__preview:hover img, .showcase__preview:focus-visible img { filter: none; }
+.trow__group { color: inherit; }
+.table__group {
+  padding: 18px 8px 8px; color: var(--muted);
+  border-bottom: 1px solid var(--line);
 }
-.design__left { display: grid; align-content: start; gap: 32px; }
-.design__para { max-width: 360px; color: #cfcfca; }
-.design__sets .table__head, .design__sets .trow { grid-template-columns: 1.5fr 1fr 48px; }
-.design__info { display: grid; gap: 10px; max-width: 470px; }
-.design__desc { font-size: 15px; line-height: 1.5; color: #d6d6d1; }
-.design__meta { color: var(--muted); }
-
-.gallery { display: grid; gap: 22px; grid-template-columns: repeat(2, 1fr); align-content: start; }
-.gallery.is-mobile { grid-template-columns: repeat(5, 1fr); gap: 14px; }
-.gallery.is-single { grid-template-columns: 1fr; }
-.gallery.is-swap { opacity: 0; transform: translateY(8px); }
-.gallery { transition: opacity .35s var(--ease), transform .35s var(--ease); }
-.shot { display: grid; gap: 10px; text-align: left; cursor: zoom-in; }
-.shot .crop { overflow: visible; }
-.shot__img { position: relative; background: #e9e9e6; overflow: hidden; }
-.shot__img img { width: 100%; height: auto; display: block; filter: grayscale(1); transition: transform .9s var(--ease), filter .4s; }
-.shot:hover .shot__img img, .shot:focus-visible .shot__img img { transform: scale(1.03); }
-.shot__img::after {
-  content: "Lihat ↗"; position: absolute; right: 8px; bottom: 8px;
-  font-size: 10px; text-transform: uppercase; background: #0a0a0a; color: var(--ink);
-  padding: 5px 8px; opacity: 0; transition: opacity .25s;
-}
-.shot:hover .shot__img::after, .shot:focus-visible .shot__img::after { opacity: 1; }
-.shot figcaption { display: flex; gap: 10px; color: #cfcfca; }
-.shot figcaption b { font-weight: 400; color: var(--muted); }
-.gallery.is-mobile .shot figcaption { font-size: 9px; }
+.table__group:first-of-type { padding-top: 10px; }
 
 /* penampil layar penuh */
 .viewer {
@@ -449,25 +427,8 @@ body.is-locked { overflow: hidden; }
 .awards .trow { min-height: 40px; }
 
 /* ================= SERTIFIKAT ================= */
-.certs { padding: clamp(80px, 10vw, 150px) var(--pad) 0; }
-.certs__head {
-  display: flex; justify-content: space-between; align-items: end; gap: 32px;
-  padding-bottom: 22px; margin-bottom: clamp(28px, 4vw, 48px);
-  border-bottom: 1px solid var(--line);
-}
-.certs__para { max-width: 340px; color: #cfcfca; }
-.certs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 36px); }
-.cert { display: grid; gap: 18px; align-content: start; }
-.cert__img { display: block; width: 100%; aspect-ratio: 1.41; background: #111; cursor: zoom-in; }
-.cert__img img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.05) brightness(.9); transition: filter .6s var(--ease), transform 1s var(--ease); }
-.cert__img:hover img, .cert__img:focus-visible img { filter: none; }
-.cert__body { display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
-.cert__no { color: var(--muted); }
-.cert__title { font-size: clamp(17px, 1.4vw, 21px); font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; text-transform: uppercase; }
-.cert__meta { color: #b9b9b4; line-height: 1.5; }
 .cert__note { color: var(--ink); display: flex; align-items: center; }
-.cert__links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 6px; }
-.cert__links .bracket { font-size: 10px; }
+.cert__note[hidden] { display: none; }
 
 /* ================= KONTAK ================= */
 .contact {
@@ -519,10 +480,7 @@ body.is-locked { overflow: hidden; }
   .hero__note--a { display: none; }
   .hero__photo { height: 80%; transform: translateX(-50%); }
   @keyframes photoIn { from { opacity: 0; } }
-  .intro, .work, .awards, .contact, .design { grid-template-columns: 1fr; }
-  .gallery.is-mobile { grid-template-columns: repeat(3, 1fr); }
-  .certs__grid { grid-template-columns: repeat(2, 1fr); }
-  .certs__head { flex-direction: column; align-items: start; }
+  .intro, .work, .awards, .contact { grid-template-columns: 1fr; }
   .intro__left { order: 2; }
   .intro__left > .mk { display: none; }
   .cards { grid-template-columns: repeat(2, 1fr); }
@@ -549,9 +507,6 @@ body.is-locked { overflow: hidden; }
   .linkcols ul:last-child { justify-items: start; }
   .tiny-list { display: none !important; }
   .process__photo { height: 70%; }
-  .gallery { grid-template-columns: 1fr; }
-  .gallery.is-mobile { grid-template-columns: repeat(2, 1fr); }
-  .certs__grid { grid-template-columns: 1fr; }
   .viewer__bar { grid-template-columns: 1fr auto; }
   .viewer__count { display: none; }
   .viewer__nav { top: auto; bottom: 14px; transform: none; }

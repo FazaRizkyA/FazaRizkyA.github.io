@@ -125,26 +125,28 @@
     </section>
 
     <!-- ================= DESAIN FIGMA ================= -->
-    <section class="design" id="desain">
-      <div class="design__left">
-        <h2 class="h2"><span class="mk" aria-hidden="true"></span>Desain<br>Figma</h2>
-        <p class="tiny design__para">Wireframe dan sketsa yang saya buat di Figma sebelum masuk ke kode. Klik gambar untuk melihat ukuran penuh, atau buka file PNG-nya.</p>
-
-        <div class="table design__sets" role="tablist" aria-label="Set desain">
-          <div class="table__head tiny" aria-hidden="true"><span>Set desain</span><span>Isi</span><span>Tahun</span></div>
-          <button class="trow is-active" role="tab" aria-selected="true" data-set="0"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Toko Kriya — Desktop</span><span>5 layar</span><span>2026</span></button>
-          <button class="trow" role="tab" aria-selected="false" data-set="1"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Toko Kriya — Mobile</span><span>5 layar</span><span>2026</span></button>
-          <button class="trow" role="tab" aria-selected="false" data-set="2"><span class="trow__name"><span class="mk" aria-hidden="true"></span>KARYAFRAME — Halaman penuh</span><span>Sketsa kasar</span><span>2026</span></button>
-        </div>
-
-        <div class="design__info">
-          <p class="design__desc" id="ds-desc"></p>
-          <p class="tiny design__meta" id="ds-meta"></p>
+    <section class="work showcase" id="desain">
+      <div class="work__left">
+        <h2 class="h2"><span class="mk" aria-hidden="true"></span>Desain Figma</h2>
+        <button class="crop work__preview showcase__preview" id="dz-frame" type="button" aria-label="Lihat desain ukuran penuh">
+          <img id="dz-img" src="assets/figma/kriya-desktop-1-beranda-thumb.jpg" alt="">
+          <i></i><i></i><i></i><i></i>
+        </button>
+        <div class="work__detail" aria-live="polite">
+          <p class="tiny work__count"><span id="dz-no">01</span> / <span id="dz-total">11</span></p>
+          <p class="work__desc" id="dz-desc"></p>
+          <p class="tiny work__stack" id="dz-meta"></p>
+          <div class="work__links">
+            <button class="bracket" type="button" id="dz-open">Lihat ukuran penuh</button>
+            <a class="bracket" id="dz-png" href="#" target="_blank" rel="noopener">Buka PNG ↗</a>
+          </div>
         </div>
       </div>
 
-      <div class="design__right">
-        <div class="gallery" id="ds-gallery" role="tabpanel"></div>
+      <div class="work__right">
+        <div class="table" id="dz-table">
+          <div class="table__head tiny" aria-hidden="true"><span>Layar</span><span>Set desain</span><span>Tahun</span></div>
+        </div>
       </div>
     </section>
 
@@ -239,55 +241,29 @@
     </section>
 
     <!-- ================= SERTIFIKAT ================= -->
-    <section class="certs" id="sertifikat">
-      <div class="certs__head">
+    <section class="work showcase" id="sertifikat">
+      <div class="work__left">
         <h2 class="h2"><span class="mk" aria-hidden="true"></span>Sertifikat</h2>
-        <p class="tiny certs__para">Bukti pelatihan, lomba, dan penilaian proyek yang sudah saya ikuti. Klik sertifikat untuk melihat ukuran penuh.</p>
+        <button class="crop work__preview showcase__preview showcase__preview--cert" id="ct-frame" type="button" aria-label="Lihat sertifikat ukuran penuh">
+          <img id="ct-img" src="assets/sertifikat/gema-thumb.jpg" alt="" loading="lazy">
+          <i></i><i></i><i></i><i></i>
+        </button>
+        <div class="work__detail" aria-live="polite">
+          <p class="tiny work__count"><span id="ct-no">01</span> / 03 — <span id="ct-kind"></span></p>
+          <p class="work__desc" id="ct-desc"></p>
+          <p class="tiny work__stack" id="ct-meta"></p>
+          <p class="tiny cert__note" id="ct-note" hidden><span class="live" aria-hidden="true"></span><span></span></p>
+          <div class="work__links" id="ct-links"></div>
+        </div>
       </div>
 
-      <div class="certs__grid">
-        <article class="cert">
-          <button class="cert__img crop" type="button" data-cert="0" aria-label="Lihat sertifikat GEMA Foundation">
-            <img src="assets/sertifikat/gema-thumb.jpg" alt="Sertifikat Penghargaan GEMA Foundation untuk Faza Rizky Awan" loading="lazy" width="640" height="456">
-            <i></i><i></i><i></i><i></i>
-          </button>
-          <div class="cert__body">
-            <p class="tiny cert__no">01 — Penghargaan</p>
-            <h3 class="cert__title">Lomba Game Development Roblox</h3>
-            <p class="tiny cert__meta">GEMA Foundation · Oktober 2026<br>Tim Tyulpan · Pelatihan intensif 4 pertemuan (8 JP)</p>
-            <p class="tiny cert__note"><span class="live" aria-hidden="true"></span>Sertifikat peserta — sertifikat Juara 1 menyusul</p>
-            <div class="cert__links"><button class="bracket" type="button" data-cert="0">Lihat sertifikat</button></div>
-          </div>
-        </article>
-
-        <article class="cert">
-          <button class="cert__img crop" type="button" data-cert="1" aria-label="Lihat sertifikat GAMELAB Indonesia">
-            <img src="assets/sertifikat/gamelab-thumb.jpg" alt="Sertifikat Penyelesaian GAMELAB kelas Game Edukasi Construct untuk Faza Rizky Awan" loading="lazy" width="640" height="453">
-            <i></i><i></i><i></i><i></i>
-          </button>
-          <div class="cert__body">
-            <p class="tiny cert__no">02 — Penyelesaian kelas</p>
-            <h3 class="cert__title">Game Edukasi Construct</h3>
-            <p class="tiny cert__meta">GAMELAB Indonesia × Educa Studio · 11 September 2026<br>Berlaku hingga 11 September 2029</p>
-            <div class="cert__links">
-              <button class="bracket" type="button" data-cert="1">Lihat sertifikat</button>
-              <a class="bracket" href="https://gamelab.id/certificate/GL6587677237" target="_blank" rel="noopener">Verifikasi ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="cert">
-          <button class="cert__img crop" type="button" data-cert="2" aria-label="Lihat sertifikat SMK Krian 1 Sidoarjo">
-            <img src="assets/sertifikat/smk-thumb.jpg" alt="Sertifikat Hasil Proyek Sumatif Tengah Semester SMK Krian 1 Sidoarjo, predikat A" loading="lazy" width="640" height="434">
-            <i></i><i></i><i></i><i></i>
-          </button>
-          <div class="cert__body">
-            <p class="tiny cert__no">03 — Penilaian proyek</p>
-            <h3 class="cert__title">Proyek Sumatif Tengah Semester — Predikat A</h3>
-            <p class="tiny cert__meta">SMK Krian 1 Sidoarjo · 15 Oktober 2026<br>Proyek kolaborasi · XI RPL 5 · Sangat Baik</p>
-            <div class="cert__links"><button class="bracket" type="button" data-cert="2">Lihat sertifikat</button></div>
-          </div>
-        </article>
+      <div class="work__right">
+        <div class="table" id="ct-table">
+          <div class="table__head tiny" aria-hidden="true"><span>Sertifikat</span><span>Penerbit</span><span>Tahun</span></div>
+          <button class="trow is-active" type="button" data-i="0"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Lomba Game Development Roblox</span><span>GEMA Foundation</span><span>2026</span></button>
+          <button class="trow" type="button" data-i="1"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Game Edukasi Construct</span><span>GAMELAB Indonesia</span><span>2026</span></button>
+          <button class="trow" type="button" data-i="2"><span class="trow__name"><span class="mk" aria-hidden="true"></span>Proyek Sumatif — Predikat A</span><span>SMK Krian 1 Sidoarjo</span><span>2026</span></button>
+        </div>
       </div>
     </section>
 
