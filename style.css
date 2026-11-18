@@ -273,8 +273,9 @@ button.trow:hover:not(.is-active) { background: rgba(242,242,238,.07); }
 .trow.is-active > span:nth-child(2) { border-left: 1px solid rgba(0,0,0,.35); padding-left: 10px; }
 
 .table--sub { margin-top: 56px; }
+.table--sub + .table--sub { margin-top: 36px; }
 .srow {
-  min-height: 28px; padding: 0 8px;
+  min-height: 28px; padding: 6px 8px; line-height: 1.4;
   border-bottom: 1px solid var(--line);
   font-size: 10px; text-transform: uppercase; color: #b9b9b4;
 }

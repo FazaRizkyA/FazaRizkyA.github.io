@@ -11,28 +11,6 @@ const PROJECTS = [
     ]
   },
   {
-    img: 'assets/fresh-clean.jpg', alt: 'Pratinjau website Fresh & Clean Laundry',
-    desc: 'Website laundry rumahan di Desa Wonokalang. Pelanggan menghitung biaya sendiri lalu memesan lewat WhatsApp; setiap pesanan tercatat dengan kode unik di halaman admin pemilik.',
-    stack: 'React 19 · TypeScript · Tailwind 4 · Hono · SQLite · Vitest',
-    links: [
-      ['Buka website', 'projects/fresh-clean/index.html'],
-      ['Desain v1', 'projects/fresh-clean-v1/index.html'],
-      ['Desain v2', 'projects/fresh-clean-v2/index.html']
-    ]
-  },
-  {
-    img: 'assets/karyaframe.jpg', alt: 'Pratinjau KARYAFRAME Studio',
-    desc: 'Landing page studio jasa edit video, toko produk digital, dan jasa web. Ada pratinjau before/after color grading, kalkulator biaya & SLA, mode gelap/terang, dan brand guideline sendiri.',
-    stack: 'HTML · CSS · JavaScript · Design tokens',
-    links: [['Buka website', 'projects/karyaframe/index.html']]
-  },
-  {
-    img: 'assets/toko-kriya.jpg', alt: 'Pratinjau Toko Kriya Sidoarjo',
-    desc: 'Toko online kerajinan khas Sidoarjo — kulit Tanggulangin, batik Jetis, anyaman bambu, gerabah. Lima halaman terhubung: beranda, katalog, detail produk, keranjang, dan checkout dengan QRIS.',
-    stack: 'HTML · CSS · JavaScript · Tugas Pemrograman Web',
-    links: [['Buka toko', 'projects/toko-kriya/index.html']]
-  },
-  {
     img: null, alt: '',
     desc: 'Game horor untuk Roblox, dikerjakan tim tiga orang dan kini di tahap pembuatan 3D. Peran saya: lobi, lokasi peta, cutscene, dan konseptor. AI membantu menyempurnakan kode, mencari error, dan sebagian model 3D.',
     stack: 'Roblox Studio · Luau · Tim 3 orang',
