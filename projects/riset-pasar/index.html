@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riset Permintaan Pasar — Faza Rizky Awan</title>
+  <meta name="description" content="Skill Claude untuk riset data permintaan pasar: setiap angka diverifikasi di sumber aslinya, dicocokkan antarsumber, dan bisa ditelusuri. Lengkap dengan contoh laporan nyata.">
+  <meta name="theme-color" content="#060606">
+  <meta property="og:title" content="Riset Permintaan Pasar — skill Claude">
+  <meta property="og:description" content="Riset pasar dari web yang setiap angkanya bisa ditelusuri ke sumber. Contoh laporan: permintaan tumbler stainless global.">
+  <meta property="og:image" content="https://fazarizkya.github.io/assets/riset-pasar.jpg">
+  <meta property="og:url" content="https://fazarizkya.github.io/projects/riset-pasar/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23060606'/%3E%3Crect x='14' y='26' width='12' height='12' fill='%23f2f2ee'/%3E%3Crect x='38' y='26' width='12' height='12' fill='%23f2f2ee'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@500&family=Oswald:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060606; --bg-2: #0d0d0d; --ink: #f2f2ee; --muted: #8d8d88; --dim: #5a5a56;
+      --line: rgba(242, 242, 238, 0.16); --hl: #e4e4de;
+      --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --cond: "Oswald", "Arial Narrow", sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+      --pad: clamp(16px, 2.2vw, 36px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; }
+    ::selection { background: var(--ink); color: var(--bg); }
+    :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+    .tiny { font-size: 10px; line-height: 1.35; letter-spacing: .02em; text-transform: uppercase; }
+    .mk { display: inline-block; width: 7px; height: 7px; background: currentColor; box-shadow: 11px 0 0 currentColor; margin-right: 22px; vertical-align: middle; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--pad); }
+
+    .top { display: flex; justify-content: space-between; align-items: center; padding: 18px var(--pad); border-bottom: 1px solid var(--line); }
+    .top a { text-decoration: none; }
+    .back { color: var(--muted); }
+    .back:hover { color: var(--ink); }
+
+    .hero { padding: clamp(48px, 9vw, 120px) 0 clamp(32px, 5vw, 64px); }
+    .hero .tiny { color: var(--muted); margin-bottom: 22px; display: block; }
+    h1 { font-family: var(--cond); font-weight: 500; text-transform: uppercase; font-size: clamp(44px, 9vw, 120px); line-height: .92; letter-spacing: -.01em; margin: 0 0 28px; }
+    .lede { max-width: 640px; font-size: clamp(16px, 1.6vw, 19px); font-weight: 300; color: var(--ink); margin: 0 0 30px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+    .bracket { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; text-decoration: none; padding: 6px 0; border-bottom: 1px solid var(--line); }
+    .bracket::before { content: "[ "; color: var(--muted); }
+    .bracket::after { content: " ]"; color: var(--muted); }
+    .bracket.is-main { border-bottom-color: var(--ink); }
+    .bracket:hover { border-bottom-color: var(--ink); }
+
+    section { border-top: 1px solid var(--line); padding: clamp(36px, 5vw, 64px) 0; }
+    h2 { font-family: var(--cond); font-weight: 400; text-transform: uppercase; font-size: clamp(24px, 3vw, 34px); margin: 0 0 26px; letter-spacing: .01em; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px 48px; }
+    .note { color: var(--muted); font-size: 14px; max-width: 420px; margin: 0; }
+
+    ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+    ol.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+    ol.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
+    ol.steps b { font-weight: 500; }
+
+    .score { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .score th, .score td { text-align: left; padding: 11px 0; border-bottom: 1px solid var(--line); }
+    .score th { font-weight: 400; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .02em; }
+    .score td:not(:first-child), .score th:not(:first-child) { text-align: right; width: 22%; }
+    .score tr.total td { font-weight: 500; border-bottom-color: var(--ink); }
+    .score tr.total td:nth-child(2) { background: var(--hl); color: var(--bg); padding-right: 10px; }
+    .finds { margin: 22px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+    .finds li { padding: 6px 0 6px 20px; position: relative; }
+    .finds li::before { content: ""; position: absolute; left: 0; top: 14px; width: 7px; height: 1px; background: var(--muted); }
+
+    /* ---------- laporan (markdown) ---------- */
+    .report-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 18px; }
+    .report-head .tiny { color: var(--muted); }
+    .report { background: var(--bg-2); border: 1px solid var(--line); padding: clamp(18px, 3vw, 44px); max-width: 100%; }
+    .report h1 { font-size: clamp(26px, 3.6vw, 44px); line-height: 1.02; margin: 0 0 14px; }
+    .report h2 { font-size: clamp(20px, 2.4vw, 26px); margin: 40px 0 14px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .report h3 { font-weight: 500; font-size: 16px; margin: 28px 0 10px; }
+    .report p, .report li { font-size: 14.5px; color: #d9d9d4; }
+    .report p { margin: 0 0 12px; }
+    .report ul, .report ol { margin: 0 0 14px; padding-left: 20px; }
+    .report li { margin-bottom: 7px; }
+    .report strong { color: var(--ink); font-weight: 500; }
+    .report a { color: var(--ink); text-decoration-color: var(--dim); text-underline-offset: 2px; word-break: break-word; }
+    .report code { font-family: var(--mono); font-size: 12.5px; background: rgba(242,242,238,.07); padding: 1px 5px; }
+    .tbl { overflow-x: auto; margin: 6px 0 18px; -webkit-overflow-scrolling: touch; }
+    .report table { border-collapse: collapse; font-size: 13px; min-width: 100%; }
+    .report th, .report td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .report th { font-weight: 400; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+    .loading { color: var(--muted); }
+
+    footer { border-top: 1px solid var(--line); padding: 28px var(--pad) 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--muted); }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    @media (max-width: 760px) {
+      .grid2 { grid-template-columns: 1fr; }
+      .score { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top tiny">
+    <a class="back" href="../../#karya">← Kembali ke portofolio</a>
+    <span>Faza Rizky Awan · 2026</span>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <span class="tiny"><span class="mk" aria-hidden="true"></span>Skill AI · Claude · Riset pasar</span>
+      <h1>Riset<br>Permintaan<br>Pasar</h1>
+      <p class="lede">Skill untuk Claude yang mencari data permintaan pasar dari web, dengan satu aturan: setiap angka harus bisa ditelusuri ke sumber aslinya. Angka dicek langsung di halaman sumber, dicocokkan antarsumber, dan yang tidak ditemukan ditulis jujur, bukan dikarang.</p>
+      <div class="links">
+        <a class="bracket is-main" href="#contoh">Lihat contoh laporan</a>
+        <a class="bracket" href="https://github.com/FazaRizkyA/riset-permintaan-pasar" target="_blank" rel="noopener">Kode di GitHub ↗</a>
+        <a class="bracket" href="https://github.com/FazaRizkyA/riset-permintaan-pasar#pemasangan" target="_blank" rel="noopener">Cara memasang ↗</a>
+      </div>
+    </div>
+
+    <section>
+      <div class="grid2">
+        <div>
+          <h2>Cara kerjanya</h2>
+          <p class="note">Masalah riset pasar dari web bukan kurangnya data, tetapi angka yang salah kutip, angka tanpa tahun, dan definisi pasar yang dicampur. Sembilan langkah ini dibuat untuk menutup celah itu.</p>
+        </div>
+        <ol class="steps">
+          <li><span><b>Brief riset.</b> Definisi produk, wilayah, periode, dan tujuan pengguna (ekspor, merek baru, produk digital, investasi).</span></li>
+          <li><span><b>Checklist data.</b> Setiap hal yang diminta jadi satu baris yang wajib dijawab, ditambah data tersirat yang dibutuhkan.</span></li>
+          <li><span><b>Pencarian banyak sudut.</b> Sinonim kategori, beberapa bahasa, dimulai dari sumber resmi dan laporan keuangan.</span></li>
+          <li><span><b>Verifikasi.</b> Angka dicek di halaman aslinya. Data terukur dibedakan dari data model, dan status pesaing dicek terkini.</span></li>
+          <li><span><b>Normalisasi.</b> Mata uang, satuan, tahun data, dan CAGR dihitung ulang. Rasio wajib dari dataset yang sebanding.</span></li>
+          <li><span><b>Triangulasi.</b> Minimal dua sumber independen, cek kewajaran, dan pencarian aktif bukti yang membantah.</span></li>
+          <li><span><b>Celah yang jujur.</b> Proksi atau estimasi berlabel dengan rumusnya, atau ditulis "tidak ditemukan".</span></li>
+          <li><span><b>Status &amp; keyakinan.</b> Setiap jawaban diberi status (Ditemukan, Proksi/Model, Estimasi, Tidak ditemukan) dan tingkat keyakinan.</span></li>
+          <li><span><b>Sapu bersih angka.</b> Setiap angka di laporan, termasuk angka sampingan, harus punya tahun dan sumber, atau rumus.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="grid2">
+        <div>
+          <h2>Hasil uji</h2>
+          <p class="note">Tiga riset nyata dikerjakan dengan dan tanpa skill, lalu dinilai penilai terpisah. Penilai membuka ulang halaman sumber untuk cek acak, menghitung ulang rasio, dan memeriksa status pesaing. Hasil iterasi kedua, November 2026.</p>
+        </div>
+        <div>
+          <table class="score">
+            <thead><tr><th>Kasus riset</th><th>Dengan skill</th><th>Tanpa skill</th></tr></thead>
+            <tbody>
+              <tr><td>Tumbler stainless, global</td><td>6/9</td><td>3/9</td></tr>
+              <tr><td>Bubuk protein nabati, Jerman/UK/Prancis</td><td>10/10</td><td>7/10</td></tr>
+              <tr><td>Template Next.js di marketplace</td><td>7/9</td><td>4/9</td></tr>
+              <tr class="total"><td>Total</td><td>82%</td><td>50%</td></tr>
+            </tbody>
+          </table>
+          <ul class="finds">
+            <li>Tanpa skill: angka yang dikutip ternyata tidak ada di halaman sumbernya.</li>
+            <li>Tanpa skill: pangsa kategori dihitung dari dua daftar berbeda (60%, padahal 47%).</li>
+            <li>Dengan skill: semua angka yang dicek acak cocok dengan sumbernya.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contoh">
+      <div class="report-head">
+        <h2 style="margin:0">Contoh laporan</h2>
+        <span class="tiny">Prompt: "aku mau jual tumbler stainless ke pasar luar negeri, cariin data permintaan pasarnya" · <a href="laporan-tumbler.md">Unduh .md</a></span>
+      </div>
+      <article class="report" id="report">
+        <p class="loading">Memuat laporan… Jika tidak muncul, <a href="laporan-tumbler.md">buka file laporannya langsung</a>.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="tiny">
+    <a href="../../#karya">← Portofolio Faza Rizky Awan</a>
+    <a href="https://github.com/FazaRizkyA/riset-permintaan-pasar" target="_blank" rel="noopener">github.com/FazaRizkyA/riset-permintaan-pasar ↗</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script>
+    (function () {
+      var box = document.getElementById('report');
+      if (!window.marked) return;
+      fetch('laporan-tumbler.md')
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (md) {
+          box.innerHTML = marked.parse(md);
+          box.querySelectorAll('table').forEach(function (t) {
+            var w = document.createElement('div'); w.className = 'tbl';
+            t.parentNode.insertBefore(w, t); w.appendChild(t);
+          });
+          box.querySelectorAll('a[href^="http"]').forEach(function (a) { a.target = '_blank'; a.rel = 'noopener'; });
+        })
+        .catch(function () {});
+    })();
+  </script>
+</body>
+</html>

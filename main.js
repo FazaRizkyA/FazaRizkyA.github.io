@@ -16,6 +16,15 @@ const PROJECTS = [
     stack: 'Roblox Studio · Luau · Tim 3 orang',
     links: [],
     note: 'Belum dirilis — link menyusul saat game terbit di Roblox.'
+  },
+  {
+    img: 'assets/riset-pasar.jpg', alt: 'Pratinjau halaman Riset Permintaan Pasar',
+    desc: 'Skill untuk Claude yang meriset data permintaan pasar dari web. Setiap angka dicek di halaman aslinya, dicocokkan antarsumber, dan yang tidak ditemukan ditulis jujur. Diuji pada tiga riset nyata: skor 82% dengan skill, 50% tanpa skill.',
+    stack: 'Claude Code · Skill (Markdown) · Riset web · Evals',
+    links: [
+      ['Lihat contoh laporan', 'projects/riset-pasar/'],
+      ['Kode di GitHub', 'https://github.com/FazaRizkyA/riset-permintaan-pasar']
+    ]
   }
 ];
 
