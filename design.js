@@ -174,6 +174,13 @@
       desc: 'Menyelesaikan seluruh rangkaian Asesmen Sumatif Tengah Semester berbasis proyek kolaborasi dengan predikat A (Sangat Baik).',
       meta: 'SMK Krian 1 Sidoarjo · XI RPL 5 · 15 Oktober 2026',
       links: []
+    },
+    {
+      file: 'pateron', kind: 'Olimpiade',
+      title: 'Pateron Indonesia — Sidoarjo Olympiad of Science (SOS)',
+      desc: 'Peserta bidang Matematika jenjang SMA/SMK/MA dalam babak penyisihan olimpiade sains se-Kabupaten Sidoarjo, meraih peringkat 56 dari 70 peserta.',
+      meta: 'Pateron Indonesia · No. SRT/537.01/2237/PATERON/XI/2026 · 1 November 2026',
+      links: []
     }
   ];
   const ctFrame = document.getElementById('ct-frame');
