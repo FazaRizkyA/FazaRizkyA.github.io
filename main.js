@@ -25,6 +25,24 @@ const PROJECTS = [
       ['Lihat contoh laporan', 'projects/riset-pasar/'],
       ['Kode di GitHub', 'https://github.com/FazaRizkyA/market-demand-research']
     ]
+  },
+  {
+    img: 'assets/ular-tangga.jpg', alt: 'Pratinjau game Ular Tangga Kuis tingkat Sulit',
+    desc: 'Game papan ular tangga berbasis kuis untuk Windows dan Android, 100% offline. Setiap giliran dibuka satu soal pilihan ganda: jawab benar untuk mengocok dadu 3D. 300 soal Matematika, Penjas Orkes, dan Sejarah Indonesia, tiga tingkat kesulitan, mode Pass & Play atau melawan bot. Project sumatif SMK Krian 1 Sidoarjo.',
+    stack: 'Python 3.12 · Pygame · Blender · Inno Setup · Buildozer',
+    links: [
+      ['Unduh untuk Windows & Android', 'https://github.com/FazaRizkyA/ular-tangga-kuis/releases/latest'],
+      ['Kode di GitHub', 'https://github.com/FazaRizkyA/ular-tangga-kuis']
+    ]
+  },
+  {
+    img: 'assets/visualgrid.jpg', alt: 'Pratinjau website VisualGrid Media',
+    desc: 'Website studio jasa kreatif: konten Instagram, video sinematik, iklan produk, dokumentasi event, dan CV ATS. Ada hero 3D interaktif, portofolio yang bisa difilter, slider studi kasus sebelum/sesudah, dan formulir pesanan ke WhatsApp. Semua konten dan pesanan dikelola dari dasbor admin berlogin.',
+    stack: 'HTML · CSS · JavaScript · Three.js · Supabase',
+    links: [
+      ['Lihat website', 'https://fazarizkya.github.io/visualgrid-media/'],
+      ['Kode di GitHub', 'https://github.com/FazaRizkyA/visualgrid-media']
+    ]
   }
 ];
 
